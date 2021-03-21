@@ -1,7 +1,7 @@
 /* eslint-disable react/jsx-no-target-blank */
 import React from "react";
 import Link from "next/link";
-
+import Image from "next/image";
 import IndexNavbar from "components/Navbars/IndexNavbar.js";
 import Footer from "components/Footers/Footer.js";
 
@@ -47,11 +47,6 @@ export default function Index() {
             </div>
           </div>
         </div>
-        {/* <img
-          className="absolute top-0 b-auto right-0 pt-16 sm:w-6/12 -mt-48 sm:mt-0 w-10/12 max-h-860-px"
-          src="/img/landing-food.jpg"
-          alt="..."
-        /> */}
       </section>
 
       <section className="mt-48 md:mt-40 pb-40 relative bg-blueGray-100">
@@ -78,15 +73,14 @@ export default function Index() {
           <div className="flex flex-wrap items-center">
             <div className="w-10/12 md:w-6/12 lg:w-4/12 px-12 md:px-4 mr-auto ml-auto -mt-32">
               {/* <Image
-                src="/me.png"
-                alt="Picture of the author"
-                width={500}
-                height={500}
+                src="/img/march-menu.jpg"
+                alt="Picture of the menu"
+                layout="fill"
               /> */}
-              {/* <div className="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded-lg bg-blueGray-700">
+              <div className="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded-lg bg-blueGray-700">
                 <img
-                  alt="..."
-                  src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=700&q=80"
+                  alt="Our story"
+                  src="img/our-story.jpg"
                   className="w-full align-middle rounded-t-lg"
                 />
                 <blockquote className="relative p-8 mb-4">
@@ -102,16 +96,15 @@ export default function Index() {
                     ></polygon>
                   </svg>
                   <h4 className="text-xl font-bold text-white">
-                    Great for your awesome project
+                    The 7 humans behind the aprons
                   </h4>
                   <p className="text-md font-light mt-2 text-white">
-                    Putting together a page has never been easier than matching
-                    together pre-made components. From landing pages
-                    presentation to login areas, you can easily customise and
-                    built your pages.
+                    We want to bring a fusion of the fragrant street food,
+                    together with the warmth of traditional home-cooked meals to
+                    transport people back to the tastes of Asia.
                   </p>
                 </blockquote>
-              </div> */}
+              </div>
             </div>
 
             <div className="w-full md:w-6/12 px-4">
