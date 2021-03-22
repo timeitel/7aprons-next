@@ -2,6 +2,7 @@
 import React from "react";
 import IndexNavbar from "components/Navbars/IndexNavbar.js";
 import Footer from "components/Footers/Footer.js";
+import OrderOnline from "../components/OnlineOrder/OnlineOrder";
 
 const headerStyle = {
   background:
@@ -15,11 +16,6 @@ const orderSection = {
     'linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65)), url("/img/ingredients.jpg")',
   backgroundPosition: "center center",
   backgroundSize: "cover",
-};
-
-const menuStyle = {
-  marginLeft: "10%",
-  width: "35%",
 };
 
 export default function Index() {
@@ -95,11 +91,6 @@ export default function Index() {
         <div className="container mx-auto">
           <div className="flex flex-wrap items-center">
             <div className="w-10/12 md:w-6/12 lg:w-4/12 px-12 md:px-4 mr-auto ml-auto -mt-32">
-              {/* <Image
-                src="/img/march-menu.jpg"
-                alt="Picture of the menu"
-                layout="fill"
-              /> */}
               <div className="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded-lg bg-blueGray-700">
                 <img
                   alt="Our story"
@@ -199,10 +190,7 @@ export default function Index() {
       <section id="menu" style={orderSection} className="pb-20 overflow-hidden">
         <div className="container mx-auto overflow-hidden pb-48">
           <div className="flex flex-wrap items-center">
-            <div
-              style={menuStyle}
-              className="w-full md:w-4/12 px-12 md:px-4 ml-1/5 mr-auto mt-48"
-            >
+            <div className="w-full md:w-4/12 px-12 md:px-4 mr-auto mt-48">
               <div className="text-blueGray-500 p-3 text-center inline-flex items-center justify-center w-16 h-16 mb-6 shadow-lg rounded-full bg-white">
                 <i className="fas fa-sitemap text-xl"></i>
               </div>
@@ -285,35 +273,13 @@ export default function Index() {
         </div>
 
         <div className="container mx-auto">
-          <div className="flex flex-wrap justify-center bg-white shadow-xl rounded-lg -mt-64 py-16 px-12 relative z-10">
+          <div className="flex flex-wrap justify-center bg-white shadow-xl rounded-lg -mt-64 py-12 px-12 relative z-10">
             <div className="w-full text-center lg:w-8/12">
               <p className="text-4xl text-center"></p>
-              <h3 id="order" className="font-semibold text-3xl">
-                Place an online order 🍛
+              <h3 id="order" className="font-semibold mb-4 text-3xl">
+                Order Online 🍛
               </h3>
-              <p className="text-blueGray-500 text-lg leading-relaxed mt-4 mb-4">
-                Cause if you do, it can be yours now. Hit the buttons below to
-                navigate to get the Free version for your next project. Build a
-                new web app or give an old project a new look!
-              </p>
-              <div className="sm:block flex flex-col mt-10">
-                <a
-                  href="https://www.creative-tim.com/learning-lab/tailwind/nextjs/overview/notus?ref=nnjs-index"
-                  target="_blank"
-                  className="get-started text-white font-bold px-6 py-4 rounded outline-none focus:outline-none mr-1 mb-2 bg-blueGray-400 active:bg-blueGray-500 uppercase text-sm shadow hover:shadow-lg ease-linear transition-all duration-150"
-                >
-                  Get started
-                </a>
-                <a
-                  href="https://github.com/creativetimofficial/notus-nextjs?ref=nnjs-index"
-                  target="_blank"
-                  className="github-star sm:ml-1 text-white font-bold px-6 py-4 rounded outline-none focus:outline-none mr-1 mb-1 bg-blueGray-700 active:bg-blueGray-600 uppercase text-sm shadow hover:shadow-lg"
-                >
-                  <i className="fab fa-github text-lg mr-1"></i>
-                  <span>Help With a Star</span>
-                </a>
-              </div>
-              <div className="text-center mt-16"></div>
+              <OrderOnline />
             </div>
           </div>
         </div>
