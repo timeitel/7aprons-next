@@ -1,7 +1,5 @@
 /* eslint-disable react/jsx-no-target-blank */
 import React from "react";
-import Link from "next/link";
-import Image from "next/image";
 import IndexNavbar from "components/Navbars/IndexNavbar.js";
 import Footer from "components/Footers/Footer.js";
 
@@ -10,6 +8,18 @@ const headerStyle = {
     'linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("/img/landing-food.jpg")',
   backgroundPosition: "center center",
   backgroundSize: "cover",
+};
+
+const orderSection = {
+  background:
+    'linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65)), url("/img/ingredients.jpg")',
+  backgroundPosition: "center center",
+  backgroundSize: "cover",
+};
+
+const menuStyle = {
+  marginLeft: "10%",
+  width: "35%",
 };
 
 export default function Index() {
@@ -33,16 +43,25 @@ export default function Index() {
               </p>
               <div className="mt-12 flex flex-wrap">
                 <a
-                  href="#menu"
+                  href="img/march-menu.jpg"
+                  target="_blank"
                   className="flex items-center whitespace-nowrap get-started text-white font-bold px-6 py-4 rounded outline-none focus:outline-none mr-1 mb-1 bg-blueGray-400 active:bg-blueGray-500 uppercase text-sm shadow hover:shadow-lg ease-linear transition-all duration-150"
                 >
                   View Menu
+                  <i
+                    className="fas fa-external-link-square-alt ml-2"
+                    aria-hidden="true"
+                  ></i>
                 </a>
                 <a
                   href="#order"
                   className="flex items-center whitespace-nowrap github-star ml-1 text-white font-bold px-6 py-4 rounded outline-none focus:outline-none mr-1 mb-1 bg-blueGray-700 active:bg-blueGray-600 uppercase text-sm shadow hover:shadow-lg"
                 >
                   Order Online
+                  <i
+                    className="fas fa-angle-double-down ml-2"
+                    aria-hidden="true"
+                  ></i>
                 </a>
               </div>
             </div>
@@ -175,46 +194,51 @@ export default function Index() {
             </div>
           </div>
         </div>
+      </section>
 
-        <div className="container mx-auto overflow-hidden pb-20">
+      <section id="menu" style={orderSection} className="pb-20 overflow-hidden">
+        <div className="container mx-auto overflow-hidden pb-48">
           <div className="flex flex-wrap items-center">
-            <div className="w-full md:w-4/12 px-12 md:px-4 ml-auto mr-auto mt-48">
+            <div
+              style={menuStyle}
+              className="w-full md:w-4/12 px-12 md:px-4 ml-1/5 mr-auto mt-48"
+            >
               <div className="text-blueGray-500 p-3 text-center inline-flex items-center justify-center w-16 h-16 mb-6 shadow-lg rounded-full bg-white">
                 <i className="fas fa-sitemap text-xl"></i>
               </div>
-              <h3 className="text-3xl mb-2 font-semibold leading-normal">
+              <h3 className="text-3xl mb-2 text-white font-semibold leading-normal">
                 7 Aprons Menu
               </h3>
-              <p className="text-lg font-light leading-relaxed mt-4 mb-4 text-blueGray-600">
+              <p className="text-lg font-light leading-relaxed mt-4 mb-4 text-white">
                 Every element that you need in a product comes built in as a
                 component. All components fit perfectly with each other and can
                 have different colours.
               </p>
               <div className="block pb-6">
-                <span className="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-blueGray-500 bg-white uppercase last:mr-0 mr-2 mt-2">
+                <span className="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-blueGray-500 bg-gray-200 uppercase last:mr-0 mr-2 mt-2">
                   Authentic
                 </span>
-                <span className="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-blueGray-500 bg-white uppercase last:mr-0 mr-2 mt-2">
+                <span className="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-blueGray-500 bg-gray-200 uppercase last:mr-0 mr-2 mt-2">
                   Indonesian
                 </span>
-                <span className="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-blueGray-500 bg-white uppercase last:mr-0 mr-2 mt-2">
+                <span className="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-blueGray-500 bg-gray-200 uppercase last:mr-0 mr-2 mt-2">
                   Malaysian
                 </span>
-                <span className="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-blueGray-500 bg-white uppercase last:mr-0 mr-2 mt-2">
+                <span className="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-blueGray-500 bg-gray-200 uppercase last:mr-0 mr-2 mt-2">
                   Delivery
                 </span>
-                <span className="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-blueGray-500 bg-white uppercase last:mr-0 mr-2 mt-2">
+                <span className="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-blueGray-500 bg-gray-200 uppercase last:mr-0 mr-2 mt-2">
                   Catering
                 </span>
-                <span className="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-blueGray-500 bg-white uppercase last:mr-0 mr-2 mt-2">
+                <span className="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-blueGray-500 bg-gray-200 uppercase last:mr-0 mr-2 mt-2">
                   Family-owned
                 </span>
               </div>
 
               <div className="mt-6 flex flex-wrap">
                 <a
-                  href="#menu"
-                  className="flex items-center whitespace-nowrap get-started text-white font-bold px-6 py-4 rounded outline-none focus:outline-none mr-1 mb-1 bg-blueGray-400 active:bg-blueGray-500 uppercase text-sm shadow hover:shadow-lg ease-linear transition-all duration-150"
+                  href="#order"
+                  className="flex items-center mr-2 mb-2 whitespace-nowrap get-started text-white font-bold px-6 py-4 rounded outline-none focus:outline-none uppercase text-sm shadow hover:shadow-lg ease-linear transition-all duration-150"
                 >
                   <i
                     className="fas fa-angle-double-down mr-2"
@@ -225,7 +249,7 @@ export default function Index() {
                 <a
                   href="img/march-menu.jpg"
                   target="_blank"
-                  className="flex items-center whitespace-nowrap github-star ml-1 text-white font-bold px-6 py-4 rounded outline-none focus:outline-none mr-1 mb-1 bg-blueGray-700 active:bg-blueGray-600 uppercase text-sm shadow hover:shadow-lg"
+                  className="flex mb-2 items-center whitespace-nowrap github-star text-white font-bold px-6 py-4 rounded outline-none focus:outline-none bg-blueGray-700 active:bg-blueGray-600 uppercase text-sm shadow hover:shadow-lg"
                 >
                   View Menu
                   <i
@@ -234,84 +258,6 @@ export default function Index() {
                   ></i>
                 </a>
               </div>
-            </div>
-
-            <div className="w-full md:w-5/12 px-4 mr-auto ml-auto mt-32">
-              <div className="relative flex flex-col min-w-0 w-full mb-6 mt-48 md:mt-0">
-                <img
-                  alt="..."
-                  src="/img/component-btn.png"
-                  className="w-full align-middle rounded absolute shadow-lg max-w-100-px left-145-px -top-29-px z-3"
-                />
-                <img
-                  alt="..."
-                  src="/img/component-profile-card.png"
-                  className="w-full align-middle rounded-lg absolute shadow-lg max-w-210-px left-260-px -top-160-px"
-                />
-                <img
-                  alt="..."
-                  src="/img/component-info-card.png"
-                  className="w-full align-middle rounded-lg absolute shadow-lg max-w-180-px left-40-px -top-225-px z-2"
-                />
-                <img
-                  alt="..."
-                  src="/img/component-info-2.png"
-                  className="w-full align-middle rounded-lg absolute shadow-2xl max-w-200-px -left-50-px top-25-px"
-                />
-                <img
-                  alt="..."
-                  src="/img/component-menu.png"
-                  className="w-full align-middle rounded absolute shadow-lg max-w-580-px -left-20-px top-210-px"
-                />
-                <img
-                  alt="..."
-                  src="/img/component-btn-pink.png"
-                  className="w-full align-middle rounded absolute shadow-xl max-w-120-px left-195-px top-95-px"
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="py-20 bg-blueGray-600 overflow-hidden">
-        <div className="container mx-auto pb-64">
-          <div className="flex flex-wrap justify-center">
-            <div className="w-full md:w-5/12 px-12 md:px-4 ml-auto mr-auto md:mt-64">
-              <div className="text-blueGray-500 p-3 text-center inline-flex items-center justify-center w-16 h-16 mb-6 shadow-lg rounded-full bg-white">
-                <i className="fas fa-code-branch text-xl"></i>
-              </div>
-              <h3 className="text-3xl mb-2 font-semibold leading-normal text-white">
-                Open Source
-              </h3>
-              <p className="text-lg font-light leading-relaxed mt-4 mb-4 text-blueGray-400">
-                Since{" "}
-                <a
-                  href="https://tailwindcss.com/?ref=creative"
-                  className="text-blueGray-300"
-                  target="_blank"
-                >
-                  Tailwind CSS
-                </a>{" "}
-                is an open source project we wanted to continue this movement
-                too. You can give this version a try to feel the design and also
-                test the quality of the code!
-              </p>
-              <p className="text-lg font-light leading-relaxed mt-0 mb-4 text-blueGray-400">
-                Get it free on Github and please help us spread the news with a
-                Star!
-              </p>
-              <a
-                href="https://github.com/creativetimofficial/notus-nextjs?ref=nnjs-index"
-                target="_blank"
-                className="github-star mt-4 inline-block text-white font-bold px-6 py-4 rounded outline-none focus:outline-none mr-1 mb-1 bg-blueGray-700 active:bg-blueGray-600 uppercase text-sm shadow hover:shadow-lg"
-              >
-                Github Star
-              </a>
-            </div>
-
-            <div className="w-full md:w-4/12 px-4 mr-auto ml-auto mt-32 relative">
-              <i className="fab fa-github text-blueGray-700 absolute text-55 -top-150-px -right-100 left-auto opacity-80"></i>
             </div>
           </div>
         </div>
@@ -341,13 +287,9 @@ export default function Index() {
         <div className="container mx-auto">
           <div className="flex flex-wrap justify-center bg-white shadow-xl rounded-lg -mt-64 py-16 px-12 relative z-10">
             <div className="w-full text-center lg:w-8/12">
-              <p className="text-4xl text-center">
-                <span role="img" aria-label="love">
-                  😍
-                </span>
-              </p>
-              <h3 className="font-semibold text-3xl">
-                Do you love this Starter Kit?
+              <p className="text-4xl text-center"></p>
+              <h3 id="order" className="font-semibold text-3xl">
+                Place an online order 🍛
               </h3>
               <p className="text-blueGray-500 text-lg leading-relaxed mt-4 mb-4">
                 Cause if you do, it can be yours now. Hit the buttons below to
