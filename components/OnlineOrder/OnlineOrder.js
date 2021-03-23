@@ -1,4 +1,5 @@
 import { useForm } from "react-hook-form";
+import { useState } from "react";
 import styled from "styled-components";
 
 const Form = styled.form`
@@ -8,9 +9,8 @@ const Form = styled.form`
   align-items: flex-start;
 
   input {
-    border: 1px solid black;
+    border: 1px solid lightgray;
     border-radius: 4px;
-    margin-bottom: 12px;
     height: 40px;
     padding: 2px 8px;
   }
@@ -34,40 +34,69 @@ const FormGroup = styled.div`
   }
 
   input {
-    width: 80px;
+    width: 92px;
   }
 `;
 
 export default function OnlineOrder() {
   const { register, handleSubmit, errors } = useForm();
   const onSubmit = (data) => console.log(data);
+  const [dishOne, setDishOne] = useState(0);
+  const [dishTwo, setDishTwo] = useState(0);
 
   return (
     <>
       <Form onSubmit={handleSubmit(onSubmit)}>
-        <h4 className="font-bold mb-8">
-          Order by Monday, March 29, for Wednesday, March 24 delivery
-        </h4>
-        <FormGroup>
-          <label className="text-lg font-medium mr-4">
-            Chinese BBQ Pork served with hainan rice
-          </label>
-          <input type="number" min="0" max="100" />
+        <FormGroup className="mb-4">
+          <div className="flex flex-col items-end mr-4">
+            <label className="text-lg font-medium">
+              Chinese BBQ Pork served with hainan rice
+            </label>
+            <label>$8.50 each</label>
+          </div>
+          <input
+            required
+            value={dishOne}
+            onChange={(e) => setDishOne(e.target.value)}
+            type="number"
+            min="0"
+            max="100"
+          />
         </FormGroup>
 
         <FormGroup>
-          <label className="text-lg font-medium mr-4">
-            Roast chicken served with hainan rice
-          </label>
-          <input type="number" min="0" max="100" />
+          <div className="flex flex-col items-end mr-4">
+            <label className="text-lg font-medium">
+              Roast chicken served with hainan rice
+            </label>
+            <label>$8.50 each</label>
+          </div>
+          <input
+            required
+            value={dishTwo}
+            onChange={(e) => setDishTwo(e.target.value)}
+            type="number"
+            min="0"
+            max="100"
+          />
         </FormGroup>
+        <hr className="border-black mt-4 text-center text-2xl w-full" />
 
-        {errors.exampleRequired && <span>This field is required</span>}
+        <div className="flex justify-end w-full my-4">
+          <label className="text-md font-medium mr-4">Total</label>
+          <div style={{ width: 92, textAlign: "start" }}>
+            {(dishOne * 8.5 + dishTwo * 8.5).toLocaleString("en-US", {
+              style: "currency",
+              currency: "USD",
+            })}
+          </div>
+        </div>
 
         <input
-          className="flex cursor-pointer ml-auto items-center whitespace-nowrap text-white font-bold px-6 rounded outline-none focus:outline-none mr-1 mb-1 bg-blueGray-400 active:bg-blueGray-500 uppercase text-sm shadow hover:shadow-lg ease-linear transition-all duration-150"
+          className="flex cursor-pointer ml-auto items-center justify-center whitespace-nowrap text-white font-bold px-6 rounded outline-none focus:outline-none mb-1 bg-blueGray-700 active:bg-blueGray-600 active:bg-blueGray-500 uppercase text-sm shadow hover:shadow-lg ease-linear transition-all duration-150"
           type="submit"
           value="Checkout"
+          style={{ width: 145 }}
         />
       </Form>
     </>

@@ -130,11 +130,12 @@ export default function Index() {
                         <i className="fas fa-sitemap"></i>
                       </div>
                       <h6 className="text-xl mb-1 font-semibold">
-                        Beef Rendang
+                        Signature Dishes
                       </h6>
                       <p className="mb-4 text-blueGray-500">
-                        Notus NextJS comes with a huge number of Fully Coded CSS
-                        components.
+                        From Javanese, to Hainan, to peanut satay sauce. All
+                        varieties of Asian dishes can be found at 7Aprons
+                        throughout the changing, monthly menu.
                       </p>
                     </div>
                   </div>
@@ -143,12 +144,10 @@ export default function Index() {
                       <div className="text-blueGray-500 p-3 text-center inline-flex items-center justify-center w-12 h-12 mb-5 shadow-lg rounded-full bg-white">
                         <i className="fas fa-drafting-compass"></i>
                       </div>
-                      <h6 className="text-xl mb-1 font-semibold">
-                        Hainan Chicken
-                      </h6>
+                      <h6 className="text-xl mb-1 font-semibold">Delivery</h6>
                       <p className="mb-4 text-blueGray-500">
-                        We also feature many dynamic components for React,
-                        NextJS, Vue and Angular.
+                        Delivering anywhere within the Perth metropolitan area
+                        each week.
                       </p>
                     </div>
                   </div>
@@ -159,10 +158,9 @@ export default function Index() {
                       <div className="text-blueGray-500 p-3 text-center inline-flex items-center justify-center w-12 h-12 mb-5 shadow-lg rounded-full bg-white">
                         <i className="fas fa-newspaper"></i>
                       </div>
-                      <h6 className="text-xl mb-1 font-semibold">Javanese</h6>
+                      <h6 className="text-xl mb-1 font-semibold">Catering</h6>
                       <p className="mb-4 text-blueGray-500">
-                        This extension also comes with 3 sample pages. They are
-                        fully coded so you can start working instantly.
+                        Contact us for catering and food options.
                       </p>
                     </div>
                   </div>
@@ -172,11 +170,11 @@ export default function Index() {
                         <i className="fas fa-file-alt"></i>
                       </div>
                       <h6 className="text-xl mb-1 font-semibold">
-                        Another dish
+                        Perth Locals
                       </h6>
                       <p className="mb-4 text-blueGray-500">
-                        Built by developers for developers. You will love how
-                        easy is to to work with Notus NextJS.
+                        We want to share the warmth of traditional home-cooked
+                        meals to transport people back to the tastes of Asia.
                       </p>
                     </div>
                   </div>
@@ -198,9 +196,9 @@ export default function Index() {
                 7 Aprons Menu
               </h3>
               <p className="text-lg font-light leading-relaxed mt-4 mb-4 text-white">
-                Every element that you need in a product comes built in as a
-                component. All components fit perfectly with each other and can
-                have different colours.
+                A choice of two delicious dishes, changing every week for
+                delivery to any office or location in the Perth metropolitan
+                area.{" "}
               </p>
               <div className="block pb-6">
                 <span className="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-blueGray-500 bg-gray-200 uppercase last:mr-0 mr-2 mt-2">
@@ -279,6 +277,9 @@ export default function Index() {
               <h3 id="order" className="font-semibold mb-4 text-3xl">
                 Order Online 🍛
               </h3>
+              <h4 className="font-bold mb-8">
+                Order by Monday, March 29, for Wednesday, March 24 delivery
+              </h4>
               <OrderOnline />
             </div>
           </div>

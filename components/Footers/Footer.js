@@ -31,18 +31,27 @@ export default function Footer() {
               up!
             </h5>
             <div className="mt-6 lg:mb-0 mb-6">
-              <button
-                className="bg-white text-lightBlue-600 shadow-lg font-normal h-10 w-10 items-center justify-center align-center rounded-full outline-none focus:outline-none mr-2"
-                type="button"
+              <a
+                target="_blank"
+                rel="noreferrer"
+                href="https://en-gb.facebook.com/sevenaprons.sevenaprons.7"
               >
-                <i className="fab fa-facebook-square"></i>
-              </button>
-              <button
-                className="bg-white text-blueGray-800 shadow-lg font-normal h-10 w-10 items-center justify-center align-center rounded-full outline-none focus:outline-none mr-2"
-                type="button"
+                <button className="bg-white text-lightBlue-600 shadow-lg font-normal h-10 w-10 items-center justify-center align-center rounded-full outline-none focus:outline-none mr-2">
+                  <i className="fab fa-facebook-square"></i>
+                </button>
+              </a>
+              <a
+                target="_blank"
+                rel="noreferrer"
+                href="https://instagram.com/sevenaprons?igshid=o28eudxnpi9p"
               >
-                <i className="fab fa-instagram"></i>
-              </button>
+                <button
+                  className="bg-white text-blueGray-800 shadow-lg font-normal h-10 w-10 items-center justify-center align-center rounded-full outline-none focus:outline-none mr-2"
+                  type="button"
+                >
+                  <i className="fab fa-instagram"></i>
+                </button>
+              </a>
             </div>
           </div>
           <div className="w-full lg:w-6/12 px-4">
@@ -52,21 +61,12 @@ export default function Footer() {
                   Catering Hours
                 </span>
                 <ul className="list-unstyled">
-                  <li>
-                    <a
-                      className="text-blueGray-600 hover:text-blueGray-800 font-semibold block pb-2 text-sm"
-                      href="https://www.creative-tim.com/presentation?ref=nnjs-footer"
-                    >
-                      Monday: Closed
-                    </a>
+                  <li className="text-blueGray-600 hover:text-blueGray-800 font-semibold block pb-2 text-sm">
+                    Monday: Closed
                   </li>
-                  <li>
-                    <a
-                      className="text-blueGray-600 hover:text-blueGray-800 font-semibold block pb-2 text-sm"
-                      href="https://blog.creative-tim.com?ref=nnjs-footer"
-                    >
-                      Tuesday to Sunday 11:00 AM - 4:00 PM
-                    </a>
+                  <li className="text-blueGray-600 hover:text-blueGray-800 font-semibold block pb-2 text-sm">
+                    Tuesday to Sunday
+                    <br /> 11:00 AM - 4:00 PM
                   </li>
                 </ul>
               </div>
@@ -75,13 +75,8 @@ export default function Footer() {
                   Delivering to
                 </span>
                 <ul className="list-unstyled">
-                  <li>
-                    <a
-                      className="text-blueGray-600 hover:text-blueGray-800 font-semibold block pb-2 text-sm"
-                      href="https://github.com/creativetimofficial/notus-nextjs/blob/main/LICENSE.md?ref=nnjs-footer"
-                    >
-                      Perth metropolitan area
-                    </a>
+                  <li className="text-blueGray-600 hover:text-blueGray-800 font-semibold block pb-2 text-sm">
+                    Perth metropolitan area
                   </li>
                 </ul>
               </div>
