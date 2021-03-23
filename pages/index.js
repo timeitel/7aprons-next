@@ -6,14 +6,14 @@ import OrderOnline from "../components/OnlineOrder/OnlineOrder";
 
 const headerStyle = {
   background:
-    'linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("/img/landing-food.jpg")',
+    'linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("../img/landing-food.jpg")',
   backgroundPosition: "center center",
   backgroundSize: "cover",
 };
 
 const orderSection = {
   background:
-    'linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65)), url("/img/ingredients.jpg")',
+    'linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65)), url("../img/ingredients.jpg")',
   backgroundPosition: "center center",
   backgroundSize: "cover",
 };
