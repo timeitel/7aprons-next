@@ -51,8 +51,14 @@ export default function OnlineOrder() {
     stripe
       .redirectToCheckout({
         lineItems: [
-          { price: "price_1IXIWQDJrsoPxmlZEzydd92v", quantity: dishOne },
-          { price: "price_1IV2I0DJrsoPxmlZZ0BcBLTt", quantity: dishTwo },
+          {
+            price: "price_1IXIWQDJrsoPxmlZEzydd92v",
+            quantity: Number(dishOne),
+          },
+          {
+            price: "price_1IV2I0DJrsoPxmlZZ0BcBLTt",
+            quantity: Number(dishTwo),
+          },
         ],
         mode: "payment",
         successUrl: "https://7aprons.com/success",
