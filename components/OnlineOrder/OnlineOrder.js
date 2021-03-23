@@ -39,14 +39,41 @@ const FormGroup = styled.div`
 `;
 
 export default function OnlineOrder() {
-  const { register, handleSubmit, errors } = useForm();
-  const onSubmit = (data) => console.log(data);
   const [dishOne, setDishOne] = useState(0);
   const [dishTwo, setDishTwo] = useState(0);
 
+  const order = () => {
+    // eslint-disable-next-line no-undef
+    var stripe = Stripe(
+      "pk_test_51IUiTqDJrsoPxmlZ4eQXagZ4DZQL5PcmdQVA5G4WxWIPMSwWb79m4VqWhnN3bDk7pVDxIXPxkWv34F8fL53tL0kV00TdZK3vhX"
+    );
+
+    stripe
+      .redirectToCheckout({
+        lineItems: [
+          { price: "price_1IXIWQDJrsoPxmlZEzydd92v", quantity: dishOne },
+          { price: "price_1IV2I0DJrsoPxmlZZ0BcBLTt", quantity: dishTwo },
+        ],
+        mode: "payment",
+        successUrl: "https://7aprons.com/success",
+        cancelUrl: "https://7aprons.com/canceled",
+      })
+      .then(function (result) {
+        if (result.error) {
+          var displayError = document.getElementById("error-message");
+          displayError.textContent = result.error.message;
+        }
+      });
+  };
+
   return (
     <>
-      <Form onSubmit={handleSubmit(onSubmit)}>
+      <Form
+        onSubmit={(e) => {
+          e.preventDefault();
+          order();
+        }}
+      >
         <FormGroup className="mb-4">
           <div className="flex flex-col items-end mr-4">
             <label className="text-lg font-medium">
@@ -98,6 +125,8 @@ export default function OnlineOrder() {
           value="Checkout"
           style={{ width: 145 }}
         />
+
+        <div id="error-message"></div>
       </Form>
     </>
   );
