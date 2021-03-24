@@ -28,13 +28,13 @@ const FormGroup = styled.div`
   align-items: center;
   justify-content: flex-end;
   width: 100%;
+  white-space: normal;
+  text-align: end;
 
-  label {
-    white-space: nowrap;
-  }
-
-  input {
-    width: 92px;
+  @media (min-width: 768px) {
+    label {
+      white-space: nowrap;
+    }
   }
 `;
 
@@ -97,6 +97,8 @@ export default function OnlineOrder() {
           />
         </FormGroup>
 
+        <hr className="border-black my-4 text-center text-2xl w-full md:hidden ml-auto" />
+
         <FormGroup>
           <div className="flex flex-col items-end mr-4">
             <label className="text-lg font-medium">
@@ -113,7 +115,7 @@ export default function OnlineOrder() {
             max="100"
           />
         </FormGroup>
-        <hr className="border-black mt-4 text-center text-2xl w-full" />
+        <hr className="border-black mt-4 text-center text-2xl w-full md:hidden ml-auto" />
 
         <div className="flex justify-end w-full my-4">
           <label className="text-md font-medium mr-4">Total</label>
