@@ -1,5 +1,4 @@
-export const basePath =
-  process.env.NODE_ENV === "production" ? "/7aprons-next" : "";
+const basePath = process.env.NODE_ENV === "production" ? "/7aprons-next" : "";
 
 module.exports = {
   basePath,
