@@ -135,7 +135,7 @@ export default function Index() {
                   <div className="relative flex flex-col mt-4">
                     <div className="px-4 py-5 flex-auto">
                       <div className="text-blueGray-500 p-3 text-center inline-flex items-center justify-center w-12 h-12 mb-5 shadow-lg rounded-full bg-white">
-                        <i className="fas fa-sitemap"></i>
+                        <i class="fas fa-utensils"></i>
                       </div>
                       <h6 className="text-xl mb-1 font-semibold">
                         Signature Dishes
@@ -150,7 +150,7 @@ export default function Index() {
                   <div className="relative flex flex-col min-w-0">
                     <div className="px-4 py-5 flex-auto">
                       <div className="text-blueGray-500 p-3 text-center inline-flex items-center justify-center w-12 h-12 mb-5 shadow-lg rounded-full bg-white">
-                        <i className="fas fa-drafting-compass"></i>
+                        <i class="fas fa-truck"></i>
                       </div>
                       <h6 className="text-xl mb-1 font-semibold">Delivery</h6>
                       <p className="mb-4 text-blueGray-500">
@@ -164,7 +164,7 @@ export default function Index() {
                   <div className="relative flex flex-col min-w-0 mt-4">
                     <div className="px-4 py-5 flex-auto">
                       <div className="text-blueGray-500 p-3 text-center inline-flex items-center justify-center w-12 h-12 mb-5 shadow-lg rounded-full bg-white">
-                        <i className="fas fa-newspaper"></i>
+                        <i class="fas fa-users"></i>
                       </div>
                       <h6 className="text-xl mb-1 font-semibold">Catering</h6>
                       <p className="mb-4 text-blueGray-500">
@@ -175,7 +175,7 @@ export default function Index() {
                   <div className="relative flex flex-col min-w-0">
                     <div className="px-4 py-5 flex-auto">
                       <div className="text-blueGray-500 p-3 text-center inline-flex items-center justify-center w-12 h-12 mb-5 shadow-lg rounded-full bg-white">
-                        <i className="fas fa-file-alt"></i>
+                        <i class="fas fa-map-marker-alt"></i>
                       </div>
                       <h6 className="text-xl mb-1 font-semibold">
                         Perth Locals
@@ -199,7 +199,7 @@ export default function Index() {
             <MenuContainer className="flex flex-wrap justify-center md:justify-start items-enter">
               <div className="w-10/12 md:w-4/12 md:px-4 mt-32 md:mt-48">
                 <div className="text-blueGray-500 p-3 text-center inline-flex items-center justify-center w-16 h-16 mb-6 shadow-lg rounded-full bg-white">
-                  <i className="fas fa-sitemap text-xl"></i>
+                  <i class="fas fa-file-invoice text-2xl"></i>
                 </div>
                 <h3 className="text-3xl mb-2 text-white font-semibold leading-normal">
                   7 Aprons Menu
