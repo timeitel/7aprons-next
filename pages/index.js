@@ -49,7 +49,7 @@ export default function Index() {
                 <a
                   href="images/march-menu.jpg"
                   target="_blank"
-                  className="flex items-center whitespace-nowrap get-started text-white font-bold px-6 py-4 rounded outline-none focus:outline-none mr-4 mb-2 bg-blueGray-400 active:bg-blueGray-500 uppercase text-sm shadow hover:shadow-lg ease-linear transition-all duration-150"
+                  className="flex items-center whitespace-nowrap get-started text-black font-bold px-6 py-4 rounded outline-none focus:outline-none mr-4 mb-2 bg-secondary active:bg-blueGray-500 uppercase text-sm shadow hover:shadow-lg ease-linear transition-all duration-150"
                 >
                   View Menu
                   <i
@@ -59,7 +59,7 @@ export default function Index() {
                 </a>
                 <a
                   href="#order"
-                  className="flex items-center whitespace-nowrap github-star text-white font-bold px-6 py-4 rounded outline-none focus:outline-none mb-2 bg-blueGray-700 active:bg-blueGray-600 uppercase text-sm shadow hover:shadow-lg"
+                  className="flex items-center whitespace-nowrap github-star text-white font-bold px-6 py-4 rounded outline-none focus:outline-none mb-2 bg-primary active:bg-blueGray-600 uppercase text-sm shadow hover:shadow-lg"
                 >
                   Order Online
                   <i
@@ -244,7 +244,7 @@ export default function Index() {
                   <a
                     href="images/march-menu.jpg"
                     target="_blank"
-                    className="flex mb-2 items-center whitespace-nowrap github-star text-white font-bold px-6 py-4 rounded outline-none focus:outline-none bg-blueGray-700 active:bg-blueGray-600 uppercase text-sm shadow hover:shadow-lg"
+                    className="flex bg-primary mb-2 items-center whitespace-nowrap github-star text-white font-bold px-6 py-4 rounded outline-none focus:outline-none bg-blueGray-700 active:bg-blueGray-600 uppercase text-sm shadow hover:shadow-lg"
                   >
                     View Menu
                     <i
