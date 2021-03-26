@@ -7,16 +7,9 @@ class MyDocument extends Document {
       <Html lang="en">
         <Head>
           <meta charSet="utf-8" />
-          <meta name="theme-color" content="#000000" />
-          <link rel="shortcut icon" href="/img/favicon.svg" />
-          <link
-            rel="apple-touch-icon"
-            sizes="76x76"
-            href="/img/brand/apple-icon.png"
-          />
+          <link rel="shortcut icon" href="/images/favicon.svg" />
         </Head>
         <body className="text-blueGray-700 antialiased">
-          <div id="page-transition"></div>
           <Main />
           <NextScript />
         </body>

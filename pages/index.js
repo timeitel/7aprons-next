@@ -7,13 +7,13 @@ import { basePath } from "../next.config";
 import styled from "styled-components";
 
 const headerStyle = {
-  background: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("${basePath}/img/landing-food.jpg")`,
+  background: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("${basePath}/images/landing-food.jpg")`,
   backgroundPosition: "center center",
   backgroundSize: "cover",
 };
 
 const orderSection = {
-  background: `linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65)), url("${basePath}/img/ingredients.jpg")`,
+  background: `linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65)), url("${basePath}/images/ingredients.jpg")`,
   backgroundPosition: "center center",
   backgroundSize: "cover",
 };
@@ -47,7 +47,7 @@ export default function Index() {
               </p>
               <div className="mt-12 flex flex-wrap">
                 <a
-                  href="img/march-menu.jpg"
+                  href="images/march-menu.jpg"
                   target="_blank"
                   className="flex items-center whitespace-nowrap get-started text-white font-bold px-6 py-4 rounded outline-none focus:outline-none mr-4 mb-2 bg-blueGray-400 active:bg-blueGray-500 uppercase text-sm shadow hover:shadow-lg ease-linear transition-all duration-150"
                 >
@@ -102,7 +102,7 @@ export default function Index() {
               <div className="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded-lg bg-blueGray-700">
                 <img
                   alt="Our story"
-                  src="img/our-story.jpg"
+                  src="images/our-story.jpg"
                   className="w-full align-middle rounded-t-lg"
                 />
                 <blockquote className="relative p-8 mb-4">
@@ -242,7 +242,7 @@ export default function Index() {
                     Order Online
                   </a>
                   <a
-                    href="img/march-menu.jpg"
+                    href="images/march-menu.jpg"
                     target="_blank"
                     className="flex mb-2 items-center whitespace-nowrap github-star text-white font-bold px-6 py-4 rounded outline-none focus:outline-none bg-blueGray-700 active:bg-blueGray-600 uppercase text-sm shadow hover:shadow-lg"
                   >
