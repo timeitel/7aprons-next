@@ -92,8 +92,8 @@ export default function Footer() {
         >
           <div className="w-full md:w-4/12 px-4 mx-auto text-center">
             <div className="text-sm text-blueGray-500 font-semibold py-1">
-              Made with ❤ | Tim Eitel
-              <i className="fab fa-github ml-2"></i>
+              Made with ❤ by
+              <i className="fab text-lg fa-github ml-2"></i>
             </div>
           </div>
         </a>
