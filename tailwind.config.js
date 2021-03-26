@@ -14,6 +14,7 @@ module.exports = {
       ...colors,
       primary: "#AA485D",
       secondary: "#C4CBCA",
+      disabled: "#6C757D",
     },
     extend: {
       minHeight: {

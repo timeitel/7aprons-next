@@ -2,6 +2,11 @@ import { useForm } from "react-hook-form";
 import { useState } from "react";
 import styled from "styled-components";
 
+const domain =
+  process.env.NODE_ENV === "production"
+    ? "https://7aprons.com"
+    : "http://localhost:3000";
+
 const Form = styled.form`
   display: flex;
   flex-direction: column;
@@ -61,14 +66,17 @@ export default function OnlineOrder() {
           },
         ],
         mode: "payment",
-        successUrl: "https://7aprons.com/success",
-        cancelUrl: "https://7aprons.com/canceled",
+        successUrl: `${domain}/success`,
+        cancelUrl: `${domain}/#order`,
       })
-      .then(function (result) {
+      .then((result) => {
         if (result.error) {
           var displayError = document.getElementById("error-message");
           displayError.textContent = result.error.message;
         }
+      })
+      .catch((err) => {
+        console.log(err);
       });
   };
 

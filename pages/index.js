@@ -210,22 +210,22 @@ export default function Index() {
                   area.{" "}
                 </p>
                 <div className="block pb-6">
-                  <span className="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-blueGray-500 bg-gray-200 uppercase last:mr-0 mr-2 mt-2">
+                  <span className="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-gray-200 bg-disabled uppercase last:mr-0 mr-2 mt-2">
                     Authentic
                   </span>
-                  <span className="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-blueGray-500 bg-gray-200 uppercase last:mr-0 mr-2 mt-2">
+                  <span className="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-gray-200 bg-disabled uppercase last:mr-0 mr-2 mt-2">
                     Indonesian
                   </span>
-                  <span className="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-blueGray-500 bg-gray-200 uppercase last:mr-0 mr-2 mt-2">
+                  <span className="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-gray-200 bg-disabled uppercase last:mr-0 mr-2 mt-2">
                     Malaysian
                   </span>
-                  <span className="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-blueGray-500 bg-gray-200 uppercase last:mr-0 mr-2 mt-2">
+                  <span className="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-gray-200 bg-disabled uppercase last:mr-0 mr-2 mt-2">
                     Delivery
                   </span>
-                  <span className="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-blueGray-500 bg-gray-200 uppercase last:mr-0 mr-2 mt-2">
+                  <span className="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-gray-200 bg-disabled uppercase last:mr-0 mr-2 mt-2">
                     Catering
                   </span>
-                  <span className="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-blueGray-500 bg-gray-200 uppercase last:mr-0 mr-2 mt-2">
+                  <span className="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-gray-200 bg-disabled uppercase last:mr-0 mr-2 mt-2">
                     Family-owned
                   </span>
                 </div>
