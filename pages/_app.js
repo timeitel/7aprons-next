@@ -32,7 +32,7 @@ export default class MyApp extends App {
             name="viewport"
             content="width=device-width, initial-scale=1, shrink-to-fit=no"
           />
-          <title>7 Aprons</title>
+          <title>Aprons | Catering & Delivery</title>
           <script src="https://js.stripe.com/v3"></script>
         </Head>
         <Layout>
