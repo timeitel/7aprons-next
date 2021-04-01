@@ -73,7 +73,7 @@ export default function OnlineOrder() {
           lineItems,
           mode: "payment",
           successUrl: `${domain}/success`,
-          cancelUrl: `${domain}/error`,
+          cancelUrl: `${domain}/#order`,
         })
         .then((result) => {
           if (result.error) {
