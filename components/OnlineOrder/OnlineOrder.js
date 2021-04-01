@@ -35,23 +35,38 @@ const Form = styled.form`
 `;
 
 export default function OnlineOrder() {
-  const [dishOne, setDishOne] = useState(0);
-  const [dishTwo, setDishTwo] = useState(0);
-  const { register, handleSubmit, watch, errors } = useForm();
+  const [order, setOrder] = useState([
+    {
+      dishOne: 0,
+      dishTwo: 0,
+    },
+    {
+      dishOne: 0,
+      dishTwo: 0,
+    },
+    {
+      dishOne: 0,
+      dishTwo: 0,
+    },
+    {
+      dishOne: 0,
+      dishTwo: 0,
+    },
+  ]);
 
-  const onSubmit = () => {
+  const handleSubmit = () => {
     // eslint-disable-next-line no-undef
     const stripe = Stripe(
       "pk_test_51IUiTqDJrsoPxmlZ4eQXagZ4DZQL5PcmdQVA5G4WxWIPMSwWb79m4VqWhnN3bDk7pVDxIXPxkWv34F8fL53tL0kV00TdZK3vhX"
     );
     const lineItems = [
       {
-        price: "price_1IXIWQDJrsoPxmlZEzydd92v",
-        quantity: Number(dishOne),
+        price: "price_1IbMWxDJrsoPxmlZFgWiNsXy",
+        quantity: 2,
       },
       {
-        price: "price_1IV2I0DJrsoPxmlZZ0BcBLTt",
-        quantity: Number(dishTwo),
+        price: "price_1IbMXXDJrsoPxmlZbclacLTv",
+        quantity: 2,
       },
     ].filter((i) => i.quantity > 0);
     console.log(lineItems);
@@ -78,13 +93,25 @@ export default function OnlineOrder() {
 
   return (
     <>
-      <Form onSubmit={handleSubmit(onSubmit)}>
+      <Form onSubmit={handleSubmit}>
         <WeeksContainer>
           <OrderWeek
             dishOne="Thai Basil Minced Pork served with Steamed Rice"
             dishTwo="Sweet and Sour Fish served with Steamed Rice"
             orderByDate="April 5"
             deliveryDate="April 7"
+            onChangeDishOne={(e) =>
+              setOrder((prev) => ({
+                ...prev,
+                weekOne: { dishOne: e.target.value },
+              }))
+            }
+            onChangeDishTwo={(e) =>
+              setOrder((prev) => ({
+                ...prev,
+                weekOne: { dishTwo: e.target.value },
+              }))
+            }
           />
 
           <OrderWeek
@@ -109,17 +136,20 @@ export default function OnlineOrder() {
           />
         </WeeksContainer>
 
-        {errors.dishTwo && (
+        {/* {errors.dishTwo && (
           <span className="text-sm text-red-600">This field is required</span>
-        )}
+        )} */}
 
         <div className="flex justify-end w-full my-4">
           <label className="text-md font-medium mr-4">Total</label>
           <div style={{ width: 92, textAlign: "start" }}>
-            {(dishOne * 8.5 + dishTwo * 8.5).toLocaleString("en-US", {
-              style: "currency",
-              currency: "USD",
-            })}
+            {(order[0].dishOne * 8.5 + order[0].dishTwo * 8.5).toLocaleString(
+              "en-US",
+              {
+                style: "currency",
+                currency: "USD",
+              }
+            )}
           </div>
         </div>
 

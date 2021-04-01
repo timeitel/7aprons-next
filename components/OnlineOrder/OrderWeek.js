@@ -16,7 +16,14 @@ const FormGroup = styled.div`
   }
 `;
 
-export const OrderWeek = ({ dishOne, dishTwo, orderByDate, deliveryDate }) => {
+export const OrderWeek = ({
+  dishOne,
+  dishTwo,
+  orderByDate,
+  deliveryDate,
+  onChangeDishOne,
+  onChangeDishTwo,
+}) => {
   return (
     <>
       <h4 className="mb-4 text-right">
@@ -29,10 +36,11 @@ export const OrderWeek = ({ dishOne, dishTwo, orderByDate, deliveryDate }) => {
         </div>
         <input
           name="dishOne"
-          defaultValue={0}
+          defaultValue={2}
           type="number"
           min="0"
           max="100"
+          onChange={onChangeDishOne}
         />
       </FormGroup>
       <FormGroup className="mb-4">
@@ -42,10 +50,11 @@ export const OrderWeek = ({ dishOne, dishTwo, orderByDate, deliveryDate }) => {
         </div>
         <input
           name="dishOne"
-          defaultValue={0}
+          defaultValue={2}
           type="number"
           min="0"
           max="100"
+          onChange={onChangeDishTwo}
         />
       </FormGroup>
       <hr className="border-gray-200 my-4 text-center text-2xl w-full ml-auto" />
