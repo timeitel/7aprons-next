@@ -39,10 +39,10 @@ export default function Index() {
           <div className="w-full md:w-8/12 lg:w-6/12 xl:w-6/12 px-4">
             <div className="pt-32 sm:pt-0">
               <h2 className="font-semibold text-4xl text-white">
-                Thanks for ordering 7 Aprons!
+                Error when processing payment
               </h2>
               <p className="mt-4 text-lg leading-relaxed text-white">
-                We'll send you an email to confirm your order.
+                Please check your details and try again.
               </p>
               <div className="mt-12 flex flex-wrap">
                 <a

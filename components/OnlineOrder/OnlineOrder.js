@@ -2,11 +2,7 @@ import { useForm } from "react-hook-form";
 import { useState } from "react";
 import styled from "styled-components";
 import { OrderWeek } from "./OrderWeek";
-
-const domain =
-  process.env.NODE_ENV === "production"
-    ? "https://7aprons.com"
-    : "http://localhost:3000";
+import { domain } from "../../utils/utils";
 
 const WeeksContainer = styled.div`
   max-height: 60vh;
@@ -77,7 +73,7 @@ export default function OnlineOrder() {
           lineItems,
           mode: "payment",
           successUrl: `${domain}/success`,
-          cancelUrl: `${domain}/#order`,
+          cancelUrl: `${domain}/error`,
         })
         .then((result) => {
           if (result.error) {
@@ -143,13 +139,10 @@ export default function OnlineOrder() {
         <div className="flex justify-end w-full my-4">
           <label className="text-md font-medium mr-4">Total</label>
           <div style={{ width: 92, textAlign: "start" }}>
-            {(order[0].dishOne * 8.5 + order[0].dishTwo * 8.5).toLocaleString(
-              "en-US",
-              {
-                style: "currency",
-                currency: "USD",
-              }
-            )}
+            {(4 * 4 * 8.5).toLocaleString("en-US", {
+              style: "currency",
+              currency: "USD",
+            })}
           </div>
         </div>
 
