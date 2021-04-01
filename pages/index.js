@@ -47,7 +47,7 @@ export default function Index() {
               </p>
               <div className="mt-12 flex flex-wrap">
                 <a
-                  href="images/march-menu.jpg"
+                  href="images/menu.jpg"
                   target="_blank"
                   className="flex items-center whitespace-nowrap get-started text-black font-bold px-6 py-4 rounded outline-none focus:outline-none mr-4 mb-2 bg-secondary active:bg-blueGray-500 uppercase text-sm shadow hover:shadow-lg ease-linear transition-all duration-150"
                 >
@@ -242,7 +242,7 @@ export default function Index() {
                     Order Online
                   </a>
                   <a
-                    href="images/march-menu.jpg"
+                    href="images/menu.jpg"
                     target="_blank"
                     className="flex bg-primary mb-2 items-center whitespace-nowrap github-star text-white font-bold px-6 py-4 rounded outline-none focus:outline-none bg-blueGray-700 active:bg-blueGray-600 uppercase text-sm shadow hover:shadow-lg"
                   >
@@ -284,12 +284,9 @@ export default function Index() {
           <div className="flex flex-wrap justify-center bg-white shadow-xl rounded-lg -mt-64 py-12 px-12 relative z-10">
             <div className="w-full text-center lg:w-8/12">
               <p className="text-4xl text-center"></p>
-              <h3 id="order" className="font-semibold mb-4 text-3xl">
+              <h3 id="order" className="font-semibold mb-12 text-3xl">
                 Order Online 🍛
               </h3>
-              <h4 className="font-bold mb-8">
-                Order by Monday, March 29, for Wednesday, March 24 delivery
-              </h4>
               <OrderOnline />
             </div>
           </div>

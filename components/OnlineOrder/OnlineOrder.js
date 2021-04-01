@@ -1,17 +1,24 @@
 import { useForm } from "react-hook-form";
 import { useState } from "react";
 import styled from "styled-components";
+import { OrderWeek } from "./OrderWeek";
 
 const domain =
   process.env.NODE_ENV === "production"
     ? "https://7aprons.com"
     : "http://localhost:3000";
 
+const WeeksContainer = styled.div`
+  max-height: 60vh;
+  overflow-y: scroll;
+  padding-right: 12px;
+`;
+
 const Form = styled.form`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: flex-start;
+  align-items: flex-end;
 
   input {
     border: 1px solid lightgray;
@@ -27,103 +34,84 @@ const Form = styled.form`
   }
 `;
 
-const FormGroup = styled.div`
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: flex-end;
-  width: 100%;
-  white-space: normal;
-  text-align: end;
-
-  @media (min-width: 768px) {
-    label {
-      white-space: nowrap;
-    }
-  }
-`;
-
 export default function OnlineOrder() {
   const [dishOne, setDishOne] = useState(0);
   const [dishTwo, setDishTwo] = useState(0);
+  const { register, handleSubmit, watch, errors } = useForm();
 
-  const order = () => {
+  const onSubmit = () => {
     // eslint-disable-next-line no-undef
-    var stripe = Stripe(
+    const stripe = Stripe(
       "pk_test_51IUiTqDJrsoPxmlZ4eQXagZ4DZQL5PcmdQVA5G4WxWIPMSwWb79m4VqWhnN3bDk7pVDxIXPxkWv34F8fL53tL0kV00TdZK3vhX"
     );
+    const lineItems = [
+      {
+        price: "price_1IXIWQDJrsoPxmlZEzydd92v",
+        quantity: Number(dishOne),
+      },
+      {
+        price: "price_1IV2I0DJrsoPxmlZZ0BcBLTt",
+        quantity: Number(dishTwo),
+      },
+    ].filter((i) => i.quantity > 0);
+    console.log(lineItems);
 
-    stripe
-      .redirectToCheckout({
-        lineItems: [
-          {
-            price: "price_1IXIWQDJrsoPxmlZEzydd92v",
-            quantity: Number(dishOne),
-          },
-          {
-            price: "price_1IV2I0DJrsoPxmlZZ0BcBLTt",
-            quantity: Number(dishTwo),
-          },
-        ],
-        mode: "payment",
-        successUrl: `${domain}/success`,
-        cancelUrl: `${domain}/#order`,
-      })
-      .then((result) => {
-        if (result.error) {
-          var displayError = document.getElementById("error-message");
-          displayError.textContent = result.error.message;
-        }
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    if (lineItems.length > 0) {
+      stripe
+        .redirectToCheckout({
+          lineItems,
+          mode: "payment",
+          successUrl: `${domain}/success`,
+          cancelUrl: `${domain}/#order`,
+        })
+        .then((result) => {
+          if (result.error) {
+            var displayError = document.getElementById("error-message");
+            displayError.textContent = result.error.message;
+          }
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
   };
 
   return (
     <>
-      <Form
-        onSubmit={(e) => {
-          e.preventDefault();
-          order();
-        }}
-      >
-        <FormGroup className="mb-4">
-          <div className="flex flex-col items-end mr-4">
-            <label className="text-lg font-medium">
-              Chinese BBQ Pork served with hainan rice
-            </label>
-            <label>$8.50 each</label>
-          </div>
-          <input
-            required
-            value={dishOne}
-            onChange={(e) => setDishOne(e.target.value)}
-            type="number"
-            min="0"
-            max="100"
+      <Form onSubmit={handleSubmit(onSubmit)}>
+        <WeeksContainer>
+          <OrderWeek
+            dishOne="Thai Basil Minced Pork served with Steamed Rice"
+            dishTwo="Sweet and Sour Fish served with Steamed Rice"
+            orderByDate="April 5"
+            deliveryDate="April 7"
           />
-        </FormGroup>
 
-        <hr className="border-black my-4 text-center text-2xl w-full md:hidden ml-auto" />
-
-        <FormGroup>
-          <div className="flex flex-col items-end mr-4">
-            <label className="text-lg font-medium">
-              Roast chicken served with hainan rice
-            </label>
-            <label>$8.50 each</label>
-          </div>
-          <input
-            required
-            value={dishTwo}
-            onChange={(e) => setDishTwo(e.target.value)}
-            type="number"
-            min="0"
-            max="100"
+          <OrderWeek
+            dishOne="Foo Yung Hai (Chinese Omelette) served with Steamed Rice"
+            dishTwo="Indonesian Chicken Curry served with Turmeric Rice"
+            orderByDate="April 12"
+            deliveryDate="April 14"
           />
-        </FormGroup>
-        <hr className="border-black mt-4 text-center text-2xl w-full md:hidden ml-auto" />
+
+          <OrderWeek
+            dishOne="Indonesian Beef Rendang served with Turmeric Rice"
+            dishTwo="Fried chicken in sweet, buttery sauce, served with steamed rice"
+            orderByDate="April 19"
+            deliveryDate="April 21"
+          />
+
+          <OrderWeek
+            dishOne="Indonesian Basil Stewed Pork Served with Steamed Rice"
+            dishTwo="Assam Fish served with Steamed Rice"
+            orderByDate="April 26"
+            deliveryDate="April 28"
+          />
+        </WeeksContainer>
+
+        {errors.dishTwo && (
+          <span className="text-sm text-red-600">This field is required</span>
+        )}
 
         <div className="flex justify-end w-full my-4">
           <label className="text-md font-medium mr-4">Total</label>
@@ -141,8 +129,6 @@ export default function OnlineOrder() {
           value="Checkout"
           style={{ width: 145 }}
         />
-
-        <div id="error-message"></div>
       </Form>
     </>
   );
