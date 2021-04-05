@@ -255,6 +255,7 @@ export default function Index() {
               </div>
             </MenuContainer>
           </div>
+          <div id="order"></div>
         </div>
       </section>
 
@@ -263,9 +264,7 @@ export default function Index() {
           <div className="flex flex-wrap justify-center bg-white shadow-xl rounded-lg -mt-64 py-12 px-12 relative z-10">
             <div className="w-full text-center lg:w-8/12">
               <p className="text-4xl text-center"></p>
-              <h3 id="order" className="font-semibold mb-12 text-3xl">
-                Order Online 🍛
-              </h3>
+              <h3 className="font-semibold mb-12 text-3xl">Order Online 🍛</h3>
               <OrderOnline />
             </div>
           </div>

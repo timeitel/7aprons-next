@@ -5,7 +5,7 @@ import { OrderWeek } from "./OrderWeek";
 import { domain } from "../../utils/utils";
 
 const WeeksContainer = styled.div`
-  max-height: 60vh;
+  max-height: 40vh;
   overflow-y: scroll;
   padding-right: 12px;
 `;
