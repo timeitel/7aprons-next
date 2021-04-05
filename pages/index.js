@@ -39,9 +39,6 @@ export default function Index() {
           layout="fill"
           objectFit="cover"
           quality={50}
-          style={{
-            filter: "brightness(50%)",
-          }}
         />
         <div className="container z-10 mx-auto items-center flex flex-wrap">
           <div className="w-full md:w-8/12 lg:w-6/12 xl:w-6/12 px-4">
