@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { useRef } from "react";
 
 const FormGroup = styled.div`
   display: flex;
@@ -21,9 +22,18 @@ export const OrderWeek = ({
   dishTwo,
   orderByDate,
   deliveryDate,
-  onChangeDishOne,
-  onChangeDishTwo,
+  onOrderUpdate,
 }) => {
+  const dishOneRef = useRef(null);
+  const dishTwoRef = useRef(null);
+
+  const onUpdate = () => {
+    onOrderUpdate({
+      dishOne: dishOneRef.current.value,
+      dishTwo: dishTwoRef.current.value,
+    });
+  };
+
   return (
     <>
       <h4 className="mb-4 text-right">
@@ -35,12 +45,13 @@ export const OrderWeek = ({
           <label>$8.50 each</label>
         </div>
         <input
+          ref={dishOneRef}
           name="dishOne"
-          defaultValue={2}
+          defaultValue={0}
           type="number"
           min="0"
           max="100"
-          onChange={onChangeDishOne}
+          onChange={onUpdate}
         />
       </FormGroup>
       <FormGroup className="mb-4">
@@ -49,12 +60,13 @@ export const OrderWeek = ({
           <label>$8.50 each</label>
         </div>
         <input
+          ref={dishTwoRef}
           name="dishOne"
-          defaultValue={2}
+          defaultValue={0}
           type="number"
           min="0"
           max="100"
-          onChange={onChangeDishTwo}
+          onChange={onUpdate}
         />
       </FormGroup>
       <hr className="border-gray-200 my-4 text-center text-2xl w-full ml-auto" />

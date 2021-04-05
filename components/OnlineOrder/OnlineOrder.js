@@ -1,4 +1,3 @@
-import { useForm } from "react-hook-form";
 import { useState } from "react";
 import styled from "styled-components";
 import { OrderWeek } from "./OrderWeek";
@@ -87,6 +86,12 @@ export default function OnlineOrder() {
     }
   };
 
+  const handleOrderUpdate = (weekOrder, weekNumber) => {
+    const newOrder = [...order];
+    newOrder[weekNumber] = weekOrder;
+    setOrder(newOrder);
+  };
+
   return (
     <>
       <Form onSubmit={handleSubmit}>
@@ -96,18 +101,7 @@ export default function OnlineOrder() {
             dishTwo="Sweet and Sour Fish served with Steamed Rice"
             orderByDate="April 5"
             deliveryDate="April 7"
-            onChangeDishOne={(e) =>
-              setOrder((prev) => ({
-                ...prev,
-                weekOne: { dishOne: e.target.value },
-              }))
-            }
-            onChangeDishTwo={(e) =>
-              setOrder((prev) => ({
-                ...prev,
-                weekOne: { dishTwo: e.target.value },
-              }))
-            }
+            onOrderUpdate={(o) => handleOrderUpdate(o, 0)}
           />
 
           <OrderWeek
@@ -115,6 +109,7 @@ export default function OnlineOrder() {
             dishTwo="Indonesian Chicken Curry served with Turmeric Rice"
             orderByDate="April 12"
             deliveryDate="April 14"
+            onOrderUpdate={(o) => handleOrderUpdate(o, 1)}
           />
 
           <OrderWeek
@@ -122,6 +117,7 @@ export default function OnlineOrder() {
             dishTwo="Fried chicken in sweet, buttery sauce, served with steamed rice"
             orderByDate="April 19"
             deliveryDate="April 21"
+            onOrderUpdate={(o) => handleOrderUpdate(o, 2)}
           />
 
           <OrderWeek
@@ -129,6 +125,7 @@ export default function OnlineOrder() {
             dishTwo="Assam Fish served with Steamed Rice"
             orderByDate="April 26"
             deliveryDate="April 28"
+            onOrderUpdate={(o) => handleOrderUpdate(o, 3)}
           />
         </WeeksContainer>
 
@@ -139,10 +136,16 @@ export default function OnlineOrder() {
         <div className="flex justify-end w-full my-4">
           <label className="text-md font-medium mr-4">Total</label>
           <div style={{ width: 92, textAlign: "start" }}>
-            {(4 * 4 * 8.5).toLocaleString("en-US", {
-              style: "currency",
-              currency: "USD",
-            })}
+            {order
+              .reduce((total, weekOrder) => {
+                return (
+                  total + 8.5 * weekOrder.dishOne + 8.5 * weekOrder.dishTwo
+                );
+              }, 0)
+              .toLocaleString("en-US", {
+                style: "currency",
+                currency: "USD",
+              })}
           </div>
         </div>
 
