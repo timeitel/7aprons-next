@@ -29,8 +29,8 @@ export const OrderWeek = ({
 
   const onUpdate = () => {
     onOrderUpdate({
-      dishOne: dishOneRef.current.value,
-      dishTwo: dishTwoRef.current.value,
+      dishOneQuantity: dishOneRef.current.value,
+      dishTwoQuantity: dishTwoRef.current.value,
     });
   };
 

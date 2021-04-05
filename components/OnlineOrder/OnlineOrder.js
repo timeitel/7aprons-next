@@ -71,7 +71,8 @@ export default function OnlineOrder() {
 
   const handleOrderUpdate = (weekOrder, weekNumber) => {
     const newOrder = [...order];
-    newOrder[weekNumber] = weekOrder;
+    newOrder[weekNumber].dishOne.quantity = weekOrder.dishOneQuantity;
+    newOrder[weekNumber].dishTwo.quantity = weekOrder.dishTwoQuantity;
     setOrder(newOrder);
   };
 
@@ -120,9 +121,11 @@ export default function OnlineOrder() {
           <label className="text-md font-medium mr-4">Total</label>
           <div style={{ width: 92, textAlign: "start" }}>
             {order
-              .reduce((total, weekOrder) => {
+              .reduce((total, o) => {
                 return (
-                  total + 8.5 * weekOrder.dishOne + 8.5 * weekOrder.dishTwo
+                  total +
+                  8.5 * Number(o.dishOne.quantity) +
+                  8.5 * Number(o.dishTwo.quantity)
                 );
               }, 0)
               .toLocaleString("en-US", {
