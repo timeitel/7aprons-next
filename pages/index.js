@@ -5,7 +5,6 @@ import Footer from "components/Footers/Footer.js";
 import OrderOnline from "../components/OnlineOrder/OnlineOrder";
 import { basePath } from "../next.config";
 import styled from "styled-components";
-import Image from "next/image";
 
 const orderSection = {
   background: `linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65)), url("${basePath}/images/ingredients.jpg")`,
@@ -21,8 +20,23 @@ const MenuContainer = styled.div`
   }
 `;
 
-const LandingImage = styled(Image)`
+const LandingImage = styled.img`
   filter: brightness(50%);
+  visibility: inherit;
+  position: absolute;
+  inset: 0px;
+  box-sizing: border-box;
+  padding: 0px;
+  border: none;
+  margin: auto;
+  display: block;
+  width: 0px;
+  height: 0px;
+  min-width: 100%;
+  max-width: 100%;
+  min-height: 100%;
+  max-height: 100%;
+  object-fit: cover;
 `;
 
 export default function Index() {
