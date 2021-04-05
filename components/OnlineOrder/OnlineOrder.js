@@ -1,7 +1,7 @@
 import { useState } from "react";
 import styled from "styled-components";
 import { OrderWeek } from "./OrderWeek";
-import { domain } from "../../utils/utils";
+import { domain, newOrder } from "../../utils/utils";
 
 const WeeksContainer = styled.div`
   max-height: 40vh;
@@ -30,24 +30,7 @@ const Form = styled.form`
 `;
 
 export default function OnlineOrder() {
-  const [order, setOrder] = useState([
-    {
-      dishOne: 0,
-      dishTwo: 0,
-    },
-    {
-      dishOne: 0,
-      dishTwo: 0,
-    },
-    {
-      dishOne: 0,
-      dishTwo: 0,
-    },
-    {
-      dishOne: 0,
-      dishTwo: 0,
-    },
-  ]);
+  const [order, setOrder] = useState(newOrder);
 
   const handleSubmit = () => {
     // eslint-disable-next-line no-undef
