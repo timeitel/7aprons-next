@@ -7,7 +7,7 @@ class MyDocument extends Document {
       <Html lang="en">
         <Head>
           <meta charSet="utf-8" />
-          <link rel="shortcut icon" href="/images/favicon.svg" />
+          <link rel="shortcut icon" href="images/favicon.svg" />
         </Head>
         <body className="text-blueGray-700 antialiased">
           <Main />
