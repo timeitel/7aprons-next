@@ -1,7 +1,7 @@
 import React from "react";
 import Link from "next/link";
 
-const IndexDropdown = () => {
+export const IndexDropdown = () => {
   // dropdown props
   const [dropdownPopoverShow, setDropdownPopoverShow] = React.useState(false);
   const btnDropdownRef = React.createRef();
@@ -122,5 +122,3 @@ const IndexDropdown = () => {
     </>
   );
 };
-
-export default IndexDropdown;

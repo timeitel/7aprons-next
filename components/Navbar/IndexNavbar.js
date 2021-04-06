@@ -1,8 +1,8 @@
 import React from "react";
 import Link from "next/link";
-import IndexDropdown from "components/Dropdowns/IndexDropdown.js";
+import { IndexDropdown } from "@components/common/Dropdown";
 
-export default function Navbar(props) {
+export const Navbar = (props) => {
   const [navbarOpen, setNavbarOpen] = React.useState(false);
   return (
     <>
@@ -73,4 +73,4 @@ export default function Navbar(props) {
       </nav>
     </>
   );
-}
+};

@@ -1,9 +1,8 @@
 /* eslint-disable react/jsx-no-target-blank */
 import React from "react";
-import IndexNavbar from "components/Navbars/IndexNavbar.js";
-import Footer from "components/Footers/Footer.js";
+import { IndexNavbar } from "@components/Navbar";
+import { Footer } from "@components/Footer";
 import { basePath } from "../next.config";
-import styled from "styled-components";
 import { domain } from "../utils/utils";
 
 const headerStyle = {
@@ -11,20 +10,6 @@ const headerStyle = {
   backgroundPosition: "center center",
   backgroundSize: "cover",
 };
-
-const orderSection = {
-  background: `linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65)), url("${basePath}/images/ingredients.jpg")`,
-  backgroundPosition: "center center",
-  backgroundSize: "cover",
-};
-
-const MenuContainer = styled.div`
-  margin-left: 0;
-
-  @media (min-width: 768px) {
-    margin-left: 20%;
-  }
-`;
 
 export default function Index() {
   return (
