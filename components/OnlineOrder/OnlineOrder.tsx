@@ -2,6 +2,7 @@ import { useState } from "react";
 import styled from "styled-components";
 import { OrderWeek } from "./OrderWeek";
 import { domain, newOrder } from "@utils";
+import * as Stripe from "Stripe";
 
 const WeeksContainer = styled.div`
   max-height: 40vh;
@@ -34,6 +35,7 @@ export const OnlineOrder = () => {
 
   const handleSubmit = () => {
     // eslint-disable-next-line no-undef
+    /* tslint:disable-next-line */
     const stripe = Stripe(
       "pk_test_51IUiTqDJrsoPxmlZ4eQXagZ4DZQL5PcmdQVA5G4WxWIPMSwWb79m4VqWhnN3bDk7pVDxIXPxkWv34F8fL53tL0kV00TdZK3vhX"
     );
