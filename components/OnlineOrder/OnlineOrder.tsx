@@ -1,7 +1,7 @@
 import { useState } from "react";
 import styled from "styled-components";
 import { OrderWeek } from "./OrderWeek";
-import { domain, newOrder } from "@utils/";
+import { domain, newOrder } from "@utils";
 
 const WeeksContainer = styled.div`
   max-height: 40vh;
