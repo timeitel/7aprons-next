@@ -14,7 +14,7 @@ const headerStyle = {
 export default function Error() {
   return (
     <>
-      <Navbar fixed />
+      <Navbar />
       <section
         id="home"
         style={headerStyle}

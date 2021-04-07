@@ -16,10 +16,11 @@
     "baseUrl": ".",
     "paths": {
       "@*": ["/*"],
-      "@components": ["components"],
+      "@components/*": ["components/*"],
       "@data/*": ["data/*"],
       "@hooks/*": ["hooks/*"],
-      "@theme": ["theme"],
+      "@theme/*": ["theme/*"],
+      "@utils": ["utils"],
       "@utils/*": ["utils/*"]
     }
   },

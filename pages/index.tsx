@@ -47,7 +47,7 @@ export default function Index() {
         <title>Seven Aprons | Catering & Delivery</title>
         <link rel="icon" href="images/favicon.svg" />
       </Head>
-      <Navbar fixed />
+      <Navbar />
       <section
         id="home"
         className="header relative pt-16 items-center flex h-screen max-h-860-px"
