@@ -1,6 +1,6 @@
 /* eslint-disable react/jsx-no-target-blank */
 import React from "react";
-import { IndexNavbar } from "@components/Navbar";
+import { Navbar } from "@components/Navbar";
 import { Footer } from "@components/Footer";
 import { basePath } from "../next.config";
 import { domain } from "@utils";
@@ -11,10 +11,10 @@ const headerStyle = {
   backgroundSize: "cover",
 };
 
-export default function Index() {
+export default function Success() {
   return (
     <>
-      <IndexNavbar fixed />
+      <Navbar fixed />
       <section
         id="home"
         style={headerStyle}
