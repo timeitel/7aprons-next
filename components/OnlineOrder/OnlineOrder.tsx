@@ -1,44 +1,17 @@
 import { useState } from "react";
-import styled from "styled-components";
 import { OrderWeek } from "./OrderWeek";
 import { domain, newOrder } from "@utils";
-import * as Stripe from "Stripe";
-
-const WeeksContainer = styled.div`
-  max-height: 40vh;
-  overflow-y: scroll;
-  padding-right: 12px;
-`;
-
-const Form = styled.form`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: flex-end;
-
-  input {
-    border: 1px solid lightgray;
-    border-radius: 4px;
-    height: 40px;
-    padding: 2px 8px;
-  }
-
-  select {
-    border-radius: 4px;
-    height: 40px;
-    margin-bottom: 12px;
-  }
-`;
+import { loadStripe } from "@stripe/stripe-js";
+import { Form, WeeksContainer } from "./styles";
+const stripePromise = loadStripe(
+  "pk_test_51IUiTqDJrsoPxmlZ4eQXagZ4DZQL5PcmdQVA5G4WxWIPMSwWb79m4VqWhnN3bDk7pVDxIXPxkWv34F8fL53tL0kV00TdZK3vhX"
+);
 
 export const OnlineOrder = () => {
   const [order, setOrder] = useState(newOrder);
 
-  const handleSubmit = () => {
-    // eslint-disable-next-line no-undef
-    /* tslint:disable-next-line */
-    const stripe = Stripe(
-      "pk_test_51IUiTqDJrsoPxmlZ4eQXagZ4DZQL5PcmdQVA5G4WxWIPMSwWb79m4VqWhnN3bDk7pVDxIXPxkWv34F8fL53tL0kV00TdZK3vhX"
-    );
+  const handleSubmit = async () => {
+    const stripe = await stripePromise;
     const lineItems = [
       {
         price: "price_1IbMWxDJrsoPxmlZFgWiNsXy",
@@ -51,24 +24,12 @@ export const OnlineOrder = () => {
     ].filter((i) => i.quantity > 0);
     console.log(lineItems);
 
-    if (lineItems.length > 0) {
-      stripe
-        .redirectToCheckout({
-          lineItems,
-          mode: "payment",
-          successUrl: `${domain}/success`,
-          cancelUrl: `${domain}/#order`,
-        })
-        .then((result) => {
-          if (result.error) {
-            var displayError = document.getElementById("error-message");
-            displayError.textContent = result.error.message;
-          }
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    }
+    const { error } = await stripe.redirectToCheckout({
+      lineItems,
+      mode: "payment",
+      successUrl: `${domain}/success`,
+      cancelUrl: `${domain}/#order`,
+    });
   };
 
   const handleOrderUpdate = (weekOrder, weekNumber) => {
