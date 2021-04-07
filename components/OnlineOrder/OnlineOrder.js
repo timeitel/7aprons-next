@@ -1,7 +1,7 @@
 import { useState } from "react";
 import styled from "styled-components";
 import { OrderWeek } from "./OrderWeek";
-import { domain, newOrder } from "../../utils/utils";
+import { domain, newOrder } from "@utils/";
 
 const WeeksContainer = styled.div`
   max-height: 40vh;
@@ -29,7 +29,7 @@ const Form = styled.form`
   }
 `;
 
-export default function OnlineOrder() {
+export const OnlineOrder = () => {
   const [order, setOrder] = useState(newOrder);
 
   const handleSubmit = () => {
@@ -144,4 +144,4 @@ export default function OnlineOrder() {
       </Form>
     </>
   );
-}
+};

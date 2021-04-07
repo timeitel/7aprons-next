@@ -1,9 +1,9 @@
 /* eslint-disable react/jsx-no-target-blank */
 import React from "react";
-import IndexNavbar from "components/Navbars/IndexNavbar.js";
-import Footer from "components/Footers/Footer.js";
-import OrderOnline from "../components/OnlineOrder/OnlineOrder";
+import { Footer } from "@components/Footer";
+import { OnlineOrder } from "@components/OnlineOrder";
 import { basePath } from "../next.config";
+import { Navbar } from "@components/Navbar";
 import styled from "styled-components";
 
 const orderSection = {
@@ -42,7 +42,7 @@ const LandingImage = styled.img`
 export default function Index() {
   return (
     <>
-      <IndexNavbar fixed />
+      <Navbar fixed />
       <section
         id="home"
         className="header relative pt-16 items-center flex h-screen max-h-860-px"
@@ -260,7 +260,7 @@ export default function Index() {
             <div className="w-full text-center lg:w-8/12">
               <p className="text-4xl text-center"></p>
               <h3 className="font-semibold mb-12 text-3xl">Order Online 🍛</h3>
-              <OrderOnline />
+              <OnlineOrder />
             </div>
           </div>
         </div>

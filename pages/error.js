@@ -3,7 +3,7 @@ import React from "react";
 import { IndexNavbar } from "@components/Navbar";
 import { Footer } from "@components/Footer";
 import { basePath } from "../next.config";
-import { domain } from "../utils/utils";
+import { domain } from "@utils";
 
 const headerStyle = {
   background: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("${basePath}/images/landing-food.jpg")`,

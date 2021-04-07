@@ -1,9 +1,9 @@
-import React from "react";
+import { useState } from "react";
 import Link from "next/link";
-import { IndexDropdown } from "@components/common/Dropdown";
 
-export const Navbar = (props) => {
-  const [navbarOpen, setNavbarOpen] = React.useState(false);
+export const Navbar = () => {
+  const [navbarOpen, setNavbarOpen] = useState(false);
+
   return (
     <>
       <nav className="top-0 fixed z-50 w-full flex flex-wrap items-center justify-between px-2 py-3 navbar-expand-lg bg-white shadow">
@@ -33,9 +33,6 @@ export const Navbar = (props) => {
             id="example-navbar-warning"
           >
             <ul className="flex flex-col lg:flex-row list-none lg:ml-auto">
-              <li className="flex items-center">
-                <IndexDropdown />
-              </li>
               <li className="flex items-center">
                 <a
                   className="hover:text-blueGray-500 text-blueGray-700 px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold"
