@@ -6,6 +6,7 @@ import { OnlineOrder } from "@components/OnlineOrder";
 import { basePath } from "../next.config";
 import { Navbar } from "@components/Navbar";
 import styled from "styled-components";
+import { Landing } from "@components/Landing";
 
 const orderSection = {
   background: `linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65)), url("${basePath}/images/ingredients.jpg")`,
@@ -21,25 +22,6 @@ const MenuContainer = styled.div`
   }
 `;
 
-const LandingImage = styled.img`
-  filter: brightness(50%);
-  visibility: inherit;
-  position: absolute;
-  inset: 0px;
-  box-sizing: border-box;
-  padding: 0px;
-  border: none;
-  margin: auto;
-  display: block;
-  width: 0px;
-  height: 0px;
-  min-width: 100%;
-  max-width: 100%;
-  min-height: 100%;
-  max-height: 100%;
-  object-fit: cover;
-`;
-
 export default function Index() {
   return (
     <>
@@ -48,48 +30,31 @@ export default function Index() {
         <link rel="icon" href="images/favicon.svg" />
       </Head>
       <Navbar />
-      <section
-        id="home"
-        className="header relative pt-16 items-center flex h-screen max-h-860-px"
+      <Landing
+        title="Authentic Asian Cuisine"
+        subtitle="Using common, Asian ingredients to ensure we convey the authenticity of flavours into our meals"
       >
-        <LandingImage alt="Indonesian food" src="images/landing-food.jpg" />
-        <div className="container z-10 mx-auto items-center flex flex-wrap">
-          <div className="w-full md:w-8/12 lg:w-6/12 xl:w-6/12 px-4">
-            <div className="pt-32 sm:pt-0">
-              <h2 className="font-semibold text-4xl text-white">
-                Authentic Asian Cuisine
-              </h2>
-              <p className="mt-4 text-lg leading-relaxed text-white">
-                Using common, Asian ingredients to ensure we convey the
-                authenticity of flavours into our meals.
-              </p>
-              <div className="mt-12 flex flex-wrap">
-                <a
-                  href="images/menu.jpg"
-                  target="_blank"
-                  className="flex items-center whitespace-nowrap get-started text-black font-bold px-6 py-4 rounded outline-none focus:outline-none mr-4 mb-2 bg-secondary active:bg-blueGray-500 uppercase text-sm shadow hover:shadow-lg ease-linear transition-all duration-150"
-                >
-                  View Menu
-                  <i
-                    className="fas fa-external-link-square-alt ml-2"
-                    aria-hidden="true"
-                  ></i>
-                </a>
-                <a
-                  href="#order"
-                  className="flex items-center whitespace-nowrap github-star text-white font-bold px-6 py-4 rounded outline-none focus:outline-none mb-2 bg-primary active:bg-blueGray-600 uppercase text-sm shadow hover:shadow-lg"
-                >
-                  Order Online
-                  <i
-                    className="fas fa-angle-double-down ml-2"
-                    aria-hidden="true"
-                  ></i>
-                </a>
-              </div>
-            </div>
-          </div>
+        <div className="mt-12 flex flex-wrap">
+          <a
+            href="images/menu.jpg"
+            target="_blank"
+            className="flex items-center whitespace-nowrap get-started text-black font-bold px-6 py-4 rounded outline-none focus:outline-none mr-4 mb-2 bg-secondary active:bg-blueGray-500 uppercase text-sm shadow hover:shadow-lg ease-linear transition-all duration-150"
+          >
+            View Menu
+            <i
+              className="fas fa-external-link-square-alt ml-2"
+              aria-hidden="true"
+            ></i>
+          </a>
+          <a
+            href="#order"
+            className="flex items-center whitespace-nowrap github-star text-white font-bold px-6 py-4 rounded outline-none focus:outline-none mb-2 bg-primary active:bg-blueGray-600 uppercase text-sm shadow hover:shadow-lg"
+          >
+            Order Online
+            <i className="fas fa-angle-double-down ml-2" aria-hidden="true"></i>
+          </a>
         </div>
-      </section>
+      </Landing>
 
       <section
         id="about"
