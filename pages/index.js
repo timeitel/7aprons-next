@@ -1,5 +1,6 @@
 /* eslint-disable react/jsx-no-target-blank */
 import React from "react";
+import Head from "next/head";
 import { Footer } from "@components/Footer";
 import { OnlineOrder } from "@components/OnlineOrder";
 import { basePath } from "../next.config";
@@ -42,6 +43,10 @@ const LandingImage = styled.img`
 export default function Index() {
   return (
     <>
+      <Head>
+        <title>Seven Aprons | Catering & Delivery</title>
+        <link rel="icon" href="images/favicon.svg" />
+      </Head>
       <Navbar fixed />
       <section
         id="home"
