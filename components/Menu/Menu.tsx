@@ -1,4 +1,3 @@
-import { basePath } from "next.config";
 import styled from "styled-components";
 
 const MenuContainer = styled.div`
@@ -10,7 +9,7 @@ const MenuContainer = styled.div`
 `;
 
 const orderSection = {
-  background: `linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65)), url("${basePath}/images/ingredients.jpg")`,
+  background: `linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65)), url("images/ingredients.jpg")`,
   backgroundPosition: "center center",
   backgroundSize: "cover",
 };
