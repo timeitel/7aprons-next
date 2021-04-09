@@ -1,4 +1,8 @@
 export const LineItem = ({ onItemUpdate, item }) => {
+  const handleItemUpdate = (e) => {
+    onItemUpdate({ ...item, quantity: Number(e.target.value) });
+  };
+
   return (
     <>
       <div className="flex flex-col items-end mr-4">
@@ -10,7 +14,7 @@ export const LineItem = ({ onItemUpdate, item }) => {
         type="number"
         min="0"
         max="100"
-        onChange={onItemUpdate(item)}
+        onChange={handleItemUpdate}
       />
     </>
   );

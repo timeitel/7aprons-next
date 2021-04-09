@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { OrderWeek } from "./OrderWeek";
 import { domain, newOrder } from "@utils";
 import { loadStripe } from "@stripe/stripe-js";
 import { Form, WeeksContainer } from "./styles";
@@ -16,7 +15,6 @@ export const OnlineOrder = () => {
     const lineItems = order
       .map(({ price, quantity }) => ({ price, quantity }))
       .filter((i) => i.quantity > 0);
-    console.log(lineItems);
 
     const { error } = await stripe.redirectToCheckout({
       lineItems,
@@ -24,12 +22,15 @@ export const OnlineOrder = () => {
       successUrl: `${domain}/success`,
       cancelUrl: `${domain}/#order`,
     });
+
+    if (error) {
+      console.log(error);
+    }
   };
 
   const handleItemUpdate = (updatedItem) => {
-    const newOrder = [...order];
-    newOrder[weekNumber].dishOne.quantity = weekOrder.dishOneQuantity;
-    newOrder[weekNumber].dishTwo.quantity = weekOrder.dishTwoQuantity;
+    const newOrder = order.filter((i) => i.price !== updatedItem.price);
+    newOrder.push(updatedItem);
     setOrder(newOrder);
   };
 
@@ -37,10 +38,19 @@ export const OnlineOrder = () => {
     <>
       <Form onSubmit={handleSubmit}>
         <WeeksContainer>
-          {order.map((item) => {
-            <LineItem item={item} onItemUpdate={handleItemUpdate} />;
-          })}
-          <OrderWeek
+          {order
+            .sort((a, b) => b.week - a.week)
+            .map((item) => {
+              return (
+                <LineItem
+                  item={item}
+                  key={item.price}
+                  onItemUpdate={(i) => handleItemUpdate(i)}
+                />
+              );
+            })}
+
+          {/* <OrderWeek
             dishOne="Foo Yung Hai (Chinese Omelette) served with Steamed Rice"
             dishTwo="Indonesian Chicken Curry served with Turmeric Rice"
             orderByDate="April 12"
@@ -62,7 +72,7 @@ export const OnlineOrder = () => {
             orderByDate="April 26"
             deliveryDate="April 28"
             onOrderUpdate={(o) => handleOrderUpdate(o)}
-          />
+          /> */}
         </WeeksContainer>
 
         {/* {errors.dishTwo && (
@@ -74,11 +84,7 @@ export const OnlineOrder = () => {
           <div style={{ width: 92, textAlign: "start" }}>
             {order
               .reduce((total, o) => {
-                return (
-                  total +
-                  8.5 * Number(o.dishOne.quantity) +
-                  8.5 * Number(o.dishTwo.quantity)
-                );
+                return total + 8.5 * Number(o.quantity);
               }, 0)
               .toLocaleString("en-US", {
                 style: "currency",
