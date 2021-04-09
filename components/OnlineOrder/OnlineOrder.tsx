@@ -8,20 +8,13 @@ const stripePromise = loadStripe(
 );
 
 export const OnlineOrder = () => {
-  const [order, setOrder] = useState(newOrder);
+  const [order, setOrder] = useState([...newOrder]);
 
   const handleSubmit = async () => {
     const stripe = await stripePromise;
-    const lineItems = [
-      {
-        price: "price_1IbMWxDJrsoPxmlZFgWiNsXy",
-        quantity: 2,
-      },
-      {
-        price: "price_1IbMXXDJrsoPxmlZbclacLTv",
-        quantity: 2,
-      },
-    ].filter((i) => i.quantity > 0);
+    const lineItems = order
+      .map(({ price, quantity }) => ({ price, quantity }))
+      .filter((i) => i.quantity > 0);
     console.log(lineItems);
 
     const { error } = await stripe.redirectToCheckout({
@@ -32,7 +25,7 @@ export const OnlineOrder = () => {
     });
   };
 
-  const handleOrderUpdate = (weekOrder, weekNumber) => {
+  const handleOrderUpdate = (updatedItem) => {
     const newOrder = [...order];
     newOrder[weekNumber].dishOne.quantity = weekOrder.dishOneQuantity;
     newOrder[weekNumber].dishTwo.quantity = weekOrder.dishTwoQuantity;
@@ -43,20 +36,20 @@ export const OnlineOrder = () => {
     <>
       <Form onSubmit={handleSubmit}>
         <WeeksContainer>
-          <OrderWeek
+          {/* <OrderWeek
             dishOne="Thai Basil Minced Pork served with Steamed Rice"
             dishTwo="Sweet and Sour Fish served with Steamed Rice"
             orderByDate="April 5"
             deliveryDate="April 7"
             onOrderUpdate={(o) => handleOrderUpdate(o, 0)}
-          />
+          /> */}
 
           <OrderWeek
             dishOne="Foo Yung Hai (Chinese Omelette) served with Steamed Rice"
             dishTwo="Indonesian Chicken Curry served with Turmeric Rice"
             orderByDate="April 12"
             deliveryDate="April 14"
-            onOrderUpdate={(o) => handleOrderUpdate(o, 1)}
+            onOrderUpdate={(o) => handleOrderUpdate(o)}
           />
 
           <OrderWeek
@@ -64,7 +57,7 @@ export const OnlineOrder = () => {
             dishTwo="Fried chicken in sweet, buttery sauce, served with steamed rice"
             orderByDate="April 19"
             deliveryDate="April 21"
-            onOrderUpdate={(o) => handleOrderUpdate(o, 2)}
+            onOrderUpdate={(o) => handleOrderUpdate(o)}
           />
 
           <OrderWeek
@@ -72,7 +65,7 @@ export const OnlineOrder = () => {
             dishTwo="Assam Fish served with Steamed Rice"
             orderByDate="April 26"
             deliveryDate="April 28"
-            onOrderUpdate={(o) => handleOrderUpdate(o, 3)}
+            onOrderUpdate={(o) => handleOrderUpdate(o)}
           />
         </WeeksContainer>
 

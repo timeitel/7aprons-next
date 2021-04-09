@@ -5,43 +5,39 @@ export const domain =
 
 export const newOrder = [
   {
-    dishOne: {
-      price: "price_1IbMWxDJrsoPxmlZFgWiNsXy",
-      quantity: 0,
-    },
-    dishTwo: {
-      price: "price_1IbMXXDJrsoPxmlZbclacLTv",
-      quantity: 0,
-    },
+    name: "Indonesian Chicken Curry served with Turmeric Rice",
+    price: "price_1IbMYcDJrsoPxmlZhyH5ecPO",
+    quantity: 0,
+    week: 2,
   },
   {
-    dishOne: {
-      price: "",
-      quantity: 0,
-    },
-    dishTwo: {
-      price: "",
-      quantity: 0,
-    },
+    name: "Foo Yung Hai (Chinese Omelette) served with Steamed Rice",
+    price: "price_1IbMY6DJrsoPxmlZR9lhMmHO",
+    quantity: 0,
+    week: 2,
   },
   {
-    dishOne: {
-      price: "",
-      quantity: 0,
-    },
-    dishTwo: {
-      price: "",
-      quantity: 0,
-    },
+    name: "Fried chicken in sweet, buttery sauce, served with steamed rice",
+    price: "price_1IbMZtDJrsoPxmlZZzSTBUUz",
+    quantity: 0,
+    week: 3,
   },
   {
-    dishOne: {
-      price: "",
-      quantity: 0,
-    },
-    dishTwo: {
-      price: "",
-      quantity: 0,
-    },
+    name: "Indonesian Beef Rendang served with Turmeric Rice",
+    price: "price_1IbMZADJrsoPxmlZgmpkGtw0",
+    quantity: 0,
+    week: 3,
+  },
+  {
+    name: "Assam Fish served with Steamed Rice",
+    price: "price_1IbMagDJrsoPxmlZbmz5mP7k",
+    quantity: 0,
+    week: 4,
+  },
+  {
+    name: "Indonesian Basil Stewed Pork Served with Steamed Rice",
+    price: "price_1IbMaIDJrsoPxmlZiKly5j7c",
+    quantity: 0,
+    week: 4,
   },
 ];
