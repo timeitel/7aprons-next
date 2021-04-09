@@ -16,6 +16,8 @@ export const OnlineOrder = () => {
       .map(({ price, quantity }) => ({ price, quantity }))
       .filter((i) => i.quantity > 0);
 
+    console.log(lineItems);
+
     const { error } = await stripe.redirectToCheckout({
       lineItems,
       mode: "payment",
@@ -39,45 +41,19 @@ export const OnlineOrder = () => {
       <Form onSubmit={handleSubmit}>
         <WeeksContainer>
           {order
-            .sort((a, b) => b.week - a.week)
+            .sort((a, b) => a.week - b.week)
             .map((item) => {
               return (
-                <LineItem
-                  item={item}
-                  key={item.price}
-                  onItemUpdate={(i) => handleItemUpdate(i)}
-                />
+                <>
+                  <LineItem
+                    item={item}
+                    key={item.price}
+                    onItemUpdate={(i) => handleItemUpdate(i)}
+                  />
+                </>
               );
             })}
-
-          {/* <OrderWeek
-            dishOne="Foo Yung Hai (Chinese Omelette) served with Steamed Rice"
-            dishTwo="Indonesian Chicken Curry served with Turmeric Rice"
-            orderByDate="April 12"
-            deliveryDate="April 14"
-            onOrderUpdate={(o) => handleOrderUpdate(o)}
-          />
-
-          <OrderWeek
-            dishOne="Indonesian Beef Rendang served with Turmeric Rice"
-            dishTwo="Fried chicken in sweet, buttery sauce, served with steamed rice"
-            orderByDate="April 19"
-            deliveryDate="April 21"
-            onOrderUpdate={(o) => handleOrderUpdate(o)}
-          />
-
-          <OrderWeek
-            dishOne="Indonesian Basil Stewed Pork Served with Steamed Rice"
-            dishTwo="Assam Fish served with Steamed Rice"
-            orderByDate="April 26"
-            deliveryDate="April 28"
-            onOrderUpdate={(o) => handleOrderUpdate(o)}
-          /> */}
         </WeeksContainer>
-
-        {/* {errors.dishTwo && (
-          <span className="text-sm text-red-600">This field is required</span>
-        )} */}
 
         <div className="flex justify-end w-full my-4">
           <label className="text-md font-medium mr-4">Total</label>
