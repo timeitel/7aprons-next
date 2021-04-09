@@ -3,6 +3,7 @@ import { OrderWeek } from "./OrderWeek";
 import { domain, newOrder } from "@utils";
 import { loadStripe } from "@stripe/stripe-js";
 import { Form, WeeksContainer } from "./styles";
+import { LineItem } from "./LineItem";
 const stripePromise = loadStripe(
   "pk_test_51IUiTqDJrsoPxmlZ4eQXagZ4DZQL5PcmdQVA5G4WxWIPMSwWb79m4VqWhnN3bDk7pVDxIXPxkWv34F8fL53tL0kV00TdZK3vhX"
 );
@@ -25,7 +26,7 @@ export const OnlineOrder = () => {
     });
   };
 
-  const handleOrderUpdate = (updatedItem) => {
+  const handleItemUpdate = (updatedItem) => {
     const newOrder = [...order];
     newOrder[weekNumber].dishOne.quantity = weekOrder.dishOneQuantity;
     newOrder[weekNumber].dishTwo.quantity = weekOrder.dishTwoQuantity;
@@ -36,14 +37,9 @@ export const OnlineOrder = () => {
     <>
       <Form onSubmit={handleSubmit}>
         <WeeksContainer>
-          {/* <OrderWeek
-            dishOne="Thai Basil Minced Pork served with Steamed Rice"
-            dishTwo="Sweet and Sour Fish served with Steamed Rice"
-            orderByDate="April 5"
-            deliveryDate="April 7"
-            onOrderUpdate={(o) => handleOrderUpdate(o, 0)}
-          /> */}
-
+          {order.map((item) => {
+            <LineItem item={item} onItemUpdate={handleItemUpdate} />;
+          })}
           <OrderWeek
             dishOne="Foo Yung Hai (Chinese Omelette) served with Steamed Rice"
             dishTwo="Indonesian Chicken Curry served with Turmeric Rice"
