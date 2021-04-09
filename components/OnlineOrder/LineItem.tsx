@@ -1,8 +1,4 @@
-import { useState } from "react";
-
-export const LineItem = ({ onItemUpdate, lineItem }) => {
-  const [item, setItem] = useState(lineItem);
-
+export const LineItem = ({ onItemUpdate, item }) => {
   return (
     <>
       <div className="flex flex-col items-end mr-4">
@@ -10,11 +6,11 @@ export const LineItem = ({ onItemUpdate, lineItem }) => {
         <label>$8.50 each</label>
       </div>
       <input
-        defaultValue={0}
+        value={item.quantity}
         type="number"
         min="0"
         max="100"
-        onChange={onItemUpdate}
+        onChange={onItemUpdate(item)}
       />
     </>
   );
