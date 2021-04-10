@@ -1,6 +1,8 @@
 export const LineItem = ({ onItemUpdate, item }) => {
   const handleItemUpdate = (e) => {
-    onItemUpdate({ ...item, quantity: Number(e.target.value) });
+    const val = e.target.value;
+    if (e.target.validity.valid || val === "")
+      onItemUpdate({ ...item, quantity: Number(e.target.value) });
   };
 
   return (
@@ -15,7 +17,8 @@ export const LineItem = ({ onItemUpdate, item }) => {
         </div>
         <input
           value={item.quantity}
-          type="number"
+          type="tel"
+          pattern="^-?[0-9]\d*\.?\d*$"
           min="0"
           max="100"
           onChange={handleItemUpdate}
