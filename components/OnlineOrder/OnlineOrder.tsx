@@ -10,7 +10,8 @@ const stripePromise = loadStripe(
 export const OnlineOrder = () => {
   const [order, setOrder] = useState([...newOrder]);
 
-  const handleSubmit = async () => {
+  const handleSubmit = async (e) => {
+    e.preventDefault();
     const stripe = await stripePromise;
     const lineItems = order
       .map(({ price, quantity }) => ({ price, quantity }))
