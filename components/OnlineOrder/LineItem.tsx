@@ -22,6 +22,7 @@ export const LineItem = ({ onItemUpdate, item }) => {
           min="0"
           max="100"
           onChange={handleItemUpdate}
+          style={{ maxWidth: "20%" }}
         />
       </div>
       {item.week.toString().slice(-1) === "2" && (
