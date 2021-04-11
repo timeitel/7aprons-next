@@ -3,15 +3,18 @@ import { domain, newOrder } from "@utils";
 import { loadStripe } from "@stripe/stripe-js";
 import { Form, WeeksContainer } from "./styles";
 import { LineItem } from "./LineItem";
+import PulseLoader from "react-spinners/PulseLoader";
 const stripePromise = loadStripe(
   "pk_test_51IUiTqDJrsoPxmlZ4eQXagZ4DZQL5PcmdQVA5G4WxWIPMSwWb79m4VqWhnN3bDk7pVDxIXPxkWv34F8fL53tL0kV00TdZK3vhX"
 );
 
 export const OnlineOrder = () => {
   const [order, setOrder] = useState([...newOrder]);
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setIsLoading(true);
     const stripe = await stripePromise;
     const lineItems = order
       .map(({ price, quantity }) => ({ price, quantity }))
@@ -19,16 +22,16 @@ export const OnlineOrder = () => {
 
     console.log(lineItems);
 
-    const { error } = await stripe.redirectToCheckout({
+    const res = await stripe.redirectToCheckout({
       lineItems,
       mode: "payment",
       successUrl: `${domain}/success`,
       cancelUrl: `${domain}/#order`,
     });
 
-    if (error) {
-      console.log(error);
-    }
+    console.log(res);
+
+    setIsLoading(false);
   };
 
   const handleItemUpdate = (updatedItem) => {
@@ -70,12 +73,18 @@ export const OnlineOrder = () => {
           </div>
         </div>
 
-        <input
-          className="flex bg-primary cursor-pointer ml-auto items-center justify-center whitespace-nowrap text-white font-bold px-6 rounded outline-none focus:outline-none mb-1 bg-blueGray-700 active:bg-blueGray-600 active:bg-blueGray-500 uppercase text-sm shadow hover:shadow-lg ease-linear transition-all duration-150"
-          type="submit"
-          value="Checkout"
+        <button
+          className="flex bg-primary h-10 cursor-pointer ml-auto items-center justify-center whitespace-nowrap text-white font-bold px-6 rounded outline-none focus:outline-none mb-1 bg-blueGray-700 active:bg-blueGray-600 active:bg-blueGray-500 uppercase text-sm shadow hover:shadow-lg ease-linear transition-all duration-150"
           style={{ width: 145 }}
-        />
+          type="submit"
+          disabled={isLoading}
+        >
+          {isLoading ? (
+            <PulseLoader color={"#fff"} size={10} />
+          ) : (
+            <span>Checkout</span>
+          )}
+        </button>
       </Form>
     </>
   );
