@@ -46,13 +46,11 @@ export const OnlineOrder = () => {
             .sort((a, b) => a.week - b.week)
             .map((item) => {
               return (
-                <>
-                  <LineItem
-                    item={item}
-                    key={item.price}
-                    onItemUpdate={(i) => handleItemUpdate(i)}
-                  />
-                </>
+                <LineItem
+                  item={item}
+                  key={item.price}
+                  onItemUpdate={(i) => handleItemUpdate(i)}
+                />
               );
             })}
         </WeeksContainer>
