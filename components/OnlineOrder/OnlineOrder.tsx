@@ -22,14 +22,12 @@ export const OnlineOrder = () => {
 
     console.log(lineItems);
 
-    const res = await stripe.redirectToCheckout({
+    await stripe.redirectToCheckout({
       lineItems,
       mode: "payment",
       successUrl: `${domain}/success`,
       cancelUrl: `${domain}/#order`,
     });
-
-    console.log(res);
 
     setIsLoading(false);
   };
