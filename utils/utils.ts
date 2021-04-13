@@ -37,3 +37,5 @@ export const newOrder = [
       "Order by Monday, April 26, for Wednesday, April 28 delivery",
   },
 ];
+
+export const deliveryList = ["", ""];
