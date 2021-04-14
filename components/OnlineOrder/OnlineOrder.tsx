@@ -78,7 +78,7 @@ export const OnlineOrder = () => {
         </div>
         <p className="mb-4 w-100 md:w-50">
           Please note: we are currently only delivering within the Perth
-          Metropolitan region and reserve the right to cancel orders outside
+          Metropolitan region and reserve the right to refund any orders outside
           this area.
         </p>
 
