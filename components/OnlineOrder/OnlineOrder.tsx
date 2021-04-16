@@ -3,6 +3,7 @@ import { domain, newOrder } from "@utils";
 import { loadStripe } from "@stripe/stripe-js";
 import { Form, Container, TotalValue } from "./styles";
 import PulseLoader from "react-spinners/PulseLoader";
+import { useForm } from "react-hook-form";
 const stripePromise = loadStripe(
   "pk_test_51IUiTqDJrsoPxmlZ4eQXagZ4DZQL5PcmdQVA5G4WxWIPMSwWb79m4VqWhnN3bDk7pVDxIXPxkWv34F8fL53tL0kV00TdZK3vhX"
 );
@@ -10,6 +11,7 @@ const stripePromise = loadStripe(
 export const OnlineOrder = () => {
   const [order, setOrder] = useState([...newOrder]);
   const [isLoading, setIsLoading] = useState(false);
+  const { register } = useForm();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -71,6 +73,7 @@ export const OnlineOrder = () => {
                       <label>$8.50 each</label>
                     </div>
                     <input
+                      name={item.name}
                       value={item.quantity}
                       type="tel"
                       pattern="^-?[0-9]\d*\.?\d*$"
