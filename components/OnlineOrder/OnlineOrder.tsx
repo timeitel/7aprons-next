@@ -2,7 +2,6 @@ import { useState } from "react";
 import { domain, newOrder } from "@utils";
 import { loadStripe } from "@stripe/stripe-js";
 import { Form, Container, TotalValue } from "./styles";
-import { LineItem } from "./LineItem";
 import PulseLoader from "react-spinners/PulseLoader";
 const stripePromise = loadStripe(
   "pk_test_51IUiTqDJrsoPxmlZ4eQXagZ4DZQL5PcmdQVA5G4WxWIPMSwWb79m4VqWhnN3bDk7pVDxIXPxkWv34F8fL53tL0kV00TdZK3vhX"
@@ -40,10 +39,14 @@ export const OnlineOrder = () => {
     setIsLoading(false);
   };
 
-  const handleItemUpdate = (updatedItem) => {
-    const newOrder = order.filter((i) => i.price !== updatedItem.price);
-    newOrder.push(updatedItem);
-    setOrder(newOrder);
+  const handleItemUpdate = (e, item) => {
+    const val = e.target.value;
+    if (e.target.validity.valid || val === "") {
+      const updatedItem = { ...item, quantity: Number(e.target.value) };
+      const newOrder = order.filter((i) => i.price !== updatedItem.price);
+      newOrder.push(updatedItem);
+      setOrder(newOrder);
+    }
   };
 
   return (
@@ -54,11 +57,33 @@ export const OnlineOrder = () => {
             .sort((a, b) => a.week - b.week)
             .map((item) => {
               return (
-                <LineItem
-                  item={item}
-                  key={item.price}
-                  onItemUpdate={(i) => handleItemUpdate(i)}
-                />
+                <div key={item.price}>
+                  {item.week.toString().slice(-1) === "1" && (
+                    <label className="mb-4 block text-right">
+                      {item.orderAndDelivery}
+                    </label>
+                  )}
+                  <div className="flex items-center justify-end mb-2">
+                    <div className="flex flex-col items-end mr-4">
+                      <label className="text-md text-right font-medium">
+                        {item.name}
+                      </label>
+                      <label>$8.50 each</label>
+                    </div>
+                    <input
+                      value={item.quantity}
+                      type="tel"
+                      pattern="^-?[0-9]\d*\.?\d*$"
+                      min="0"
+                      max="100"
+                      onChange={(e) => handleItemUpdate(e, item)}
+                      style={{ maxWidth: "20%" }}
+                    />
+                  </div>
+                  {item.week.toString().slice(-1) === "2" && (
+                    <hr className="border-gray-200 my-4 text-center text-2xl w-full ml-auto" />
+                  )}
+                </div>
               );
             })}
         </Container>
