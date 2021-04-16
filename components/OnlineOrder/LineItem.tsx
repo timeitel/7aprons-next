@@ -8,7 +8,7 @@ export const LineItem = ({ onItemUpdate, item }) => {
   return (
     <>
       {item.week.toString().slice(-1) === "1" && (
-        <h4 className="mb-4 text-right">{item.orderAndDelivery}</h4>
+        <label className="mb-4 block text-right">{item.orderAndDelivery}</label>
       )}
       <div className="flex items-center justify-end mb-2">
         <div className="flex flex-col items-end mr-4">

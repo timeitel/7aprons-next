@@ -76,11 +76,6 @@ export const OnlineOrder = () => {
               })}
           </div>
         </div>
-        <p className="mb-4 w-100 md:w-50">
-          Please note: we are currently only delivering within the Perth
-          Metropolitan region and reserve the right to refund any orders outside
-          this area.
-        </p>
 
         <button
           className="flex bg-primary h-10 cursor-pointer ml-auto items-center justify-center whitespace-nowrap text-white font-bold px-6 rounded outline-none focus:outline-none mb-1 bg-blueGray-700 active:bg-blueGray-600 active:bg-blueGray-500 uppercase text-sm shadow hover:shadow-lg ease-linear transition-all duration-150"
