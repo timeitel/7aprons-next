@@ -4,7 +4,7 @@ import { loadStripe } from "@stripe/stripe-js";
 import { Form, Container, TotalValue } from "./styles";
 import PulseLoader from "react-spinners/PulseLoader";
 const stripePromise = loadStripe(
-  "pk_test_51IUiTqDJrsoPxmlZ4eQXagZ4DZQL5PcmdQVA5G4WxWIPMSwWb79m4VqWhnN3bDk7pVDxIXPxkWv34F8fL53tL0kV00TdZK3vhX"
+  "pk_live_51IUiTqDJrsoPxmlZqIAc3xxl6Z7KOq5mfqaOjZsYuodhykaBbWGLDgwZdNL8QJIxaS0Kvg9YuIvQd0veFEGkxCZo00dxv3XBL3"
 );
 
 export const OnlineOrder = () => {

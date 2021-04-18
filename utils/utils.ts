@@ -6,7 +6,7 @@ export const domain =
 export const newOrder = [
   {
     name: "Fried chicken in sweet, buttery sauce, served with steamed rice",
-    price: "price_1IerReDJrsoPxmlZqydhdntn",
+    price: "price_1IharaDJrsoPxmlZ53xSu407",
     quantity: 0,
     week: 3.1,
     orderAndDelivery:
@@ -14,7 +14,7 @@ export const newOrder = [
   },
   {
     name: "Indonesian Beef Rendang served with Turmeric Rice",
-    price: "price_1IerQVDJrsoPxmlZsbYuG7yZ",
+    price: "price_1IhasADJrsoPxmlZwx8tl3px",
     quantity: 0,
     week: 3.2,
     orderAndDelivery:
@@ -22,7 +22,7 @@ export const newOrder = [
   },
   {
     name: "Assam Fish served with Steamed Rice",
-    price: "price_1IerSmDJrsoPxmlZmlQg8nWT",
+    price: "price_1IhapyDJrsoPxmlZaJpFWcwR",
     quantity: 0,
     week: 4.1,
     orderAndDelivery:
@@ -30,7 +30,7 @@ export const newOrder = [
   },
   {
     name: "Indonesian Basil Stewed Pork Served with Steamed Rice",
-    price: "price_1IerSEDJrsoPxmlZLyOxtcOA",
+    price: "price_1IhaqrDJrsoPxmlZMK1x4PA4",
     quantity: 0,
     week: 4.2,
     orderAndDelivery:
