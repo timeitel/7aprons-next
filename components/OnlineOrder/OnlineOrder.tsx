@@ -10,6 +10,7 @@ const stripePromise = loadStripe(
 export const OnlineOrder = () => {
   const [order, setOrder] = useState([...newOrder]);
   const [isLoading, setIsLoading] = useState(false);
+  const [errorMessage, setErrorMessage] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -21,6 +22,7 @@ export const OnlineOrder = () => {
 
     if (lineItems.length === 0) {
       setIsLoading(false);
+      setErrorMessage(true);
       return;
     }
 
@@ -87,6 +89,12 @@ export const OnlineOrder = () => {
         </Container>
 
         <TotalValue order={order} />
+
+        {errorMessage && (
+          <p className="text-red-500 text-right mb-4">
+            Please select a dish quantity to order.
+          </p>
+        )}
 
         <button
           className="flex bg-primary h-10 cursor-pointer ml-auto items-center justify-center whitespace-nowrap text-white font-bold px-6 rounded outline-none focus:outline-none mb-1 bg-blueGray-700 active:bg-blueGray-600 active:bg-blueGray-500 uppercase text-sm shadow hover:shadow-lg ease-linear transition-all duration-150"
