@@ -28,10 +28,12 @@ export const OnlineOrder = () => {
   const handleStripeRedirect = async (data) => {
     setIsLoading(true);
     const lineItems: StripeOrder = Object.entries(data)
-      .map(([price, quantity]) => ({
-        price,
-        quantity,
-      }))
+      .map(([price, quantity]) => {
+        return {
+          price,
+          quantity,
+        };
+      })
       .filter((d) => d.quantity > 0);
     const stripe = await stripePromise;
 
@@ -40,16 +42,17 @@ export const OnlineOrder = () => {
       setErrorMessage("Please select a dish quantity before checking out.");
       return;
     }
+    debugger;
 
-    const { error } = await stripe.redirectToCheckout({
-      lineItems,
-      mode: "payment",
-      successUrl: `${domain}/success`,
-      cancelUrl: `${domain}/#order`,
-      billingAddressCollection: "required",
-    });
+    // const { error } = await stripe.redirectToCheckout({
+    //   lineItems,
+    //   mode: "payment",
+    //   successUrl: `${domain}/success`,
+    //   cancelUrl: `${domain}/#order`,
+    //   billingAddressCollection: "required",
+    // });
 
-    if (error) console.log(error);
+    // if (error) console.log(error);
 
     setIsLoading(false);
   };
