@@ -54,8 +54,8 @@ export default function Index() {
               <h3 className="font-semibold mb-4 text-3xl">Order Online 🍛</h3>
               <p className="mb-12 w-100 md:w-50">
                 Orders are delivered on Wednesday each week. Please note: we are
-                currently only delivering within the Perth Metropolitan region
-                and reserve the right to refund any orders outside this area.
+                currently only delivering to Perth CBD and Subiaco. We reserve
+                the right to refund any orders outside this area.
               </p>
               <OnlineOrder />
             </div>
