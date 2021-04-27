@@ -17,6 +17,7 @@
     "react-hook-form": "^6.15.6",
     "react-scripts": "4.0.3",
     "react-spinners": "^0.10.6",
+    "react-step-wizard": "^5.3.6",
     "styled-components": "^5.2.1",
     "tailwindcss": "2.0.4"
   },

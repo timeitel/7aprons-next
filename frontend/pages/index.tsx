@@ -7,6 +7,11 @@ import { Navbar } from "@components/Navbar";
 import { Landing } from "@components/Landing";
 import { About } from "@components/About";
 import { Menu } from "@components/Menu";
+import { loadStripe } from "@stripe/stripe-js";
+import { Elements } from "@stripe/react-stripe-js";
+const stripePromise = loadStripe(
+  "pk_test_51IUiTqDJrsoPxmlZ4eQXagZ4DZQL5PcmdQVA5G4WxWIPMSwWb79m4VqWhnN3bDk7pVDxIXPxkWv34F8fL53tL0kV00TdZK3vhX"
+);
 
 export default function Index() {
   return (
@@ -58,7 +63,9 @@ export default function Index() {
                 <strong>Perth CBD and Subiaco</strong>. We reserve the right to
                 refund any orders outside this area.
               </p>
-              <OnlineOrder />
+              <Elements stripe={stripePromise}>
+                <OnlineOrder />
+              </Elements>
             </div>
           </div>
         </div>
