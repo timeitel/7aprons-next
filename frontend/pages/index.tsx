@@ -57,12 +57,13 @@ export default function Index() {
             <div className="w-full text-center lg:w-8/12">
               <p className="text-4xl text-center"></p>
               <h3 className="font-semibold mb-4 text-3xl">Order Online 🍛</h3>
-              <p className="mb-12 w-100 md:w-50">
-                Orders are delivered on Wednesday each week. Please note: we are
-                currently only delivering to{" "}
+              <p className="w-100 md:w-50">
+                Order by Monday for delivery the following Wednesday, each week.
+                Please note: we are currently only delivering to{" "}
                 <strong>Perth CBD and Subiaco</strong>. We reserve the right to
                 refund any orders outside this area.
               </p>
+
               <Elements stripe={stripePromise}>
                 <OnlineOrder />
               </Elements>

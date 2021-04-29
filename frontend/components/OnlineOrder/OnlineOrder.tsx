@@ -1,9 +1,8 @@
 import { useState } from "react";
+import StepZilla from "react-stepzilla";
 import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
-import StepWizard from "react-step-wizard";
 import { domain, newOrder } from "@utils";
 import { Form, Container, TotalValue, CARD_ELEMENT_OPTIONS } from "./styles";
-import { Stats } from "./helpers";
 
 export const OnlineOrder = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -77,12 +76,8 @@ export const OnlineOrder = () => {
 
   return (
     <Form onSubmit={handleSubmit}>
-      <Container>
-        <StepWizard>
-          <First />
-          <Second />
-          <Third />
-        </StepWizard>
+      <Container className="step-progress mt-6">
+        <StepZilla stepsNavigation={false} steps={steps} />
       </Container>
 
       {errorMessage && (
@@ -113,12 +108,7 @@ const First = (props) => {
         .sort((a, b) => a.week - b.week)
         .map((item) => {
           return (
-            <div key={item.price}>
-              {item.week.toString().slice(-1) === "1" && (
-                <label className="mb-4 block text-right">
-                  {item.orderAndDelivery}
-                </label>
-              )}
+            <div key={item.price} className="w-full">
               <div className="flex items-center justify-end mb-2">
                 <div className="flex flex-col items-end mr-4">
                   <label className="text-md text-right font-medium">
@@ -142,7 +132,6 @@ const First = (props) => {
             </div>
           );
         })}
-      <Stats step={1} {...props} />
     </>
   );
 };
@@ -153,7 +142,6 @@ const Third = (props) => {
       <label>Testing</label>
       <label>Testing</label>
       <label>Testing</label>
-      <Stats step={3} {...props} />
     </>
   );
 };
@@ -164,7 +152,12 @@ const Second = (props) => {
       <label>Testing</label>
       <label>Testing</label>
       <label>Testing</label>
-      <Stats step={2} {...props} />
     </>
   );
 };
+
+const steps = [
+  { name: "Order", component: <First /> },
+  { name: "Details", component: <div>Test Second</div> },
+  { name: "Review + pay", component: <div>Test Third</div> },
+];
