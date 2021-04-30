@@ -1,8 +1,10 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import StepZilla from "react-stepzilla";
 import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
+import styled from "styled-components";
 import { domain, newOrder } from "@utils";
 import { Form, Container, TotalValue, CARD_ELEMENT_OPTIONS } from "./styles";
+import { CardSection } from "./CardSection";
 
 export const OnlineOrder = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -93,7 +95,7 @@ export const OnlineOrder = () => {
   );
 };
 
-const First = (props) => {
+const Order = (props) => {
   const [order, setOrder] = useState([...newOrder]);
 
   const handleItemUpdate = (e, item) => {
@@ -137,17 +139,40 @@ const First = (props) => {
   );
 };
 
-const Third = (props) => {
+const DetailsContainer = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-end;
+  margin-right: 20%;
+`;
+
+const Details = (props) => {
   return (
-    <>
-      <label>Testing</label>
-      <label>Testing</label>
-      <label>Testing</label>
-    </>
+    <DetailsContainer>
+      <label className="mb-2">
+        <span className="mr-4">First name</span>
+        <input />
+      </label>
+      <label className="mb-2">
+        <span className="mr-4">Last name</span>
+        <input />
+      </label>
+      <label className="mb-2">
+        <span className="mr-4">Email</span>
+        <input />
+      </label>
+      <label className="mb-8">
+        <span className="mr-4">Delivery Address</span>
+        <input />
+      </label>
+      <CardSection />
+    </DetailsContainer>
   );
 };
 
-const Second = (props) => {
+const ReviewPay = (props) => {
   return (
     <>
       <label>Testing</label>
@@ -158,8 +183,8 @@ const Second = (props) => {
 };
 
 const steps = [
-  { name: "Order", component: <First /> },
-  { name: "Details", component: <div>Test Second</div> },
-  { name: "Review + pay", component: <div>Test Third</div> },
+  { name: "Order", component: <Order /> },
+  { name: "Details", component: <Details /> },
+  { name: "Review + pay", component: <ReviewPay /> },
   { name: "", component: <></> },
 ];

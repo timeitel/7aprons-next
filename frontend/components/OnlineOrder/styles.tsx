@@ -20,7 +20,7 @@ export const CARD_ELEMENT_OPTIONS = {
 };
 
 export const Container = styled.div`
-  height: 60vh;
+  height: 45vh;
   overflow-y: scroll;
   overflow-x: hidden;
   width: 100%;
