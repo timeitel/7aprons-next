@@ -31,7 +31,6 @@ export const OnlineOrder = () => {
       mode: "payment",
       successUrl: `${domain}/success`,
       cancelUrl: `${domain}/#order`,
-      billingAddressCollection: "required",
     });
 
     if (error) console.log(error);
