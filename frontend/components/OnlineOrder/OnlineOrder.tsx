@@ -77,7 +77,11 @@ export const OnlineOrder = () => {
   return (
     <Form onSubmit={handleSubmit}>
       <Container className="step-progress mt-6">
-        <StepZilla stepsNavigation={false} steps={steps} />
+        <StepZilla
+          stepsNavigation={false}
+          steps={steps}
+          nextTextOnFinalActionStep="Confirm payment"
+        />
       </Container>
 
       {errorMessage && (
@@ -126,9 +130,6 @@ const First = (props) => {
                   style={{ maxWidth: "20%" }}
                 />
               </div>
-              {item.week.toString().slice(-1) === "2" && (
-                <hr className="border-gray-200 my-4 text-center text-2xl w-full ml-auto" />
-              )}
             </div>
           );
         })}
@@ -160,4 +161,5 @@ const steps = [
   { name: "Order", component: <First /> },
   { name: "Details", component: <div>Test Second</div> },
   { name: "Review + pay", component: <div>Test Third</div> },
+  { name: "", component: <></> },
 ];

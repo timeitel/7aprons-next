@@ -100,3 +100,7 @@ ol.progtrckr li.progtrckr-done:before {
 #next-button {
   margin-left: auto;
 }
+
+ol.progtrckr > li:last-child {
+  display: none;
+}

@@ -23,8 +23,8 @@ export const Container = styled.div`
   height: 60vh;
   overflow-y: scroll;
   overflow-x: hidden;
-  padding-right: 12px;
   width: 100%;
+  padding-right: 12px;
 `;
 
 export const Form = styled.form`
