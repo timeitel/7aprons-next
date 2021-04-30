@@ -17,3 +17,9 @@ export const newOrder = [
     order: 2,
   },
 ];
+
+export const StripeApiKey = () => {
+  return process.env.NODE_ENV === "production"
+    ? "pk_live_51IUiTqDJrsoPxmlZqIAc3xxl6Z7KOq5mfqaOjZsYuodhykaBbWGLDgwZdNL8QJIxaS0Kvg9YuIvQd0veFEGkxCZo00dxv3XBL3"
+    : "pk_test_51IUiTqDJrsoPxmlZ4eQXagZ4DZQL5PcmdQVA5G4WxWIPMSwWb79m4VqWhnN3bDk7pVDxIXPxkWv34F8fL53tL0kV00TdZK3vhX";
+};

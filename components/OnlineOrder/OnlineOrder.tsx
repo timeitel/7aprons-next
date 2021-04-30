@@ -1,11 +1,9 @@
 import { useState } from "react";
-import { domain, newOrder } from "@utils";
+import { domain, newOrder, StripeApiKey } from "@utils";
 import { loadStripe } from "@stripe/stripe-js";
 import { Form, Container, TotalValue } from "./styles";
 import PulseLoader from "react-spinners/PulseLoader";
-const stripePromise = loadStripe(
-  "pk_live_51IUiTqDJrsoPxmlZqIAc3xxl6Z7KOq5mfqaOjZsYuodhykaBbWGLDgwZdNL8QJIxaS0Kvg9YuIvQd0veFEGkxCZo00dxv3XBL3"
-);
+const stripePromise = loadStripe(StripeApiKey());
 
 export const OnlineOrder = () => {
   const [order, setOrder] = useState([...newOrder]);
@@ -31,6 +29,9 @@ export const OnlineOrder = () => {
       mode: "payment",
       successUrl: `${domain}/success`,
       cancelUrl: `${domain}/#order`,
+      shippingAddressCollection: {
+        allowedCountries: ["AU"],
+      },
     });
 
     if (error) console.log(error);

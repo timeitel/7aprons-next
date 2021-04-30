@@ -11,6 +11,7 @@ export const Form = styled.form`
   flex-direction: column;
   justify-content: center;
   align-items: flex-end;
+  width: 80%;
 
   input {
     border: 1px solid lightgray;
