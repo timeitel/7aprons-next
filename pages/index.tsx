@@ -50,11 +50,14 @@ export default function Index() {
         <div className="container mx-auto">
           <div className="flex flex-wrap justify-center bg-white shadow-xl rounded-lg -mt-64 py-12 px-12 relative z-10">
             <div className="w-full text-center lg:w-8/12">
-              <p className="text-4xl text-center"></p>
               <h3 className="font-semibold mb-4 text-3xl">Order Online 🍛</h3>
-              <p className="mb-12 w-100 md:w-50">
-                May's menu will be released shortly. Please visit again soon. 
+              <p className="w-100 md:w-50 mb-8 text-left">
+                Order by Monday for delivery the following Wednesday, each week.
+                Please note: we are currently only delivering to{" "}
+                <strong>Perth CBD and Subiaco</strong>. We reserve the right to
+                refund any orders outside this area.
               </p>
+              <OnlineOrder />
             </div>
           </div>
         </div>

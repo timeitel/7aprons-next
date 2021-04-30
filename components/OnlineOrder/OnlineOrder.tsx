@@ -54,15 +54,10 @@ export const OnlineOrder = () => {
       <Form onSubmit={handleSubmit}>
         <Container>
           {order
-            .sort((a, b) => a.week - b.week)
+            .sort((a, b) => a.order - b.order)
             .map((item) => {
               return (
                 <div key={item.price}>
-                  {item.week.toString().slice(-1) === "1" && (
-                    <label className="mb-4 block text-right">
-                      {item.orderAndDelivery}
-                    </label>
-                  )}
                   <div className="flex items-center justify-end mb-2">
                     <div className="flex flex-col items-end mr-4">
                       <label className="text-md text-right font-medium">
@@ -80,12 +75,10 @@ export const OnlineOrder = () => {
                       style={{ maxWidth: "20%" }}
                     />
                   </div>
-                  {item.week.toString().slice(-1) === "2" && (
-                    <hr className="border-gray-200 my-4 text-center text-2xl w-full ml-auto" />
-                  )}
                 </div>
               );
             })}
+          <hr className="border-gray-200 my-4 text-center text-2xl w-full ml-auto" />
         </Container>
 
         <TotalValue order={order} />
