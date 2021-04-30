@@ -2,7 +2,7 @@ import { FC } from "react";
 import styled from "styled-components";
 
 export const Container = styled.div`
-  max-height: 40vh;
+  max-height: 45vh;
   padding-right: 12px;
 `;
 
@@ -10,7 +10,8 @@ export const Form = styled.form`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: flex-end;
+  align-items: center;
+  margin: 0 auto;
   width: 80%;
 
   input {
@@ -33,7 +34,7 @@ type TotalValueProps = {
 
 export const TotalValue: FC<TotalValueProps> = ({ order }) => {
   return (
-    <div className="flex justify-end w-full my-4">
+    <div className="flex justify-end w-full my-2">
       <label className="text-md font-medium mr-4">Total</label>
       <div style={{ width: 92, textAlign: "start" }}>
         {order

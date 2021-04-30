@@ -1,4 +1,7 @@
 import { useState } from "react";
+import styled from "styled-components";
+import "floating-label-react/styles.css";
+import FloatingLabel from "floating-label-react";
 import { domain, newOrder, StripeApiKey } from "@utils";
 import { loadStripe } from "@stripe/stripe-js";
 import { Form, Container, TotalValue } from "./styles";
@@ -7,6 +10,12 @@ const stripePromise = loadStripe(StripeApiKey());
 
 export const OnlineOrder = () => {
   const [order, setOrder] = useState([...newOrder]);
+  const [user, setUser] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    company: "",
+  });
   const [isLoading, setIsLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState(false);
 
@@ -52,6 +61,10 @@ export const OnlineOrder = () => {
   return (
     <>
       <Form onSubmit={handleSubmit}>
+        <p className="font-medium w-1/2 text-left" style={{ color: "#aa485d" }}>
+          Order
+        </p>
+        <hr className="border-gray-200 mb-4 text-center text-2xl w-full ml-auto" />
         <Container>
           {order
             .sort((a, b) => a.order - b.order)
@@ -78,30 +91,108 @@ export const OnlineOrder = () => {
                 </div>
               );
             })}
-          <hr className="border-gray-200 my-4 text-center text-2xl w-full ml-auto" />
-        </Container>
-
-        <TotalValue order={order} />
-
-        {errorMessage && (
-          <p className="text-red-500 text-right mb-4">
-            Please select a dish quantity to order.
-          </p>
-        )}
-
-        <button
-          className="flex bg-primary h-10 cursor-pointer ml-auto items-center justify-center whitespace-nowrap text-white font-bold px-6 rounded outline-none focus:outline-none mb-1 bg-blueGray-700 active:bg-blueGray-600 active:bg-blueGray-500 uppercase text-sm shadow hover:shadow-lg ease-linear transition-all duration-150"
-          style={{ width: 145 }}
-          type="submit"
-          disabled={isLoading}
-        >
-          {isLoading ? (
-            <PulseLoader color={"#fff"} size={10} />
-          ) : (
-            <span>Checkout</span>
+          <TotalValue order={order} />
+          {errorMessage && (
+            <p className="text-red-500 text-right mb-4">
+              Please select a dish quantity to order.
+            </p>
           )}
-        </button>
+
+          <p
+            className="font-medium w-1/2 text-left mt-6"
+            style={{ color: "#aa485d" }}
+          >
+            Delivery details
+          </p>
+          <hr className="border-gray-200 mb-4 text-center text-2xl w-full ml-auto" />
+
+          <InfoContainer className="w-1/2">
+            <FloatingLabel
+              name="firstName"
+              placeholder="First name"
+              type="firstName"
+              value={user.firstName}
+              onChange={(e) =>
+                setUser((prev) => ({ ...prev, firstName: e.target.value }))
+              }
+            />
+            <FloatingLabel
+              name="email"
+              placeholder="Email"
+              type="email"
+              value={user.email}
+              onChange={(e) =>
+                setUser((prev) => ({ ...prev, email: e.target.value }))
+              }
+            />
+            <FloatingLabel
+              name="lastName"
+              placeholder="Last name"
+              type="lastName"
+              value={user.lastName}
+              onChange={(e) =>
+                setUser((prev) => ({ ...prev, lastName: e.target.value }))
+              }
+            />
+            <FloatingLabel
+              name="company"
+              placeholder="Company"
+              type="company"
+              value={user.company}
+              onChange={(e) =>
+                setUser((prev) => ({
+                  ...prev,
+                  company: e.target.value,
+                }))
+              }
+            />
+          </InfoContainer>
+
+          <p className="text-left mt-4">
+            Please note: we are currently only delivering to{" "}
+            <strong>Perth CBD and Subiaco</strong>. We reserve the right to
+            refund any orders outside this area.{" "}
+          </p>
+
+          <button
+            className="flex mt-8 bg-primary h-10 cursor-pointer ml-auto items-center justify-center whitespace-nowrap text-white font-bold px-6 rounded outline-none focus:outline-none mb-1 bg-blueGray-700 active:bg-blueGray-600 active:bg-blueGray-500 uppercase text-sm shadow hover:shadow-lg ease-linear transition-all duration-150"
+            style={{ width: 145 }}
+            type="submit"
+            disabled={isLoading}
+          >
+            {isLoading ? (
+              <PulseLoader color={"#fff"} size={10} />
+            ) : (
+              <span>Checkout</span>
+            )}
+          </button>
+        </Container>
       </Form>
     </>
   );
 };
+
+const InfoContainer = styled.div`
+  width: 100%;
+  columns: 2;
+  /* display: flex;
+  align-items: center;
+  flex-wrap: wrap; */
+
+  span {
+    color: gray;
+    padding-left: 4px;
+  }
+
+  .floating-label {
+    margin-bottom: 8px;
+
+    input {
+      border: none !important;
+      border-bottom: 1px solid gray !important;
+      border-radius: 0 !important;
+      padding-left: 8px !important;
+      padding-top: 8px !important;
+    }
+  }
+`;
