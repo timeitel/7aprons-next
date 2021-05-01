@@ -106,11 +106,12 @@ export const OnlineOrder = () => {
           </p>
           <hr className="border-gray-200 mb-4 text-center text-2xl w-full ml-auto" />
 
-          <InfoContainer className="w-1/2">
+          <InfoContainer>
             <FloatingLabel
               name="firstName"
               placeholder="First name"
               type="firstName"
+              required
               value={user.firstName}
               onChange={(e) =>
                 setUser((prev) => ({ ...prev, firstName: e.target.value }))
@@ -120,6 +121,7 @@ export const OnlineOrder = () => {
               name="email"
               placeholder="Email"
               type="email"
+              required
               value={user.email}
               onChange={(e) =>
                 setUser((prev) => ({ ...prev, email: e.target.value }))
@@ -129,6 +131,7 @@ export const OnlineOrder = () => {
               name="lastName"
               placeholder="Last name"
               type="lastName"
+              required
               value={user.lastName}
               onChange={(e) =>
                 setUser((prev) => ({ ...prev, lastName: e.target.value }))
@@ -138,6 +141,7 @@ export const OnlineOrder = () => {
               name="company"
               placeholder="Company"
               type="company"
+              required
               value={user.company}
               onChange={(e) =>
                 setUser((prev) => ({
