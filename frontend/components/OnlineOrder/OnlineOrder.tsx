@@ -14,7 +14,7 @@ export const OnlineOrder = () => {
     firstName: "",
     lastName: "",
     email: "",
-    company: "",
+    deliveryAddress: "",
   });
   const [isLoading, setIsLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState(false);
@@ -38,7 +38,6 @@ export const OnlineOrder = () => {
       method: "post",
       body: JSON.stringify({ user, line_items: lineItems }),
     });
-    console.log(session.id);
 
     const { error } = await stripe.redirectToCheckout({
       sessionId: session.id,
@@ -149,15 +148,15 @@ export const OnlineOrder = () => {
               }
             />
             <FloatingLabel
-              name="company"
-              placeholder="Company"
-              type="company"
+              name="deliveryAddress"
+              placeholder="Delivery Address"
+              type="deliveryAddress"
               required
-              value={user.company}
+              value={user.deliveryAddress}
               onChange={(e) =>
                 setUser((prev) => ({
                   ...prev,
-                  company: e.target.value,
+                  deliveryAddress: e.target.value,
                 }))
               }
             />
