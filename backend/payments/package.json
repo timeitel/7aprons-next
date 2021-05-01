@@ -1,0 +1,13 @@
+{
+  "name": "sample-http",
+  "version": "0.0.1",
+  "scripts": {
+    "start": "npx functions-framework --target=payments --signature-type=http"
+  },
+  "devDependencies": {
+    "@google-cloud/functions-framework": "^1.7.1"
+  },
+  "dependencies": {
+    "stripe": "^8.145.0"
+  }
+}
