@@ -34,17 +34,23 @@ export const OnlineOrder = () => {
       return;
     }
 
-    const { error } = await stripe.redirectToCheckout({
-      lineItems,
-      mode: "payment",
-      successUrl: `${domain}/success`,
-      cancelUrl: `${domain}/#order`,
-      shippingAddressCollection: {
-        allowedCountries: ["AU"],
-      },
+    const session = await fetch(process.env.SESSION_ENDPOINT, {
+      method: "post",
+      body: JSON.stringify(user),
     });
+    console.log(session.id);
 
-    if (error) console.log(error);
+    // const { error } = await stripe.redirectToCheckout({
+    //   lineItems,
+    //   mode: "payment",
+    //   successUrl: `${domain}/success`,
+    //   cancelUrl: `${domain}/#order`,
+    //   shippingAddressCollection: {
+    //     allowedCountries: ["AU"],
+    //   },
+    // });
+
+    // if (error) console.log(error);
 
     setIsLoading(false);
   };

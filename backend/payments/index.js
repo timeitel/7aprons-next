@@ -1,3 +1,5 @@
+const stripe = require("stripe")(process.env.STRIPE_KEY);
+
 /**
  *
  * @param {!express:Request} req HTTP request context.
@@ -15,14 +17,27 @@ exports.payments = async (req, res) => {
     return res.sendStatus(204);
   }
 
-  const stripe = require("stripe")(process.env.STRIPE_KEY);
+  const message = req.body;
+  console.log(message);
 
-  const intent = await stripe.paymentIntents.create({
-    amount: 1099,
-    currency: "aud",
-    // Verify your integration in this guide by including this parameter
-    metadata: { integration_check: "accept_a_payment" },
+  const { id } = await stripe.checkout.sessions.create({
+    payment_method_types: ["card"],
+    line_items: [
+      {
+        price_data: {
+          currency: "usd",
+          product_data: {
+            name: "T-shirt",
+          },
+          unit_amount: 2000,
+        },
+        quantity: 1,
+      },
+    ],
+    mode: "payment",
+    successUrl: `https://sevenaprons.com/success`,
+    cancelUrl: `https://sevenaprons.com/#order`,
   });
 
-  res.status(200).json({ client_secret: intent.client_secret });
+  res.status(200).json({ id });
 };
