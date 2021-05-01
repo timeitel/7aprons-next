@@ -1,6 +1,15 @@
-if (process.env.NODE_ENV !== "production") {
+const moment = require("moment");
+const { Storage } = require("@google-cloud/storage");
+const isDebugging = process.env.NODE_ENV !== "production";
+if (isDebugging) {
   require("dotenv").config();
 }
+const storage = new Storage();
+const bucket = storage.bucket("seven_aprons_sessions");
+const currentWeek = moment().format("W");
+const folder = isDebugging
+  ? `test/${currentWeek}`
+  : `production/${currentWeek}`;
 
 const stripe = require("stripe")(process.env.STRIPE_KEY);
 /**
@@ -30,11 +39,14 @@ exports.payments = async (req, res) => {
     cancel_url: `https://sevenaprons.com/#order`,
   });
 
-  await storeSession(message, id);
+  await storeSession(message, id).catch(console.error);
 
   res.status(200).json({ id });
 };
 
 const storeSession = async (message, sessionId) => {
-  console.log(user);
+  const file = bucket.file(`${folder}/${sessionId}.json`);
+  await file.save(JSON.stringify(message));
+
+  console.log(`${sessionId} uploaded.`);
 };
