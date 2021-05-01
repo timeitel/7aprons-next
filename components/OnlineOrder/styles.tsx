@@ -2,7 +2,7 @@ import { FC } from "react";
 import styled from "styled-components";
 
 export const Container = styled.div`
-  max-height: 45vh;
+  max-height: 50vh;
   padding-right: 12px;
 `;
 

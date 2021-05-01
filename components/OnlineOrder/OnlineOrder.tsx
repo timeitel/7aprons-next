@@ -21,6 +21,7 @@ export const OnlineOrder = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
     setIsLoading(true);
     const stripe = await stripePromise;
     const lineItems = order
@@ -61,7 +62,10 @@ export const OnlineOrder = () => {
   return (
     <>
       <Form onSubmit={handleSubmit}>
-        <p className="font-medium w-1/2 text-left" style={{ color: "#aa485d" }}>
+        <p
+          className="font-medium w-full text-left"
+          style={{ color: "#aa485d" }}
+        >
           Order
         </p>
         <hr className="border-gray-200 mb-4 text-center text-2xl w-full ml-auto" />
