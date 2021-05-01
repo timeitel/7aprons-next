@@ -41,13 +41,11 @@ export const OnlineOrder = () => {
 
     const { error } = await stripe.redirectToCheckout({
       sessionId: session.id,
+      customerEmail: user.email,
       lineItems,
       mode: "payment",
       successUrl: `${domain}/success`,
       cancelUrl: `${domain}/#order`,
-      shippingAddressCollection: {
-        allowedCountries: ["AU"],
-      },
     });
 
     if (error) console.log(error);
