@@ -1,8 +1,8 @@
-const stripe = require("stripe")(process.env.STRIPE_KEY);
 if (process.env.NODE_ENV !== "production") {
   require("dotenv").config();
 }
 
+const stripe = require("stripe")(process.env.STRIPE_KEY);
 /**
  *
  * @param {!express:Request} req HTTP request context.
@@ -20,27 +20,21 @@ exports.payments = async (req, res) => {
     return res.sendStatus(204);
   }
 
-  const message = req.body;
-  console.log(JSON.stringify(message));
+  const { body: message } = req;
 
   const { id } = await stripe.checkout.sessions.create({
     payment_method_types: ["card"],
-    line_items: [
-      {
-        price_data: {
-          currency: "usd",
-          product_data: {
-            name: "T-shirt",
-          },
-          unit_amount: 2000,
-        },
-        quantity: 1,
-      },
-    ],
+    line_items: message.line_items,
     mode: "payment",
     success_url: `https://sevenaprons.com/success`,
     cancel_url: `https://sevenaprons.com/#order`,
   });
 
+  await storeSession(message, id);
+
   res.status(200).json({ id });
+};
+
+const storeSession = async (message, sessionId) => {
+  console.log(user);
 };
