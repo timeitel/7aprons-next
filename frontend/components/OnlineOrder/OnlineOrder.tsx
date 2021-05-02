@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { ChangeEvent, useState } from "react";
 import styled from "styled-components";
 import "floating-label-react/styles.css";
 import FloatingLabel from "floating-label-react";
@@ -117,7 +117,7 @@ export const OnlineOrder = () => {
               placeholder="First name"
               required
               value={user.firstName}
-              onChange={(e) =>
+              onChange={(e: ChangeEvent<HTMLInputElement>) =>
                 setUser((prev) => ({ ...prev, firstName: e.target.value }))
               }
             />
@@ -126,7 +126,7 @@ export const OnlineOrder = () => {
               placeholder="Company"
               required
               value={user.company}
-              onChange={(e) =>
+              onChange={(e: ChangeEvent<HTMLInputElement>) =>
                 setUser((prev) => ({ ...prev, company: e.target.value }))
               }
             />
@@ -135,7 +135,7 @@ export const OnlineOrder = () => {
               placeholder="Last name"
               required
               value={user.lastName}
-              onChange={(e) =>
+              onChange={(e: ChangeEvent<HTMLInputElement>) =>
                 setUser((prev) => ({ ...prev, lastName: e.target.value }))
               }
             />
@@ -145,7 +145,7 @@ export const OnlineOrder = () => {
               type="deliveryAddress"
               required
               value={user.deliveryAddress}
-              onChange={(e) =>
+              onChange={(e: ChangeEvent<HTMLInputElement>) =>
                 setUser((prev) => ({
                   ...prev,
                   deliveryAddress: e.target.value,
