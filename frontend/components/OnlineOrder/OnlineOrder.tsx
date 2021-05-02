@@ -36,10 +36,13 @@ export const OnlineOrder = () => {
       return;
     }
 
-    const res = await fetch(publicRuntimeConfig.NEXT_PUBLIC_SESSION_ENDPOINT, {
-      method: "post",
-      body: JSON.stringify({ user, line_items: lineItems }),
-    });
+    const res = await fetch(
+      "https://checkout-api-gateway-duj2pxgl.ts.gateway.dev/payments?key=AIzaSyCXYI3qJS-Il6Bx_UMzUwBefFj_M_rHVfA",
+      {
+        method: "post",
+        body: JSON.stringify({ user, line_items: lineItems }),
+      }
+    );
     const responseJson = await res.json();
     const { id: sessionId } = responseJson;
     console.log(sessionId);
