@@ -6,7 +6,9 @@ import { domain, newOrder, StripeApiKey } from "@utils";
 import { loadStripe } from "@stripe/stripe-js";
 import { Form, Container, TotalValue } from "./styles";
 import PulseLoader from "react-spinners/PulseLoader";
+import getConfig from "next/config";
 const stripePromise = loadStripe(StripeApiKey());
+const { publicRuntimeConfig } = getConfig();
 
 export const OnlineOrder = () => {
   const [order, setOrder] = useState([...newOrder]);
@@ -34,7 +36,7 @@ export const OnlineOrder = () => {
       return;
     }
 
-    const res = await fetch(process.env.NEXT_PUBLIC_SESSION_ENDPOINT, {
+    const res = await fetch(publicRuntimeConfig.NEXT_PUBLIC_SESSION_ENDPOINT, {
       method: "post",
       body: JSON.stringify({ user, line_items: lineItems }),
     });
