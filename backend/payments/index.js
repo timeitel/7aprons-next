@@ -10,7 +10,7 @@ const currentWeek = moment().format("W");
 const folder = isDebugging
   ? `test/${currentWeek}`
   : `production/${currentWeek}`;
-const stripe = require("stripe")(process.env.STRIPE_KEY);
+const stripe = require("stripe")(process.env.STRIPE_KEY_LIVE);
 
 /**
  *
