@@ -42,6 +42,7 @@ export const OnlineOrder = () => {
     });
     const responseJson = await res.json();
     const { id: sessionId } = responseJson;
+    console.log(sessionId);
 
     const { error } = await stripe.redirectToCheckout({
       sessionId,
