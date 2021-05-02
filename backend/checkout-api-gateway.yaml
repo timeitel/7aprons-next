@@ -9,7 +9,7 @@ produces:
   - application/json
 paths:
   /payments:
-    get:
+    post:
       summary: Gets Stripe payment intent
       operationId: payments
       x-google-backend:
@@ -21,6 +21,13 @@ paths:
           description: A successful response
           schema:
             type: string
+    options:
+      operationId: Cors enabling for payments API
+      x-google-backend:
+        address: https://australia-southeast1-seven-aprons.cloudfunctions.net/payments
+      responses:
+        "200":
+          description: A successful response
 securityDefinitions:
   api_key:
     type: "apiKey"
