@@ -123,7 +123,7 @@ export const OnlineOrder = () => {
           </p>
           <hr className="border-gray-200 mb-4 text-center text-2xl w-full ml-auto" />
 
-          <InfoContainer>
+          {/* <InfoContainer>
             <FloatingLabel
               name="firstName"
               placeholder="First name"
@@ -164,7 +164,7 @@ export const OnlineOrder = () => {
                 }))
               }
             />
-          </InfoContainer>
+          </InfoContainer> */}
 
           <p className="text-left mt-4">
             Please note: we are currently only delivering to{" "}
