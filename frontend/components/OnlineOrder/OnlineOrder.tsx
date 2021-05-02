@@ -34,13 +34,15 @@ export const OnlineOrder = () => {
       return;
     }
 
-    const session = await fetch(process.env.SESSION_ENDPOINT, {
+    const res = await fetch(process.env.NEXT_PUBLIC_SESSION_ENDPOINT, {
       method: "post",
       body: JSON.stringify({ user, line_items: lineItems }),
     });
+    const responseJson = await res.json();
+    const { sessionId } = responseJson;
 
     const { error } = await stripe.redirectToCheckout({
-      sessionId: session.id,
+      sessionId,
       customerEmail: user.email,
       lineItems,
       mode: "payment",

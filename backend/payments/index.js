@@ -26,29 +26,29 @@ exports.payments = async (req, res) => {
     res.status(204).send("");
   }
 
-  const { body: message } = req;
+  const message = JSON.parse(req.body);
+  const { line_items } = message;
+  const { id } = await getSessionId(line_items);
+  await uploadSession(message, id);
 
-  const id = await getSessionId(message).catch((err) => console.log(error));
-  await storeSession(message, id).catch(console.error);
-
-  res.send({ id });
+  res.send({ sessionId: id });
 };
 
-const storeSession = async (message, sessionId) => {
+const uploadSession = async (message, sessionId) => {
   const file = bucket.file(`${folder}/${sessionId}.json`);
   await file.save(JSON.stringify(message));
 
   console.log(`${sessionId} uploaded.`);
 };
 
-const getSessionId = async (message) => {
-  const { id } = await stripe.checkout.sessions.create({
+const getSessionId = async (line_items) => {
+  const sessionObject = {
     payment_method_types: ["card"],
-    line_items: message.line_items,
+    line_items,
     mode: "payment",
     success_url: `https://sevenaprons.com/success`,
     cancel_url: `https://sevenaprons.com/#order`,
-  });
+  };
 
-  return id;
+  return await stripe.checkout.sessions.create(sessionObject);
 };
