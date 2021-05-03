@@ -82,8 +82,12 @@ export const OnlineOrder = () => {
           Order
         </p>
         <hr className="border-gray-200 mb-4 text-center text-2xl w-full ml-auto" />
+        <p>
+          This week's online ordering has closed, please check back soon for
+          next week's ordering.
+        </p>
         <Container>
-          {order
+          {/* {order
             .sort((a, b) => a.order - b.order)
             .map((item) => {
               return (
@@ -113,7 +117,7 @@ export const OnlineOrder = () => {
             <p className="text-red-500 text-right mb-4">
               Please select a dish quantity to order.
             </p>
-          )}
+          )} */}
 
           <p
             className="font-medium w-1/2 text-left mt-6"
@@ -172,7 +176,7 @@ export const OnlineOrder = () => {
             refund any orders outside this area.{" "}
           </p>
 
-          <button
+          {/* <button
             className="flex mt-8 bg-primary h-10 cursor-pointer ml-auto items-center justify-center whitespace-nowrap text-white font-bold px-6 rounded outline-none focus:outline-none mb-1 bg-blueGray-700 active:bg-blueGray-600 active:bg-blueGray-500 uppercase text-sm shadow hover:shadow-lg ease-linear transition-all duration-150"
             style={{ width: 145 }}
             type="submit"
@@ -183,7 +187,7 @@ export const OnlineOrder = () => {
             ) : (
               <span>Checkout</span>
             )}
-          </button>
+          </button> */}
         </Container>
       </Form>
     </>
