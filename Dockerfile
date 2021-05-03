@@ -1,23 +1,26 @@
+# Install dependencies only when needed
+FROM node:lts-alpine AS deps
 
-# Use the official lightweight Node.js 12 image.
-# https://hub.docker.com/_/node
-FROM node:12-slim
+WORKDIR /opt/app
+COPY package.json npm.lock ./
+RUN npm install --frozen-lockfile
 
-# Create and change to the app directory.
-WORKDIR /usr/src/app
+FROM node:lts-alpine AS builder
 
-# Copy application dependency manifests to the container image.
-# A wildcard is used to ensure copying both package.json AND package-lock.json (when available).
-# Copying this first prevents re-running npm install on every code change.
-COPY package*.json ./
+ENV NODE_ENV=production
+WORKDIR /opt/app
+COPY . .
+COPY --from=deps /opt/app/node_modules ./node_modules
+RUN npm build
 
-# Install production dependencies.
-# If you add a package-lock.json, speed your build by switching to 'npm ci'.
-# RUN npm ci --only=production
-RUN npm install --only=production
+# Production image, copy all the files and run next
+FROM node:lts-alpine AS runner
 
-# Copy local code to the container image.
-COPY . ./
-
-# Run the web service on container startup.
-CMD [ "npm", "start" ]
+ARG X_TAG
+WORKDIR /opt/app
+ENV NODE_ENV=production
+COPY --from=builder /opt/app/next.config.js ./
+COPY --from=builder /opt/app/public ./public
+COPY --from=builder /opt/app/.next ./.next
+COPY --from=builder /opt/app/node_modules ./node_modules
+CMD ["node_modules/.bin/next", "start"]
