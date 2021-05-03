@@ -1,16 +1,17 @@
-import moment from "moment";
-const { Storage } = require("@google-cloud/storage");
-const isDebugging = process.env.NODE_ENV !== "production";
-if (isDebugging) {
-  require("dotenv").config();
-}
-const storage = new Storage();
-const bucket = storage.bucket("seven_aprons_sessions");
-const currentWeek = moment().format("W");
-const folder = isDebugging
-  ? `test/${currentWeek}`
-  : `production/${currentWeek}`;
+// import moment from "moment";
+// const { Storage } = require("@google-cloud/storage");
+// const isDebugging = process.env.NODE_ENV !== "production";
+// if (isDebugging) {
+//   require("dotenv").config();
+// }
+// const storage = new Storage();
+// const bucket = storage.bucket("seven_aprons_sessions");
+// const currentWeek = moment().format("W");
+// const folder = isDebugging
+//   ? `test/${currentWeek}`
+//   : `production/${currentWeek}`;
 // const stripe = require("stripe")(process.env.STRIPE_KEY_LIVE);
+export {};
 
 /**
  *
@@ -26,12 +27,12 @@ exports.payments = async (req, res) => {
   res.send({ sessionId: id });
 };
 
-const uploadSession = async (message, sessionId) => {
-  const file = bucket.file(`${folder}/${sessionId}.json`);
-  await file.save(JSON.stringify(message));
+// const uploadSession = async (message, sessionId) => {
+//   const file = bucket.file(`${folder}/${sessionId}.json`);
+//   await file.save(JSON.stringify(message));
 
-  console.log(`${sessionId} uploaded.`);
-};
+//   console.log(`${sessionId} uploaded.`);
+// };
 
 const getSessionId = async (line_items) => {
   const sessionObject = {
