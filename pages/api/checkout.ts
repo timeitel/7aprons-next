@@ -1,4 +1,4 @@
-const moment = require("moment");
+import moment from "moment";
 const { Storage } = require("@google-cloud/storage");
 const isDebugging = process.env.NODE_ENV !== "production";
 if (isDebugging) {
