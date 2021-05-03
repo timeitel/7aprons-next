@@ -2,6 +2,13 @@
   "name": "7aprons-next",
   "version": "1.0.0",
   "license": "MIT",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start -p $PORT",
+    "install:clean": "rm -rf node_modules/ && rm -rf package-lock.json && npm install && npm run build:tailwind && npm run dev",
+    "build:tailwind": "tailwind build styles/index.css -o styles/tailwind.css"
+  },
   "dependencies": {
     "@fortawesome/fontawesome-free": "5.15.3",
     "@popperjs/core": "2.9.1",
@@ -20,13 +27,6 @@
     "react-spinners": "^0.10.6",
     "styled-components": "^5.2.1",
     "tailwindcss": "2.0.4"
-  },
-  "scripts": {
-    "start": "next start",
-    "build": "next build && next export && touch out/.nojekyll",
-    "dev": "next dev",
-    "install:clean": "rm -rf node_modules/ && rm -rf package-lock.json && npm install && npm run build:tailwind && npm run dev",
-    "build:tailwind": "tailwind build styles/index.css -o styles/tailwind.css"
   },
   "eslintConfig": {
     "extends": "react-app"
