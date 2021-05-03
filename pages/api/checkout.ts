@@ -10,7 +10,7 @@ const currentWeek = moment().format("W");
 const folder = isDebugging
   ? `test/${currentWeek}`
   : `production/${currentWeek}`;
-const stripe = require("stripe")(process.env.STRIPE_KEY_LIVE);
+// const stripe = require("stripe")(process.env.STRIPE_KEY_LIVE);
 
 /**
  *
@@ -42,5 +42,6 @@ const getSessionId = async (line_items) => {
     cancel_url: `https://sevenaprons.com/#order`,
   };
 
-  return await stripe.checkout.sessions.create(sessionObject);
+  return { id: "1231-231-231-2312-3" };
+  // return await stripe.checkout.sessions.create(sessionObject);
 };
