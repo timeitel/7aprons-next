@@ -36,7 +36,7 @@ export const OnlineOrder = () => {
       return;
     }
 
-    const res = await fetch("/checkout", {
+    const res = await fetch("/api/checkout", {
       method: "post",
       body: JSON.stringify({ user, line_items: lineItems }),
     });
