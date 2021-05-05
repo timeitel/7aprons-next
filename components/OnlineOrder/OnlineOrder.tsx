@@ -2,13 +2,11 @@ import { ChangeEvent, useState } from "react";
 import styled from "styled-components";
 import "floating-label-react/styles.css";
 import FloatingLabel from "floating-label-react";
-import { domain, newOrder, StripeApiKey } from "@utils";
+import { newOrder } from "@utils";
 import { loadStripe } from "@stripe/stripe-js";
 import { Form, Container, TotalValue } from "./styles";
 import PulseLoader from "react-spinners/PulseLoader";
-import getConfig from "next/config";
-const stripePromise = loadStripe(StripeApiKey());
-const { publicRuntimeConfig } = getConfig();
+const stripePromise = loadStripe(process.env.STRIPE_KEY_PUBLIC);
 
 export const OnlineOrder = () => {
   const [order, setOrder] = useState([...newOrder]);
@@ -40,21 +38,15 @@ export const OnlineOrder = () => {
       method: "post",
       body: JSON.stringify({ user, line_items: lineItems }),
     });
-    const responseJson = await res.json();
-    const { id: sessionId } = responseJson;
+    const resJson = await res.json();
+    const { sessionId } = resJson;
     console.log(sessionId);
 
-    // const { error } = await stripe.redirectToCheckout({
-    //   lineItems,
-    //   mode: "payment",
-    //   successUrl: `${domain}/success`,
-    //   cancelUrl: `${domain}/#order`,
-    //   shippingAddressCollection: {
-    //     allowedCountries: ["AU"],
-    //   },
-    // });
+    const { error } = await stripe.redirectToCheckout({
+      sessionId,
+    });
 
-    // if (error) console.log(error);
+    if (error) console.log(error);
 
     setIsLoading(false);
   };
@@ -79,10 +71,7 @@ export const OnlineOrder = () => {
           Order
         </p>
         <hr className="border-gray-200 mb-4 text-center text-2xl w-full ml-auto" />
-        <p>
-          This week's online ordering has closed, please check back soon for
-          next week's ordering.
-        </p>
+
         <Container>
           {order
             .sort((a, b) => a.order - b.order)

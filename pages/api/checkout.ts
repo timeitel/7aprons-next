@@ -1,17 +1,14 @@
-// import moment from "moment";
-// const { Storage } = require("@google-cloud/storage");
-// const isDebugging = process.env.NODE_ENV !== "production";
-// if (isDebugging) {
-//   require("dotenv").config();
-// }
-// const storage = new Storage();
-// const bucket = storage.bucket("seven_aprons_sessions");
-// const currentWeek = moment().format("W");
-// const folder = isDebugging
-//   ? `test/${currentWeek}`
-//   : `production/${currentWeek}`;
-// const stripe = require("stripe")(process.env.STRIPE_KEY_LIVE);
-export {};
+import { getISOWeek } from "date-fns";
+import { Storage } from "@google-cloud/storage";
+const storage = new Storage();
+const bucket = storage.bucket("seven_aprons_sessions");
+const currentWeek = getISOWeek(new Date());
+console.log(new Date());
+const folder =
+  process.env.NODE_ENV === "development"
+    ? `test/week_${currentWeek}`
+    : `production/week_${currentWeek}`;
+const stripe = require("stripe")(process.env.STRIPE_KEY_SECRET);
 
 /**
  *
@@ -19,23 +16,15 @@ export {};
  * @param {!express:Response} res HTTP response context.
  */
 export default async function payments(req, res) {
-  // const message = JSON.parse(req.body);
-  // const { line_items } = message;
-  // const { id } = await getSessionId(line_items);
-  // await uploadSession(message, id);
+  const message = JSON.parse(req.body);
+  const { id } = await getSessionId(message.line_items);
+  await uploadSession(message, id);
 
-  res.status(200).json({ id: "123" });
+  res.status(200).json({ sessionId: id });
 }
 
-// const uploadSession = async (message, sessionId) => {
-//   const file = bucket.file(`${folder}/${sessionId}.json`);
-//   await file.save(JSON.stringify(message));
-
-//   console.log(`${sessionId} uploaded.`);
-// };
-
 const getSessionId = async (line_items) => {
-  const sessionObject = {
+  const session = {
     payment_method_types: ["card"],
     line_items,
     mode: "payment",
@@ -43,6 +32,13 @@ const getSessionId = async (line_items) => {
     cancel_url: `https://sevenaprons.com/#order`,
   };
 
-  return { id: "1231-231-231-2312-3" };
-  // return await stripe.checkout.sessions.create(sessionObject);
+  return await stripe.checkout.sessions.create(session);
+};
+
+const uploadSession = async (message, sessionId) => {
+  const location = `${folder}/${sessionId}.json`;
+  const file = bucket.file(location);
+  await file.save(JSON.stringify(message));
+
+  console.log(`Session uploaded to ${location}`);
 };
