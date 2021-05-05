@@ -18,14 +18,14 @@ export {};
  * @param {!express:Request} req HTTP request context.
  * @param {!express:Response} res HTTP response context.
  */
-exports.payments = async (req, res) => {
-  const message = JSON.parse(req.body);
-  const { line_items } = message;
-  const { id } = await getSessionId(line_items);
+export default async function payments(req, res) {
+  // const message = JSON.parse(req.body);
+  // const { line_items } = message;
+  // const { id } = await getSessionId(line_items);
   // await uploadSession(message, id);
 
-  res.send({ sessionId: id });
-};
+  res.status(200).json({ id: "123" });
+}
 
 // const uploadSession = async (message, sessionId) => {
 //   const file = bucket.file(`${folder}/${sessionId}.json`);
