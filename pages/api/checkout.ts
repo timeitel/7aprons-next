@@ -3,7 +3,6 @@ import { Storage } from "@google-cloud/storage";
 const storage = new Storage();
 const bucket = storage.bucket("seven_aprons_sessions");
 const currentWeek = getISOWeek(new Date());
-console.log(new Date());
 const folder =
   process.env.NODE_ENV === "development"
     ? `test/week_${currentWeek}`
