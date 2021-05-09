@@ -11,8 +11,8 @@ const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_KEY);
 export const OnlineOrder = () => {
   const [order, setOrder] = useState([...newOrder]);
   const [user, setUser] = useState({
-    firstName: "",
-    lastName: "",
+    name: "",
+    email: "",
     company: "",
     deliveryAddress: "",
   });
@@ -114,12 +114,12 @@ export const OnlineOrder = () => {
 
           <InfoContainer>
             <FloatingLabel
-              name="firstName"
-              placeholder="First name"
+              name="name"
+              placeholder="Name"
               required
-              value={user.firstName}
+              value={user.name}
               onChange={(e: ChangeEvent<HTMLInputElement>) =>
-                setUser((prev) => ({ ...prev, firstName: e.target.value }))
+                setUser((prev) => ({ ...prev, name: e.target.value }))
               }
             />
             <FloatingLabel
@@ -132,12 +132,13 @@ export const OnlineOrder = () => {
               }
             />
             <FloatingLabel
-              name="lastName"
-              placeholder="Last name"
+              name="email"
+              placeholder="Email"
+              type="email"
               required
-              value={user.lastName}
+              value={user.email}
               onChange={(e: ChangeEvent<HTMLInputElement>) =>
-                setUser((prev) => ({ ...prev, lastName: e.target.value }))
+                setUser((prev) => ({ ...prev, email: e.target.value }))
               }
             />
             <FloatingLabel

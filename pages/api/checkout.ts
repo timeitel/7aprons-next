@@ -16,15 +16,16 @@ const stripe = require("stripe")(process.env.STRIPE_KEY_SECRET);
  */
 export default async function payments(req, res) {
   const message = JSON.parse(req.body);
-  const { id: sessionId } = await getSessionId(message.line_items);
+  const { id: sessionId } = await getSessionId(message);
   await uploadSession(message, sessionId);
 
   res.status(200).json({ sessionId });
 }
 
-const getSessionId = async (line_items) => {
+const getSessionId = async ({ line_items, user }) => {
   const session = {
     payment_method_types: ["card"],
+    customer_email: user.email,
     line_items,
     mode: "payment",
     success_url: `https://sevenaprons.com/success`,
