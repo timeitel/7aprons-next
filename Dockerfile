@@ -6,6 +6,8 @@ COPY . .
 
 FROM base AS build
 ENV NODE_ENV=production
+ARG NEXT_PUBLIC_STRIPE_KEY
+ENV NEXT_PUBLIC_STRIPE_KEY=${NEXT_PUBLIC_STRIPE_KEY}
 WORKDIR /build
 COPY --from=base /base ./
 RUN npm run build
@@ -14,8 +16,6 @@ FROM node:current-alpine AS production
 ENV NODE_ENV=production
 ARG STRIPE_KEY_SECRET
 ENV STRIPE_KEY_SECRET=${STRIPE_KEY_SECRET}
-ARG NEXT_PUBLIC_STRIPE_KEY
-ENV NEXT_PUBLIC_STRIPE_KEY=${NEXT_PUBLIC_STRIPE_KEY}
 WORKDIR /app
 COPY --from=build /build/package*.json ./
 COPY --from=build /build/.next ./.next
