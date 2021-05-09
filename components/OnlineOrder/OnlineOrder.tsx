@@ -6,7 +6,10 @@ import { newOrder } from "@utils";
 import { loadStripe } from "@stripe/stripe-js";
 import { Form, Container, TotalValue } from "./styles";
 import PulseLoader from "react-spinners/PulseLoader";
+import getConfig from "next/config";
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_KEY);
+const { publicRuntimeConfig } = getConfig();
+console.log(publicRuntimeConfig.NEXT_PUBLIC_STRIPE_KEY);
 
 export const OnlineOrder = () => {
   const [order, setOrder] = useState([...newOrder]);
