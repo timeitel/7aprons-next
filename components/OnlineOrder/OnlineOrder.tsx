@@ -10,11 +10,26 @@ import { useQuery } from "react-query";
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_KEY);
 
 export const OnlineOrder = () => {
-  const products = useQuery("getProducts", async () => {
-    const res = await fetch("/api/products");
-    const json = await res.json();
-    console.log(json);
-  });
+  const [products, setProducts] = useState([]);
+  const getProducts = useQuery(
+    "getProducts",
+    async () => {
+      const res = await fetch("/api/products");
+      return await res.json();
+    },
+    {
+      onSuccess: ({ data }) => {
+        const p = data.map(({ id, name, images, metadata }) => ({
+          id,
+          name,
+          image: images[0],
+          dishOrder: metadata.dishOrder,
+        }));
+        setProducts(p);
+        console.log(products);
+      },
+    }
+  );
 
   const [order, setOrder] = useState([...newOrder]);
   const [user, setUser] = useState({
