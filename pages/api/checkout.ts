@@ -15,11 +15,15 @@ const stripe = require("stripe")(process.env.STRIPE_KEY_SECRET);
  * @param {!express:Response} res HTTP response context.
  */
 export default async function payments(req, res) {
-  const message = JSON.parse(req.body);
-  const { id: sessionId } = await getSessionId(message);
-  await uploadSession(message, sessionId);
+  try {
+    const message = JSON.parse(req.body);
+    const { id: sessionId } = await getSessionId(message);
+    await uploadSession(message, sessionId);
 
-  res.status(200).json({ sessionId });
+    res.status(200).json({ sessionId });
+  } catch (e) {
+    console.log(JSON.stringify(e));
+  }
 }
 
 const getSessionId = async ({ line_items, user }) => {
