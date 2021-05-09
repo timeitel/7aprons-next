@@ -10,6 +10,7 @@ import getConfig from "next/config";
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_KEY);
 const { publicRuntimeConfig } = getConfig();
 console.log(publicRuntimeConfig.NEXT_PUBLIC_STRIPE_KEY);
+console.log(process.env.NEXT_PUBLIC_STRIPE_KEY);
 
 export const OnlineOrder = () => {
   const [order, setOrder] = useState([...newOrder]);
