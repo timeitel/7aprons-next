@@ -38,9 +38,8 @@ export const OnlineOrder = () => {
       method: "post",
       body: JSON.stringify({ user, line_items: lineItems }),
     });
-    const resJson = await res.json();
-    const { sessionId } = resJson;
-    console.log(sessionId);
+    const json = await res.json();
+    const { sessionId } = json;
 
     const { error } = await stripe.redirectToCheckout({
       sessionId,

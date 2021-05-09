@@ -1,14 +1,14 @@
 import { getISOWeek } from "date-fns";
 import { Storage } from "@google-cloud/storage";
 const storage = new Storage();
-const bucket = storage.bucket("seven_aprons_sessions");
+const bucketName = "seven_aprons_sessions";
+const bucket = storage.bucket(bucketName);
 const currentWeek = getISOWeek(new Date());
 const folder =
   process.env.NODE_ENV === "development"
     ? `test/week_${currentWeek}`
     : `production/week_${currentWeek}`;
 const stripe = require("stripe")(process.env.STRIPE_KEY_SECRET);
-
 /**
  *
  * @param {!express:Request} req HTTP request context.
@@ -16,10 +16,10 @@ const stripe = require("stripe")(process.env.STRIPE_KEY_SECRET);
  */
 export default async function payments(req, res) {
   const message = JSON.parse(req.body);
-  const { id } = await getSessionId(message.line_items);
-  await uploadSession(message, id);
+  const { id: sessionId } = await getSessionId(message.line_items);
+  await uploadSession(message, sessionId);
 
-  res.status(200).json({ sessionId: id });
+  res.status(200).json({ sessionId });
 }
 
 const getSessionId = async (line_items) => {
@@ -39,5 +39,10 @@ const uploadSession = async (message, sessionId) => {
   const file = bucket.file(location);
   await file.save(JSON.stringify(message));
 
-  console.log(`Session uploaded to ${location}`);
+  console.log(
+    JSON.stringify({
+      message: "Session uploaded",
+      location: `https://storage.cloud.google.com/${bucketName}/${location}`,
+    })
+  );
 };
