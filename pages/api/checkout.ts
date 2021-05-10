@@ -14,7 +14,7 @@ const stripe = require("stripe")(process.env.STRIPE_KEY_SECRET);
  * @param {!express:Request} req HTTP request context.
  * @param {!express:Response} res HTTP response context.
  */
-export default async function payments(req, res) {
+export default async function checkout(req, res) {
   try {
     const message = JSON.parse(req.body);
     const { id: sessionId } = await getSessionId(message);

@@ -60,8 +60,7 @@ export const OnlineOrder = () => {
       method: "post",
       body: JSON.stringify({ user, line_items: lineItems }),
     });
-    const json = await res.json();
-    const { sessionId } = json;
+    const { sessionId } = await res.json();
 
     const { error } = await stripe.redirectToCheckout({
       sessionId,
@@ -92,8 +91,11 @@ export const OnlineOrder = () => {
           Order
         </p>
         <hr className="border-gray-200 mb-4 text-center text-2xl w-full ml-auto" />
+        <p className="text-left w-full">
+          Orders have closed for this week, please check back again soon!
+        </p>
 
-        <Container>
+        {/* <Container>
           {order
             .sort((a, b) => a.order - b.order)
             .map((item) => {
@@ -196,7 +198,7 @@ export const OnlineOrder = () => {
               <span>Checkout</span>
             )}
           </button>
-        </Container>
+        </Container> */}
       </Form>
     </>
   );
