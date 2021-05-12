@@ -4,10 +4,7 @@ const storage = new Storage();
 const bucketName = "seven_aprons_sessions";
 const bucket = storage.bucket(bucketName);
 const currentWeek = getISOWeek(new Date());
-const folder =
-  process.env.NODE_ENV === "production"
-    ? `production/week_${currentWeek}`
-    : `test/week_${currentWeek}`;
+const folder = `${process.env.NODE_ENV}/week_${currentWeek}`;
 
 export const uploadSession = async (req, res) => {
   if (!req.body) {
