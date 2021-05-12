@@ -2,7 +2,6 @@ import { ChangeEvent, useState } from "react";
 import styled from "styled-components";
 import "floating-label-react/styles.css";
 import FloatingLabel from "floating-label-react";
-import { newOrder } from "@utils";
 import { loadStripe } from "@stripe/stripe-js";
 import { Form, Container, TotalValue } from "./styles";
 import PulseLoader from "react-spinners/PulseLoader";
@@ -22,11 +21,14 @@ export const OnlineOrder = () => {
     },
     {
       onSuccess: ({ data }) => {
+        debugger;
         const p = data.map(({ id, name, images, metadata }) => ({
           id,
           name,
           image: images[0],
           dishOrder: metadata.dishOrder,
+          price: metadata.price,
+          quantity: 0,
         }));
 
         setProducts(p);
@@ -36,7 +38,6 @@ export const OnlineOrder = () => {
     }
   );
 
-  const [order, setOrder] = useState([...newOrder]);
   const [user, setUser] = useState({
     name: "",
     email: "",
@@ -49,7 +50,7 @@ export const OnlineOrder = () => {
 
     setIsLoading(true);
     const stripe = await stripePromise;
-    const lineItems = order
+    const lineItems = products
       .map(({ price, quantity }) => ({ price, quantity }))
       .filter((i) => i.quantity > 0);
 
@@ -75,12 +76,13 @@ export const OnlineOrder = () => {
   };
 
   const handleItemUpdate = (e, item) => {
+    debugger;
     const val = e.target.value;
     if (e.target.validity.valid || val === "") {
       const updatedItem = { ...item, quantity: Number(e.target.value) };
-      const newOrder = order.filter((i) => i.price !== updatedItem.price);
-      newOrder.push(updatedItem);
-      setOrder(newOrder);
+      const newProducts = products.filter((i) => i.price !== updatedItem.price);
+      newProducts.push(updatedItem);
+      setProducts(newProducts);
     }
   };
 
@@ -99,11 +101,11 @@ export const OnlineOrder = () => {
           <PulseLoader />
         ) : (
           <Container>
-            {order
-              .sort((a, b) => a.order - b.order)
+            {products
+              .sort((a, b) => a.dishOrder - b.dishOrder)
               .map((item) => {
                 return (
-                  <div key={item.price}>
+                  <div key={item.id}>
                     <div className="flex items-center justify-end mb-2">
                       <div className="flex flex-col items-end mr-4">
                         <label className="text-md text-right font-medium">
@@ -124,7 +126,7 @@ export const OnlineOrder = () => {
                   </div>
                 );
               })}
-            <TotalValue order={order} />
+            <TotalValue order={products} />
             {errorMessage && (
               <p className="text-red-500 text-right mb-4">
                 Please select a dish quantity to order.
