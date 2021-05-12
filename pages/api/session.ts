@@ -1,7 +1,11 @@
+import { Storage } from "@google-cloud/storage";
+import { getISOWeek } from "date-fns";
 import type { NextApiRequest, NextApiResponse } from "next";
-import { SecretManagerServiceClient } from "@google-cloud/secret-manager";
-import { PubSub } from "@google-cloud/pubsub";
-const client = new SecretManagerServiceClient();
+const storage = new Storage();
+const bucketName = "seven_aprons_sessions";
+const bucket = storage.bucket(bucketName);
+const currentWeek = getISOWeek(new Date());
+const folder = `${process.env.NODE_ENV}/week_${currentWeek}`;
 
 /**
  *
@@ -18,7 +22,7 @@ export default function checkout(req: NextApiRequest, res: NextApiResponse) {
 const runCheckout = async (req, res) => {
   const message = JSON.parse(req.body);
   const { id: sessionId } = await getSessionId(message);
-  await publishMessage({ message, sessionId });
+  await uploadSession(message, sessionId);
 
   res.status(200).json({ sessionId });
 };
@@ -39,20 +43,15 @@ const getSessionId = async ({ line_items, user }) => {
   return await stripe.checkout.sessions.create(session);
 };
 
-const publishMessage = async (message) => {
-  const pubsub = new PubSub();
-  const dataBuffer = Buffer.from(JSON.stringify(message));
+export const uploadSession = async (message, sessionId) => {
+  const fileName = `${folder}/${sessionId}.json`;
+  const file = bucket.file(fileName);
+  await file.save(JSON.stringify(message));
 
-  const messageId = await pubsub.topic("sessions").publish(dataBuffer);
-  console.log(`Message ${messageId} published.`);
+  console.log(
+    JSON.stringify({
+      message: "Session uploaded",
+      location: `https://storage.cloud.google.com/${bucketName}/${fileName}`,
+    })
+  );
 };
-
-async function getSecret() {
-  const name = "projects/1085191029669/secrets/TEST";
-
-  const secret = await client.getSecret({
-    name,
-  });
-
-  console.log(`Secret: ${secret.toString()}`);
-}
