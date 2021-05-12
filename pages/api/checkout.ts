@@ -1,32 +1,32 @@
-import { getISOWeek } from "date-fns";
-import { Storage } from "@google-cloud/storage";
-const storage = new Storage();
-const bucketName = "seven_aprons_sessions";
-const bucket = storage.bucket(bucketName);
-const currentWeek = getISOWeek(new Date());
-const folder =
-  process.env.NODE_ENV === "development"
-    ? `test/week_${currentWeek}`
-    : `production/week_${currentWeek}`;
-const stripe = require("stripe")(process.env.STRIPE_KEY_SECRET);
+import type { NextApiRequest, NextApiResponse } from "next";
+import { SecretManagerServiceClient } from "@google-cloud/secret-manager";
+import { PubSub } from "@google-cloud/pubsub";
+const client = new SecretManagerServiceClient();
+
 /**
  *
  * @param {!express:Request} req HTTP request context.
  * @param {!express:Response} res HTTP response context.
  */
-export default async function checkout(req, res) {
-  try {
-    const message = JSON.parse(req.body);
-    const { id: sessionId } = await getSessionId(message);
-    await uploadSession(message, sessionId);
-
-    res.status(200).json({ sessionId });
-  } catch (e) {
-    console.log(JSON.stringify(e));
-  }
+export default function checkout(req: NextApiRequest, res: NextApiResponse) {
+  runCheckout(req, res).catch((err) => {
+    console.log(JSON.stringify(err));
+    res.status(500).send("Server error");
+  });
 }
 
+const runCheckout = async (req, res) => {
+  const message = JSON.parse(req.body);
+  const { id: sessionId } = await getSessionId(message);
+  await publishMessage({ message, sessionId });
+
+  res.status(200).json({ sessionId });
+};
+
 const getSessionId = async ({ line_items, user }) => {
+  // TODO: secret manager
+  const stripe = require("stripe")(process.env.STRIPE_KEY_SECRET);
+
   const session = {
     payment_method_types: ["card"],
     customer_email: user.email,
@@ -39,15 +39,20 @@ const getSessionId = async ({ line_items, user }) => {
   return await stripe.checkout.sessions.create(session);
 };
 
-const uploadSession = async (message, sessionId) => {
-  const location = `${folder}/${sessionId}.json`;
-  const file = bucket.file(location);
-  await file.save(JSON.stringify(message));
+const publishMessage = async (message) => {
+  const pubsub = new PubSub();
+  const dataBuffer = Buffer.from(JSON.stringify(message));
 
-  console.log(
-    JSON.stringify({
-      message: "Session uploaded",
-      location: `https://storage.cloud.google.com/${bucketName}/${location}`,
-    })
-  );
+  const messageId = await pubsub.topic("sessions").publish(dataBuffer);
+  console.log(`Message ${messageId} published.`);
 };
+
+async function getSecret() {
+  const name = "projects/1085191029669/secrets/TEST";
+
+  const secret = await client.getSecret({
+    name,
+  });
+
+  console.log(`Secret: ${secret.toString()}`);
+}

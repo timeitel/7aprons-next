@@ -11,7 +11,7 @@ const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_KEY);
 
 export const OnlineOrder = () => {
   const [products, setProducts] = useState([]);
-  const getProducts = useQuery(
+  const productsQuery = useQuery(
     "getProducts",
     async () => {
       const res = await fetch("/api/products");
