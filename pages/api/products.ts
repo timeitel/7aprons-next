@@ -5,12 +5,11 @@ const stripe = require("stripe")(process.env.STRIPE_KEY_SECRET);
  * @param {!express:Request} req HTTP request context.
  * @param {!express:Response} res HTTP response context.
  */
-export default async function getProducts(req, res) {
-  try {
-    await runGetProducts(req, res);
-  } catch (e) {
-    console.log(JSON.stringify(e));
-  }
+export default function getProducts(req, res) {
+  runGetProducts(req, res).catch((err) => {
+    console.log(JSON.stringify(err));
+    res.status(500).send("Server error");
+  });
 }
 
 const runGetProducts = async (req, res) => {

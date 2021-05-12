@@ -10,8 +10,10 @@ import { useQuery } from "react-query";
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_KEY);
 
 export const OnlineOrder = () => {
+  const [isLoading, setIsLoading] = useState(false);
+  const [errorMessage, setErrorMessage] = useState(false);
   const [products, setProducts] = useState([]);
-  const productsQuery = useQuery(
+  const { isFetching: isDataLoading } = useQuery(
     "getProducts",
     async () => {
       const res = await fetch("/api/products");
@@ -38,8 +40,6 @@ export const OnlineOrder = () => {
     company: "",
     deliveryAddress: "",
   });
-  const [isLoading, setIsLoading] = useState(false);
-  const [errorMessage, setErrorMessage] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -83,6 +83,7 @@ export const OnlineOrder = () => {
 
   return (
     <>
+      {isDataLoading && <p>Loading</p>}
       <Form onSubmit={handleSubmit}>
         <p
           className="font-medium w-full text-left"
