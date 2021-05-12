@@ -10,10 +10,11 @@ import { useQuery } from "react-query";
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_KEY);
 
 export const OnlineOrder = () => {
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   const [errorMessage, setErrorMessage] = useState(false);
   const [products, setProducts] = useState([]);
-  const { isFetching: isDataLoading } = useQuery(
+
+  useQuery(
     "getProducts",
     async () => {
       const res = await fetch("/api/products");
@@ -27,7 +28,9 @@ export const OnlineOrder = () => {
           image: images[0],
           dishOrder: metadata.dishOrder,
         }));
+
         setProducts(p);
+        setIsLoading(false);
         console.log(products);
       },
     }
@@ -83,7 +86,6 @@ export const OnlineOrder = () => {
 
   return (
     <>
-      {isDataLoading && <p>Loading</p>}
       <Form onSubmit={handleSubmit}>
         <p
           className="font-medium w-full text-left"
@@ -92,114 +94,115 @@ export const OnlineOrder = () => {
           Order
         </p>
         <hr className="border-gray-200 mb-4 text-center text-2xl w-full ml-auto" />
-        <p className="text-left w-full">
-          Orders have closed for this week, please check back again soon!
-        </p>
 
-        {/* <Container>
-          {order
-            .sort((a, b) => a.order - b.order)
-            .map((item) => {
-              return (
-                <div key={item.price}>
-                  <div className="flex items-center justify-end mb-2">
-                    <div className="flex flex-col items-end mr-4">
-                      <label className="text-md text-right font-medium">
-                        {item.name}
-                      </label>
-                      <label>$8.50 each</label>
+        {isLoading ? (
+          <PulseLoader />
+        ) : (
+          <Container>
+            {order
+              .sort((a, b) => a.order - b.order)
+              .map((item) => {
+                return (
+                  <div key={item.price}>
+                    <div className="flex items-center justify-end mb-2">
+                      <div className="flex flex-col items-end mr-4">
+                        <label className="text-md text-right font-medium">
+                          {item.name}
+                        </label>
+                        <label>$8.50 each</label>
+                      </div>
+                      <input
+                        name={item.name}
+                        value={item.quantity}
+                        type="number"
+                        min="0"
+                        max="100"
+                        onChange={(e) => handleItemUpdate(e, item)}
+                        style={{ maxWidth: "20%" }}
+                      />
                     </div>
-                    <input
-                      name={item.name}
-                      value={item.quantity}
-                      type="number"
-                      min="0"
-                      max="100"
-                      onChange={(e) => handleItemUpdate(e, item)}
-                      style={{ maxWidth: "20%" }}
-                    />
                   </div>
-                </div>
-              );
-            })}
-          <TotalValue order={order} />
-          {errorMessage && (
-            <p className="text-red-500 text-right mb-4">
-              Please select a dish quantity to order.
-            </p>
-          )}
-
-          <p
-            className="font-medium w-1/2 text-left mt-6"
-            style={{ color: "#aa485d" }}
-          >
-            Delivery details
-          </p>
-          <hr className="border-gray-200 mb-4 text-center text-2xl w-full ml-auto" />
-
-          <InfoContainer>
-            <FloatingLabel
-              name="name"
-              placeholder="Name"
-              required
-              value={user.name}
-              onChange={(e: ChangeEvent<HTMLInputElement>) =>
-                setUser((prev) => ({ ...prev, name: e.target.value }))
-              }
-            />
-            <FloatingLabel
-              name="company"
-              placeholder="Company"
-              required
-              value={user.company}
-              onChange={(e: ChangeEvent<HTMLInputElement>) =>
-                setUser((prev) => ({ ...prev, company: e.target.value }))
-              }
-            />
-            <FloatingLabel
-              name="email"
-              placeholder="Email"
-              type="email"
-              required
-              value={user.email}
-              onChange={(e: ChangeEvent<HTMLInputElement>) =>
-                setUser((prev) => ({ ...prev, email: e.target.value }))
-              }
-            />
-            <FloatingLabel
-              name="deliveryAddress"
-              placeholder="Delivery Address"
-              type="deliveryAddress"
-              required
-              value={user.deliveryAddress}
-              onChange={(e: ChangeEvent<HTMLInputElement>) =>
-                setUser((prev) => ({
-                  ...prev,
-                  deliveryAddress: e.target.value,
-                }))
-              }
-            />
-          </InfoContainer>
-
-          <p className="text-left mt-4">
-            Please note: we are currently only delivering to{" "}
-            <strong>Perth CBD and Subiaco</strong>. We reserve the right to
-            refund any orders outside this area.{" "}
-          </p>
-
-          <button
-            className="flex mt-8 bg-primary h-10 cursor-pointer ml-auto items-center justify-center whitespace-nowrap text-white font-bold px-6 rounded outline-none focus:outline-none mb-1 bg-blueGray-700 active:bg-blueGray-600 active:bg-blueGray-500 uppercase text-sm shadow hover:shadow-lg ease-linear transition-all duration-150"
-            style={{ width: 145 }}
-            type="submit"
-            disabled={isLoading}
-          >
-            {isLoading ? (
-              <PulseLoader color={"#fff"} size={10} />
-            ) : (
-              <span>Checkout</span>
+                );
+              })}
+            <TotalValue order={order} />
+            {errorMessage && (
+              <p className="text-red-500 text-right mb-4">
+                Please select a dish quantity to order.
+              </p>
             )}
-          </button>
-        </Container> */}
+
+            <p
+              className="font-medium w-1/2 text-left mt-6"
+              style={{ color: "#aa485d" }}
+            >
+              Delivery details
+            </p>
+            <hr className="border-gray-200 mb-4 text-center text-2xl w-full ml-auto" />
+
+            <InfoContainer>
+              <FloatingLabel
+                name="name"
+                placeholder="Name"
+                required
+                value={user.name}
+                onChange={(e: ChangeEvent<HTMLInputElement>) =>
+                  setUser((prev) => ({ ...prev, name: e.target.value }))
+                }
+              />
+              <FloatingLabel
+                name="company"
+                placeholder="Company"
+                required
+                value={user.company}
+                onChange={(e: ChangeEvent<HTMLInputElement>) =>
+                  setUser((prev) => ({ ...prev, company: e.target.value }))
+                }
+              />
+              <FloatingLabel
+                name="email"
+                placeholder="Email"
+                type="email"
+                required
+                value={user.email}
+                onChange={(e: ChangeEvent<HTMLInputElement>) =>
+                  setUser((prev) => ({ ...prev, email: e.target.value }))
+                }
+              />
+              <FloatingLabel
+                name="deliveryAddress"
+                placeholder="Delivery Address"
+                type="deliveryAddress"
+                required
+                value={user.deliveryAddress}
+                onChange={(e: ChangeEvent<HTMLInputElement>) =>
+                  setUser((prev) => ({
+                    ...prev,
+                    deliveryAddress: e.target.value,
+                  }))
+                }
+              />
+            </InfoContainer>
+
+            <p className="text-left mt-4">
+              Please note: we are currently only delivering to{" "}
+              <strong>Perth CBD and Subiaco</strong>. We reserve the right to
+              refund any orders outside this area.{" "}
+            </p>
+
+            <button
+              className="flex mt-8 bg-primary h-10 cursor-pointer ml-auto items-center justify-center whitespace-nowrap text-white font-bold px-6 rounded outline-none focus:outline-none mb-1 bg-blueGray-700 active:bg-blueGray-600 active:bg-blueGray-500 uppercase text-sm shadow hover:shadow-lg ease-linear transition-all duration-150"
+              style={{ width: 145 }}
+              type="submit"
+              disabled={isLoading}
+            >
+              {isLoading ? (
+                <PulseLoader color={"#fff"} size={10} />
+              ) : (
+                <span>Checkout</span>
+              )}
+            </button>
+          </Container>
+        )}
       </Form>
     </>
   );
@@ -208,9 +211,6 @@ export const OnlineOrder = () => {
 const InfoContainer = styled.div`
   width: 100%;
   columns: 2;
-  /* display: flex;
-  align-items: center;
-  flex-wrap: wrap; */
 
   span {
     color: gray;
