@@ -1,3 +1,5 @@
+import { getWeekOfMonth } from "date-fns";
+
 const stripe = require("stripe")(process.env.STRIPE_KEY_SECRET);
 
 /**
@@ -14,7 +16,13 @@ export default function getProducts(req, res) {
 
 const runGetProducts = async (req, res) => {
   const { data } = await stripe.products.list();
-  const availableDishes = data.filter((d) => d.metadata.dishOrder !== 3);
-  console.log(data);
-  res.status(200).json(data);
+  const currentWeek = getWeekOfMonth(new Date("2021-05-05"), {
+    weekStartsOn: 2,
+  });
+  console.log(currentWeek);
+  const availableDishes = data.filter(
+    (d) => d.metadata.dishOrder >= currentWeek - 1
+  );
+  // console.log(availableDishes);
+  res.status(200).json(availableDishes);
 };

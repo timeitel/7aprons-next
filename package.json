@@ -20,7 +20,7 @@
     "@types/react-query": "^1.1.2",
     "babel-preset-next": "^1.4.0",
     "chart.js": "2.9.4",
-    "date-fns": "^2.21.2",
+    "date-fns": "^2.21.3",
     "floating-label-react": "^1.0.3",
     "gulp": "4.0.2",
     "gulp-append-prepend": "1.0.8",
