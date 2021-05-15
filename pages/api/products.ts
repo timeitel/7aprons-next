@@ -13,6 +13,8 @@ export default function getProducts(req, res) {
 }
 
 const runGetProducts = async (req, res) => {
-  const products = await stripe.products.list();
-  res.status(200).json(products);
+  const { data } = await stripe.products.list();
+  const availableDishes = data.filter((d) => d.metadata.dishOrder !== 3);
+  console.log(data);
+  res.status(200).json(data);
 };

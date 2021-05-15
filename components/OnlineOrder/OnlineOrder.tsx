@@ -20,8 +20,7 @@ export const OnlineOrder = () => {
       return await res.json();
     },
     {
-      onSuccess: ({ data }) => {
-        debugger;
+      onSuccess: (data) => {
         const p = data.map(({ id, name, images, metadata }) => ({
           id,
           name,
@@ -76,7 +75,6 @@ export const OnlineOrder = () => {
   };
 
   const handleItemUpdate = (e, item) => {
-    debugger;
     const val = e.target.value;
     if (e.target.validity.valid || val === "") {
       const updatedItem = { ...item, quantity: Number(e.target.value) };
