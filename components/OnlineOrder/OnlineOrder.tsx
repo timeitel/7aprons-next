@@ -33,7 +33,6 @@ export const OnlineOrder = () => {
 
         setProducts(p);
         setIsLoading(false);
-        console.log(products);
       },
     }
   );
