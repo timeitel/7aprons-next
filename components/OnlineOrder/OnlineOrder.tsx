@@ -10,6 +10,7 @@ const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_KEY);
 
 export const OnlineOrder = () => {
   const [isLoading, setIsLoading] = useState(true);
+  const [isLoadingSession, setIsLoadingSession] = useState(false);
   const [errorMessage, setErrorMessage] = useState(false);
   const [products, setProducts] = useState([]);
 
@@ -47,14 +48,14 @@ export const OnlineOrder = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    setIsLoading(true);
+    setIsLoadingSession(true);
     const stripe = await stripePromise;
     const lineItems = products
       .map(({ price, quantity }) => ({ price, quantity }))
       .filter((i) => i.quantity > 0);
 
     if (lineItems.length === 0) {
-      setIsLoading(false);
+      setIsLoadingSession(false);
       setErrorMessage(true);
       return;
     }
@@ -71,7 +72,7 @@ export const OnlineOrder = () => {
 
     if (error) console.log(error);
 
-    setIsLoading(false);
+    setIsLoadingSession(false);
   };
 
   const handleItemUpdate = (e, item) => {
