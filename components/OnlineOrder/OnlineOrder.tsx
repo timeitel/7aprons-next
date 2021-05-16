@@ -195,7 +195,7 @@ export const OnlineOrder = () => {
               type="submit"
               disabled={isLoading}
             >
-              {isLoading ? (
+              {isLoadingSession ? (
                 <PulseLoader color={"#fff"} size={10} />
               ) : (
                 <span>Checkout</span>
