@@ -16,13 +16,12 @@ export default function getProducts(req, res) {
 
 const runGetProducts = async (req, res) => {
   const { data } = await stripe.products.list();
-  const currentWeek = getWeekOfMonth(new Date("2021-05-05"), {
+  const currentWeek = getWeekOfMonth(new Date(), {
     weekStartsOn: 2,
   });
-  console.log(currentWeek);
+
   const availableDishes = data.filter(
-    (d) => d.metadata.dishOrder >= currentWeek - 1
+    (d) => d.metadata.dishOrder > currentWeek
   );
-  // console.log(availableDishes);
   res.status(200).json(availableDishes);
 };
