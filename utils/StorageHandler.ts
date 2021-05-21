@@ -14,4 +14,22 @@ export class StorageService {
       })
     );
   };
+
+  public static find = async (partialFileName: string): Promise<{}> => {
+    const prefix = `${process.env.NODE_ENV}`;
+    const [fileObjects] = await bucket.getFiles({
+      prefix,
+    });
+
+    const files = fileObjects
+      .map((f) => f.name)
+      .filter((f) => f.includes(partialFileName));
+
+    if (files.length > 0) {
+      console.log("Unable to find file");
+      return {};
+    }
+
+    return files[0];
+  };
 }
