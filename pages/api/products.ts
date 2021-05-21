@@ -1,6 +1,5 @@
+import { getSecret } from "@utils/SecretHandler";
 import { getWeekOfMonth } from "date-fns";
-
-const stripe = require("stripe")(process.env.STRIPE_KEY_SECRET);
 
 /**
  *
@@ -17,6 +16,8 @@ export default async function getProducts(req, res) {
 }
 
 const runGetProducts = async (req, res) => {
+  const STRIPE = await getSecret("projects/1085191029669/secrets/stripe");
+  const stripe = require("stripe")(STRIPE.API_KEY);
   const { data } = await stripe.products.list();
   const currentWeek = getWeekOfMonth(new Date(), {
     weekStartsOn: 2,

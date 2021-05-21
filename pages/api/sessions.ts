@@ -1,9 +1,7 @@
-import { Storage } from "@google-cloud/storage";
+import { getSecret } from "@utils/SecretHandler";
+import { StorageService } from "@utils/StorageHandler";
 import { getISOWeek } from "date-fns";
 import type { NextApiRequest, NextApiResponse } from "next";
-const storage = new Storage();
-const bucketName = "seven_aprons_sessions";
-const bucket = storage.bucket(bucketName);
 const currentWeek = getISOWeek(new Date());
 const folder = `${process.env.NODE_ENV}/week_${currentWeek}`;
 
@@ -12,7 +10,7 @@ const folder = `${process.env.NODE_ENV}/week_${currentWeek}`;
  * @param {!express:Request} req HTTP request context.
  * @param {!express:Response} res HTTP response context.
  */
-export default function checkout(req: NextApiRequest, res: NextApiResponse) {
+export default function sessions(req: NextApiRequest, res: NextApiResponse) {
   runCheckout(req, res).catch((err) => {
     console.log(JSON.stringify(err));
     res.status(500).send("Server error");
@@ -22,13 +20,17 @@ export default function checkout(req: NextApiRequest, res: NextApiResponse) {
 const runCheckout = async (req, res) => {
   const order = JSON.parse(req.body);
   const session = await getSessionId(order);
-  await uploadSession({ order, session }, session.payment_intent);
+  await StorageService.save(
+    { order, session },
+    `${folder}/${session.payment_intent}.json`
+  );
 
   res.status(200).json({ sessionId: session.id });
 };
 
 const getSessionId = async ({ line_items, user }) => {
-  const stripe = require("stripe")(process.env.STRIPE_KEY_SECRET);
+  const STRIPE = await getSecret("projects/1085191029669/secrets/stripe");
+  const stripe = require("stripe")(STRIPE.API_KEY);
 
   const session = {
     payment_method_types: ["card"],
@@ -40,17 +42,4 @@ const getSessionId = async ({ line_items, user }) => {
   };
 
   return await stripe.checkout.sessions.create(session);
-};
-
-export const uploadSession = async (message, paymentIntent) => {
-  const fileName = `${folder}/${paymentIntent}.json`;
-  const file = bucket.file(fileName);
-  await file.save(JSON.stringify(message));
-
-  console.log(
-    JSON.stringify({
-      message: "Session uploaded",
-      location: `https://storage.cloud.google.com/${bucketName}/${fileName}`,
-    })
-  );
 };
