@@ -21,10 +21,11 @@ export default function checkout(req: NextApiRequest, res: NextApiResponse) {
 
 const runCheckout = async (req, res) => {
   const message = JSON.parse(req.body);
-  const { id: sessionId } = await getSessionId(message);
-  await uploadSession(message, sessionId);
+  const sessionRes = await getSessionId(message);
+  console.log(sessionRes);
+  await uploadSession(message, res.id);
 
-  res.status(200).json({ sessionId });
+  res.status(200).json({ sessionId: res.id });
 };
 
 const getSessionId = async ({ line_items, user }) => {

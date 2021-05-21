@@ -1,15 +1,14 @@
 import { buffer } from "micro";
 import Stripe from "stripe";
 import { NextApiRequest, NextApiResponse } from "next";
+const webhookSecret = "whsec_hxWtHk1vpdhknr5c56c8Y1ni7W9d8c9u";
+const stripe = new Stripe(webhookSecret, null);
 
 export const config = {
   api: {
     bodyParser: false,
   },
 };
-
-const webhookSecret = "whsec_hxWtHk1vpdhknr5c56c8Y1ni7W9d8c9u";
-const stripe = new Stripe(webhookSecret, null);
 
 /**
  *
@@ -28,11 +27,13 @@ export default async function webhook(
 
     try {
       event = stripe.webhooks.constructEvent(buf, sig, webhookSecret);
+      console.log(event);
     } catch (err) {
       res.status(400).send(`Webhook Error: ${err.message}`);
       return;
     }
 
+    console.log("received");
     res.json({ received: true });
   } else {
     res.setHeader("Allow", "POST");
