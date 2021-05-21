@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "license": "MIT",
   "scripts": {
-    "dev": "next dev",
+    "dev": "cross-env NODE_OPTIONS='--inspect' next dev",
     "build": "next build",
     "start": "next start -p $PORT",
     "install:clean": "rm -rf node_modules/ && rm -rf package-lock.json && npm install && npm run build:tailwind && npm run dev",
@@ -20,6 +20,7 @@
     "@types/react-query": "^1.1.2",
     "babel-preset-next": "^1.4.0",
     "chart.js": "2.9.4",
+    "cross-env": "^7.0.3",
     "date-fns": "^2.21.3",
     "floating-label-react": "^1.0.3",
     "gulp": "4.0.2",

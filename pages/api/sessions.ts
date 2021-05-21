@@ -20,16 +20,14 @@ export default function checkout(req: NextApiRequest, res: NextApiResponse) {
 }
 
 const runCheckout = async (req, res) => {
-  const message = JSON.parse(req.body);
-  const sessionRes = await getSessionId(message);
-  console.log(sessionRes);
-  await uploadSession(message, res.id);
+  const order = JSON.parse(req.body);
+  const session = await getSessionId(order);
+  await uploadSession({ order, session }, session.payment_intent);
 
-  res.status(200).json({ sessionId: res.id });
+  res.status(200).json({ sessionId: session.id });
 };
 
 const getSessionId = async ({ line_items, user }) => {
-  // TODO: secret manager
   const stripe = require("stripe")(process.env.STRIPE_KEY_SECRET);
 
   const session = {
@@ -44,8 +42,8 @@ const getSessionId = async ({ line_items, user }) => {
   return await stripe.checkout.sessions.create(session);
 };
 
-export const uploadSession = async (message, sessionId) => {
-  const fileName = `${folder}/${sessionId}.json`;
+export const uploadSession = async (message, paymentIntent) => {
+  const fileName = `${folder}/${paymentIntent}.json`;
   const file = bucket.file(fileName);
   await file.save(JSON.stringify(message));
 
