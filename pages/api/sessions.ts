@@ -20,10 +20,7 @@ export default function sessions(req: NextApiRequest, res: NextApiResponse) {
 const runCheckout = async (req, res) => {
   const order = JSON.parse(req.body);
   const session = await getSessionId(order);
-  await StorageService.save(
-    { order, session },
-    `${folder}/${session.payment_intent}.json`
-  );
+  await StorageService.save({ order, session }, `${folder}/${session.id}.json`);
 
   res.status(200).json({ sessionId: session.id });
 };

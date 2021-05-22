@@ -1,3 +1,4 @@
+import { Storage } from "@google-cloud/storage";
 const storage = new Storage();
 const bucketName = "seven_aprons_sessions";
 const bucket = storage.bucket(bucketName);
@@ -15,7 +16,7 @@ export class StorageService {
     );
   };
 
-  public static find = async (partialFileName: string): Promise<{}> => {
+  public static find = async (partialFileName: string): Promise<any> => {
     const prefix = `${process.env.NODE_ENV}`;
     const [fileObjects] = await bucket.getFiles({
       prefix,
@@ -23,13 +24,34 @@ export class StorageService {
 
     const files = fileObjects
       .map((f) => f.name)
-      .filter((f) => f.includes(partialFileName));
+      .filter((f) =>
+        f.includes(
+          "cs_test_a1vzmEzfXRoZLIiwQNWgVTGZi80LqgvAWDdiMPUPMM3tmRby2bp1uCHQ1O.json"
+        )
+      );
 
-    if (files.length > 0) {
+    // const files = fileObjects
+    //   .map((f) => f.name)
+    //   .filter((f) => f.includes(partialFileName));
+
+    if (files.length === 0) {
       console.log("Unable to find file");
-      return {};
+      return { error: true };
     }
 
-    return files[0];
+    const fileString = await readFile(files[0]);
+    return JSON.parse(fileString);
   };
 }
+
+const readFile = async (fileName: string): Promise<string> => {
+  return new Promise((resolve, reject) => {
+    let buf = "";
+    bucket
+      .file(fileName)
+      .createReadStream()
+      .on("data", (d: any) => (buf += d))
+      .on("end", () => resolve(buf))
+      .on("error", (e: any) => reject(e));
+  });
+};

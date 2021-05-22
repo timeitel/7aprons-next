@@ -59,7 +59,7 @@ export const OnlineOrder = () => {
       return;
     }
 
-    const res = await fetch("/api/session", {
+    const res = await fetch("/api/sessions", {
       method: "post",
       body: JSON.stringify({ user, line_items: lineItems }),
     });

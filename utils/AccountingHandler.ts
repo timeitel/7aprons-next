@@ -1,11 +1,13 @@
-import { getISOWeek } from "date-fns";
-import { Storage } from "@google-cloud/storage";
-const storage = new Storage();
-const bucketName = "seven_aprons_sessions";
-const bucket = storage.bucket(bucketName);
-const currentWeek = getISOWeek(new Date());
-const folder = `${process.env.NODE_ENV}/week_${currentWeek}`;
+import { StorageService } from "./StorageHandler";
 
-export const updateAccounting = (paymentIntent: string) => {
-  console.log("test");
+export const updateAccounting = async (checkoutSessionId: string) => {
+  const file = await StorageService.find(checkoutSessionId);
+
+  if (file?.error) {
+    console.log(`Error finding file with id: ${checkoutSessionId}`);
+  }
+
+  console.log("hello");
+
+  // access google sheet with file
 };
