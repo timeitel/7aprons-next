@@ -20,7 +20,7 @@ export default async function sessionCompleted(
   res: NextApiResponse
 ) {
   if (req.method === "POST") {
-    const STRIPE = await getSecret("STRIPE");
+    const STRIPE = await getSecret("projects/1085191029669/secrets/stripe");
     const stripe = new Stripe(STRIPE.WH_SEC, null);
     const buf = await buffer(req);
     const sig = req.headers["stripe-signature"];
@@ -28,15 +28,15 @@ export default async function sessionCompleted(
     let event;
 
     try {
-      event = stripe.webhooks.constructEvent(buf, sig, STRIPE.WH_SEC);
+      event = stripe.webhooks.constructEvent(buf, sig, STRIPE.WH_SECRET);
     } catch (err) {
       res.status(400).send(`Webhook Error: ${err.message}`);
       return;
     }
 
-    const pi = event?.data?.object?.payment_intent;
-    if (pi) {
-      await updateAccounting(pi);
+    if (event.type === "checkout.session.completed") {
+      const cs = event.data.object.id;
+      await updateAccounting(cs);
     }
 
     res.status(204).send("Ok");
