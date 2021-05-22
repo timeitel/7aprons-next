@@ -23,8 +23,8 @@ const runGetProducts = async (req, res) => {
     weekStartsOn: 2,
   });
 
-  const availableDishes = data.filter(
-    (d) => d.metadata.dishOrder > currentWeek
-  );
+  const availableDishes = data
+    .filter((d) => d.active)
+    .filter((d) => d.metadata.dishOrder > currentWeek);
   res.status(200).json(availableDishes);
 };

@@ -1,9 +1,8 @@
 import { buffer } from "micro";
 import Stripe from "stripe";
 import { NextApiRequest, NextApiResponse } from "next";
-import { updateOrderingSystem } from "./accounting";
-const webhookSecret = "whsec_hxWtHk1vpdhknr5c56c8Y1ni7W9d8c9u";
-const stripe = new Stripe(webhookSecret, null);
+import { updateAccounting } from "../../utils/AccountingHandler";
+import { getSecret } from "@utils/SecretHandler";
 
 export const config = {
   api: {
@@ -16,18 +15,20 @@ export const config = {
  * @param {!express:Request} req HTTP req context.
  * @param {!express:Response} res HTTP res context.
  */
-export default async function webhook(
+export default async function sessionCompleted(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
   if (req.method === "POST") {
+    const STRIPE = await getSecret("STRIPE");
+    const stripe = new Stripe(STRIPE.WH_SEC, null);
     const buf = await buffer(req);
     const sig = req.headers["stripe-signature"];
 
     let event;
 
     try {
-      event = stripe.webhooks.constructEvent(buf, sig, webhookSecret);
+      event = stripe.webhooks.constructEvent(buf, sig, STRIPE.WH_SEC);
     } catch (err) {
       res.status(400).send(`Webhook Error: ${err.message}`);
       return;
@@ -35,7 +36,7 @@ export default async function webhook(
 
     const pi = event?.data?.object?.payment_intent;
     if (pi) {
-      await updateOrderingSystem(pi);
+      await updateAccounting(pi);
     }
 
     res.status(204).send("Ok");
