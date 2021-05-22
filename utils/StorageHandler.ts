@@ -24,15 +24,7 @@ export class StorageService {
 
     const files = fileObjects
       .map((f) => f.name)
-      .filter((f) =>
-        f.includes(
-          "cs_test_a1vzmEzfXRoZLIiwQNWgVTGZi80LqgvAWDdiMPUPMM3tmRby2bp1uCHQ1O.json"
-        )
-      );
-
-    // const files = fileObjects
-    //   .map((f) => f.name)
-    //   .filter((f) => f.includes(partialFileName));
+      .filter((f) => f.includes(partialFileName));
 
     if (files.length === 0) {
       console.log("Unable to find file");
