@@ -14,8 +14,6 @@ RUN npm run build
 
 FROM node:current-alpine AS production
 ENV NODE_ENV=production
-ARG STRIPE_KEY_SECRET
-ENV STRIPE_KEY_SECRET=${STRIPE_KEY_SECRET}
 WORKDIR /app
 COPY --from=build /build/package*.json ./
 COPY --from=build /build/.next ./.next
