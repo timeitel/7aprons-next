@@ -42,5 +42,6 @@ jobs:
             --project $CLOUD_RUN_PROJECT_ID \
             --platform managed \
             --region $CLOUD_RUN_REGION \
+            --service-account ${{ secrets.CLOUD_SA_EMAIL }} \
             --allow-unauthenticated \
             --quiet
