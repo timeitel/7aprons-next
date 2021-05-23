@@ -12,8 +12,6 @@ COPY --from=base /base ./
 RUN npm run build
 
 FROM node:current-alpine AS production
-ARG NODE_ENV
-ENV NODE_ENV=${NODE_ENV}
 WORKDIR /app
 COPY --from=build /build/package*.json ./
 COPY --from=build /build/.next ./.next
@@ -21,4 +19,4 @@ COPY --from=build /build/public ./public
 RUN npm install next
 
 EXPOSE 3000
-CMD npm run staging
+CMD npm run start
