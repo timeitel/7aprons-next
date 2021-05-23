@@ -1,13 +1,26 @@
-import { StorageService } from "./StorageHandler";
+import { getSecret } from "./SecretHandler";
+import { GoogleSpreadsheet } from "google-spreadsheet";
 
-export const updateAccounting = async (checkoutSessionId: string) => {
-  const file = await StorageService.find(checkoutSessionId);
+export const updateAccounting = async (checkoutSession: string) => {
+  const SA_SHEETS = await getSecret(
+    "projects/1085191029669/secrets/sa-seven-aprons"
+  );
 
-  if (file?.error) {
-    console.log(`Error finding file with id: ${checkoutSessionId}`);
-  }
+  const doc = new GoogleSpreadsheet(SA_SHEETS.sheet_id);
+  await doc.useServiceAccountAuth({
+    client_email: SA_SHEETS.client_email,
+    private_key: SA_SHEETS.private_key,
+  });
 
-  console.log("hello");
+  await doc.loadInfo();
+  console.log(doc.title);
+  await doc.updateProperties({ title: "renamed doc" });
 
-  // access google sheet with file
+  const sheet = doc.sheetsByIndex[0]; // or use doc.sheetsById[id] or doc.sheetsByTitle[title]
+  console.log(sheet.title);
+  console.log(sheet.rowCount);
+
+  // adding / removing sheets
+  const newSheet = await doc.addSheet({ title: "hot new sheet!" });
+  await newSheet.delete();
 };
