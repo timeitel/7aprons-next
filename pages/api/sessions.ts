@@ -1,5 +1,5 @@
 import { getSecret } from "@utils/SecretHandler";
-import { StorageService } from "@utils/StorageHandler";
+import { StorageService } from "services/StorageService";
 import { getISOWeek } from "date-fns";
 import type { NextApiRequest, NextApiResponse } from "next";
 const currentWeek = getISOWeek(new Date());

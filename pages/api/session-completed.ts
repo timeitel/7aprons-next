@@ -1,8 +1,9 @@
 import { buffer } from "micro";
 import Stripe from "stripe";
 import { NextApiRequest, NextApiResponse } from "next";
-import { updateAccounting } from "../../utils/AccountingHandler";
+import { updateAccounting } from "../../services/AccountingServce";
 import { getSecret } from "@utils/SecretHandler";
+import { StorageService } from "services/StorageService";
 
 export const config = {
   api: {
@@ -35,8 +36,11 @@ export default async function sessionCompleted(
     }
 
     if (event.type === "checkout.session.completed") {
-      const cs = event.data.object.id;
-      await updateAccounting(cs);
+      const cs_id = event.data.object.id;
+      const checkoutSession = await StorageService.find(cs_id);
+      if (!checkoutSession.error) {
+        await updateAccounting(checkoutSession.order);
+      }
     }
 
     res.status(204).send("Ok");
