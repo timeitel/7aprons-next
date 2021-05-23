@@ -23,6 +23,7 @@ export const updateAccounting = async (order: Order) => {
   const orderFormatted = await getOrderStringFromLineItems(line_items);
 
   const newOrder = {
+    // TODO: add id field
     Date: format(new Date(), "dd MMM yyyy"),
     Name: name,
     Email: email,
