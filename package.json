@@ -4,6 +4,7 @@
   "license": "MIT",
   "scripts": {
     "dev": "cross-env NODE_OPTIONS='--inspect' next dev",
+    "staging": "next dev",
     "build": "next build",
     "start": "next start -p $PORT",
     "install:clean": "rm -rf node_modules/ && rm -rf package-lock.json && npm install && npm run build:tailwind && npm run dev",
