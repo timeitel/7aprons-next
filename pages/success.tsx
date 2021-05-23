@@ -2,7 +2,7 @@
 import React from "react";
 import { Navbar } from "@components/Navbar";
 import { Footer } from "@components/Footer";
-import { domain } from "@utils";
+import { domain } from "@utils/utils";
 import { Landing } from "@components/Landing";
 
 export default function Success() {
