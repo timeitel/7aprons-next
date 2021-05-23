@@ -14,7 +14,8 @@ COPY --from=base /base ./
 RUN npm run build
 
 FROM node:current-alpine AS production
-ENV NODE_ENV=production
+ARG NODE_ENV
+ENV NODE_ENV=${NODE_ENV}
 WORKDIR /app
 COPY --from=build /build/package*.json ./
 COPY --from=build /build/.next ./.next
