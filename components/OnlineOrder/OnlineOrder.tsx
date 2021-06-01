@@ -91,11 +91,11 @@ export const OnlineOrder = () => {
           className="font-medium w-full text-left"
           style={{ color: "#aa485d" }}
         >
-          Order
+          Order - round closed for this week, please check again soon
         </p>
         <hr className="border-gray-200 mb-4 text-center text-2xl w-full ml-auto" />
 
-        {isLoading ? (
+        {/* {isLoading ? (
           <PulseLoader />
         ) : (
           <Container>
@@ -202,7 +202,7 @@ export const OnlineOrder = () => {
               )}
             </button>
           </Container>
-        )}
+        )} */}
       </Form>
     </>
   );

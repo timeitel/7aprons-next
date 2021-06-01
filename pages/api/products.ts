@@ -21,7 +21,7 @@ const runGetProducts = async (req, res) => {
   const { data } = await stripe.products.list();
   const date = new Date();
   const currentWeek = getWeekOfMonth(date, {
-    weekStartsOn: 2,
+    weekStartsOn: 4,
   });
 
   const availableDishes = data
