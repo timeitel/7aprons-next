@@ -20,14 +20,22 @@ const runGetProducts = async (req, res) => {
   const stripe = require("stripe")(STRIPE.API_KEY);
   const { data } = await stripe.products.list();
   const date = new Date();
-  const currentWeek = getWeekOfMonth(date, {
-    weekStartsOn: 4,
-  });
+  const currentWeek =
+    (getWeekOfMonth(date, {
+      weekStartsOn: 2,
+    }) +
+      1) %
+    5;
 
   const availableDishes = data
     .filter((d) => d.active)
-    .filter(
-      (d) => Math.floor(Number(d.metadata.dishOrder)) === currentWeek % 4
-    );
+    .filter((d) => getProductWeek(d) === currentWeek);
+
   res.status(200).json(availableDishes);
+};
+
+const getProductWeek = (product: any) => {
+  const week = Math.floor(Number(product.metadata.dishOrder));
+
+  return week;
 };
