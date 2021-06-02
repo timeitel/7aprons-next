@@ -95,7 +95,7 @@ export const OnlineOrder = () => {
         </p>
         <hr className="border-gray-200 mb-4 text-center text-2xl w-full ml-auto" />
 
-        {/* {isLoading ? (
+        {isLoading ? (
           <PulseLoader />
         ) : (
           <Container>
@@ -202,7 +202,7 @@ export const OnlineOrder = () => {
               )}
             </button>
           </Container>
-        )} */}
+        )}
       </Form>
     </>
   );
