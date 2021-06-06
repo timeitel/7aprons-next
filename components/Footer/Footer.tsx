@@ -15,7 +15,7 @@ export const Footer = () => {
               <a
                 target="_blank"
                 rel="noreferrer"
-                href="https://en-gb.facebook.com/sevenaprons.sevenaprons.7"
+                href="https://www.facebook.com/sevenaprons/"
               >
                 <button className="bg-white text-lightBlue-600 shadow-lg font-normal h-10 w-10 items-center justify-center align-center rounded-full outline-none focus:outline-none mr-2">
                   <i className="fab fa-facebook-square"></i>
