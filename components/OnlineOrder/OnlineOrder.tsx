@@ -84,6 +84,10 @@ export const OnlineOrder = () => {
     }
   };
 
+  if (isLoading) {
+    return <PulseLoader />;
+  }
+
   return (
     <>
       <Form onSubmit={handleSubmit}>
@@ -91,13 +95,13 @@ export const OnlineOrder = () => {
           className="font-medium w-full text-left"
           style={{ color: "#aa485d" }}
         >
-          Order
+          {products.length === 0
+            ? "Online ordering is currently closed, please check back again soon"
+            : "Order"}
         </p>
         <hr className="border-gray-200 mb-4 text-center text-2xl w-full ml-auto" />
 
-        {isLoading ? (
-          <PulseLoader />
-        ) : (
+        {products.length > 0 ? (
           <Container>
             {products
               .sort((a, b) => a.dishOrder - b.dishOrder)
@@ -202,7 +206,7 @@ export const OnlineOrder = () => {
               )}
             </button>
           </Container>
-        )}
+        ) : null}
       </Form>
     </>
   );
