@@ -22,7 +22,7 @@ const runGetProducts = async (req, res) => {
   const weekOfMonth = getWeekOfMonth(new Date(), {
     weekStartsOn: 2,
   });
-  const currentWeek = weekOfMonth % 5;
+  const currentWeek = weekOfMonth % 4;
 
   const availableDishes = data
     .filter((d) => d.active)
