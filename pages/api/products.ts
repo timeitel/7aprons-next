@@ -21,6 +21,7 @@ const runGetProducts = async (req, res) => {
   const { data } = await stripe.products.list();
   const weekOfMonth = getWeekOfMonth(new Date(), {
     weekStartsOn: 2,
+    locale: { code: "enAU" },
   });
   const currentWeek = weekOfMonth % 5;
   console.log("current week: ", currentWeek);
