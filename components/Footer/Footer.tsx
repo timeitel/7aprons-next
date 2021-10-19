@@ -43,11 +43,17 @@ export const Footer = () => {
                 </span>
                 <ul className="list-unstyled">
                   <li className="text-blueGray-600 hover:text-blueGray-800 font-semibold block pb-2 text-sm">
-                    Monday: Closed
+                    Monday to Friday
+                    <br /> 10am - 3pm
                   </li>
                   <li className="text-blueGray-600 hover:text-blueGray-800 font-semibold block pb-2 text-sm">
-                    Tuesday to Sunday
-                    <br /> 11:00 AM - 4:00 PM
+                    Saturday
+                    <br /> 10am - 3pm
+                    <br /> 5pm - 8pm
+                  </li>
+                  <li className="text-blueGray-600 hover:text-blueGray-800 font-semibold block pb-2 text-sm">
+                    Sunday
+                    <br /> Closed
                   </li>
                 </ul>
               </div>
