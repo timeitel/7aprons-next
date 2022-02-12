@@ -77,11 +77,22 @@ export const Footer = () => {
           rel="noreferrer"
           className="flex flex-wrap items-center md:justify-between justify-center"
         >
-          <div className="w-full md:w-4/12 px-4 mx-auto text-center">
-            <div className="text-sm text-blueGray-500 font-semibold py-1">
-              Made with ❤ by
-              <i className="fab text-lg fa-github ml-2"></i>
-            </div>
+          <div className="w-auto px-4 mx-auto text-center flex justify-start">
+            <a
+              href="https://timeitel.com"
+              target="__blank"
+              style={{
+                display: "flex",
+                alignItems: "center",
+                marginRight: "0.5rem",
+                width: "fit-content",
+                color: "blue",
+                textDecoration: "underline",
+              }}
+            >
+              Made by Tim
+            </a>
+            😊
           </div>
         </a>
       </div>
