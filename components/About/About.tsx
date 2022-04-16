@@ -2,7 +2,8 @@ export const About = () => {
   return (
     <section
       id="about"
-      className="pt-48 md:pt-40 pb-16 md:pb-32 relative bg-blueGray-100"
+      className="md:pt-40 pb-16 md:pb-32 relative bg-blueGray-100"
+      style={{ paddingTop: "18rem" }}
     >
       <div className="container mx-auto">
         <div className="flex flex-wrap items-center">

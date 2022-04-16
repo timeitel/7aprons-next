@@ -1,16 +1,54 @@
-import React from "react";
+import React, { FC } from "react";
+import styled from "styled-components";
 
 export const Footer = () => {
   return (
-    <footer className="relative bg-blueGray-200 pt-8 pb-6">
+    <footer className="relative bg-black text-white pt-8 pb-6">
       <div className="container mx-auto px-4">
-        <div className="flex flex-wrap text-center lg:text-left">
+        <div
+          className="flex text-center lg:text-left"
+          style={{ justifyContent: "space-around" }}
+        >
+          <FooterItem title={"Contact Us"}>
+            <ul>
+              <li>926 Albany Highway, East Victoria Park WA 6101</li>
+              <li>sevenaprons@gmail.com</li>
+            </ul>
+          </FooterItem>
+
           <div className="w-full lg:w-6/12 px-4">
-            <h4 className="text-3xl font-semibold">Socials?</h4>
-            <h5 className="text-lg mt-0 mb-2 text-blueGray-600">
-              Follow us on Instagram or Facebook to see what specials are coming
-              up!
-            </h5>
+            <div className="flex flex-wrap items-top mb-6">
+              <div className="w-full lg:w-4/12 px-4 ml-auto">
+                <span className="block uppercase text-sm font-semibold mb-4">
+                  Cafe Hours
+                </span>
+                <ul className="list-unstyled">
+                  <li className="font-semibold block pb-2 text-xs">
+                    Tuesday to Saturday
+                    <br /> 10am - 3pm
+                  </li>
+
+                  <li className="font-semibold block pb-2 text-xs">
+                    Sunday & Monday
+                    <br /> Closed
+                  </li>
+                </ul>
+              </div>
+              <div className="w-full lg:w-4/12 px-4">
+                <span className="block uppercase text-sm font-semibold mb-4">
+                  Delivering to
+                </span>
+                <ul className="list-unstyled">
+                  <li className="font-semibold block pb-2 text-xs">
+                    Perth metropolitan area
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div>
+            <h4 className="text-xl font-semibold">SOCIALS</h4>
+
             <div className="mt-6 lg:mb-0 mb-6">
               <a
                 target="_blank"
@@ -35,63 +73,44 @@ export const Footer = () => {
               </a>
             </div>
           </div>
-          <div className="w-full lg:w-6/12 px-4">
-            <div className="flex flex-wrap items-top mb-6">
-              <div className="w-full lg:w-4/12 px-4 ml-auto">
-                <span className="block uppercase text-blueGray-500 text-sm font-semibold mb-2">
-                  Cafe Hours
-                </span>
-                <ul className="list-unstyled">
-                  <li className="text-blueGray-600 hover:text-blueGray-800 font-semibold block pb-2 text-sm">
-                    Tuesday to Saturday
-                    <br /> 10am - 3pm
-                  </li>
-
-                  <li className="text-blueGray-600 hover:text-blueGray-800 font-semibold block pb-2 text-sm">
-                    Sunday & Monday
-                    <br /> Closed
-                  </li>
-                </ul>
-              </div>
-              <div className="w-full lg:w-4/12 px-4">
-                <span className="block uppercase text-blueGray-500 text-sm font-semibold mb-2">
-                  Delivering to
-                </span>
-                <ul className="list-unstyled">
-                  <li className="text-blueGray-600 hover:text-blueGray-800 font-semibold block pb-2 text-sm">
-                    Perth metropolitan area
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
         </div>
-        <hr className="my-6 border-blueGray-300" />
-        <a
-          href="https://github.com/timeitel"
-          target="_blank"
-          rel="noreferrer"
-          className="flex flex-wrap items-center md:justify-between justify-center"
-        >
-          <div className="w-auto px-4 mx-auto text-center flex justify-start">
+        <a href="https://github.com/timeitel" target="_blank" rel="noreferrer">
+          <div className="w-auto mx-auto text-center flex justify-start">
             <a
               href="https://timeitel.com"
               target="__blank"
               style={{
                 display: "flex",
                 alignItems: "center",
-                marginRight: "0.5rem",
+                margin: "2rem 0 0 auto",
                 width: "fit-content",
-                color: "blue",
+                color: "white",
                 textDecoration: "underline",
+                fontSize: "0.8rem",
               }}
             >
-              Made by Tim
+              MADE BY TIM
             </a>
-            😊
           </div>
         </a>
       </div>
     </footer>
   );
 };
+
+interface Props {
+  title: string;
+}
+
+export const FooterItem: FC<Props> = ({ title, children }) => {
+  return (
+    <StyledFooterItemContainer>
+      <span className="block uppercase text-lg font-semibold mb-4">
+        {title}
+      </span>
+      {children}
+    </StyledFooterItemContainer>
+  );
+};
+
+export const StyledFooterItemContainer = styled.div``;
