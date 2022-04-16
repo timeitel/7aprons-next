@@ -14,7 +14,7 @@ export const Navbar = () => {
                 className="text-blueGray-700 text-sm font-bold leading-relaxed inline-block mr-4 py-2 whitespace-nowrap uppercase"
                 href="#home"
               >
-                7 Aprons
+                Seven Aprons
               </a>
             </Link>
             <button
@@ -42,9 +42,9 @@ export const Navbar = () => {
                 </a>
               </li>
 
-              <li className="flex items-center">
+              {/* <li className="flex items-center">
                 <a
-                  className="hover:text-blueGray-500 text-blueGray-700 px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold"
+                  className="bg-primary text-white text-xs font-bold uppercase px-4 py-2 rounded shadow hover:shadow-lg outline-none focus:outline-none lg:mr-1 lg:mb-0 ml-3 mb-3 ease-linear transition-all duration-150"
                   href="images/menu.jpg"
                   target="_blank"
                 >
@@ -54,16 +54,16 @@ export const Navbar = () => {
                     aria-hidden="true"
                   ></i>
                 </a>
-              </li>
+              </li> */}
 
-              <li className="flex items-center">
+              {/* <li className="flex items-center">
                 <a
                   href="#order"
                   className="bg-primary text-white text-xs font-bold uppercase px-4 py-2 rounded shadow hover:shadow-lg outline-none focus:outline-none lg:mr-1 lg:mb-0 ml-3 mb-3 ease-linear transition-all duration-150"
                 >
                   <i className="fas fa-arrow-alt-circle-down"></i> Order Online
                 </a>
-              </li>
+              </li> */}
             </ul>
           </div>
         </div>

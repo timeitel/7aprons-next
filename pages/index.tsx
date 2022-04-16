@@ -2,11 +2,9 @@
 import React from "react";
 import Head from "next/head";
 import { Footer } from "@components/Footer";
-import { OnlineOrder } from "@components/OnlineOrder";
 import { Navbar } from "@components/Navbar";
 import { Landing } from "@components/Landing";
 import { About } from "@components/About";
-import { Menu } from "@components/Menu";
 
 export default function Index() {
   return (
@@ -21,32 +19,32 @@ export default function Index() {
         subtitle="Using common, Asian ingredients to ensure we convey the authenticity of flavours into our meals"
       >
         <div className="mt-12 flex flex-wrap">
-          <a
+          {/* <a
             href="images/menu.jpg"
             target="_blank"
-            className="flex items-center whitespace-nowrap get-started text-black font-bold px-6 py-4 rounded outline-none focus:outline-none mr-4 mb-2 bg-secondary active:bg-blueGray-500 uppercase text-sm shadow hover:shadow-lg ease-linear transition-all duration-150"
+            className="flex items-center whitespace-nowrap github-star text-white font-bold px-6 py-4 rounded outline-none focus:outline-none mb-2 bg-primary active:bg-blueGray-600 uppercase text-sm shadow hover:shadow-lg"
           >
             View Menu
             <i
               className="fas fa-external-link-square-alt ml-2"
               aria-hidden="true"
             ></i>
-          </a>
-          <a
+          </a> */}
+          {/* <a
             href="#order"
             className="flex items-center whitespace-nowrap github-star text-white font-bold px-6 py-4 rounded outline-none focus:outline-none mb-2 bg-primary active:bg-blueGray-600 uppercase text-sm shadow hover:shadow-lg"
           >
             Order Online
             <i className="fas fa-angle-double-down ml-2" aria-hidden="true"></i>
-          </a>
+          </a> */}
         </div>
       </Landing>
 
       <About />
 
-      <Menu />
+      {/* <Menu /> */}
 
-      <section className="pb-16 bg-blueGray-200 relative pt-32">
+      {/* <section className="pb-16 bg-blueGray-200 relative pt-32">
         <div className="container mx-auto">
           <div className="flex flex-wrap justify-center bg-white shadow-xl rounded-lg -mt-64 py-12 px-12 relative z-10">
             <div className="w-full text-center lg:w-8/12">
@@ -58,7 +56,7 @@ export default function Index() {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
 
       <Footer />
     </>
