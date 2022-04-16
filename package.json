@@ -19,6 +19,7 @@
     "@stripe/stripe-js": "^1.13.2",
     "@tailwindcss/forms": "0.2.1",
     "@types/react-query": "^1.1.2",
+    "@types/styled-components": "^5.1.25",
     "babel-preset-next": "^1.4.0",
     "chart.js": "2.9.4",
     "cross-env": "^7.0.3",
