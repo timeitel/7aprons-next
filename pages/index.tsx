@@ -19,24 +19,13 @@ export default function Index() {
         subtitle="Using common, Asian ingredients to ensure we convey the authenticity of flavours into our meals"
       >
         <div className="mt-12 flex flex-wrap">
-          {/* <a
+          <a
             href="images/menu.jpg"
             target="_blank"
             className="flex items-center whitespace-nowrap github-star text-white font-bold px-6 py-4 rounded outline-none focus:outline-none mb-2 bg-primary active:bg-blueGray-600 uppercase text-sm shadow hover:shadow-lg"
           >
-            View Menu
-            <i
-              className="fas fa-external-link-square-alt ml-2"
-              aria-hidden="true"
-            ></i>
-          </a> */}
-          {/* <a
-            href="#order"
-            className="flex items-center whitespace-nowrap github-star text-white font-bold px-6 py-4 rounded outline-none focus:outline-none mb-2 bg-primary active:bg-blueGray-600 uppercase text-sm shadow hover:shadow-lg"
-          >
-            Order Online
-            <i className="fas fa-angle-double-down ml-2" aria-hidden="true"></i>
-          </a> */}
+            View our meals
+          </a>
         </div>
       </Landing>
 
