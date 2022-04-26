@@ -1,5 +1,5 @@
-import { LandingImage } from "modules/components/Landing";
-import { CtaRow } from "modules/components/Landing/CtaRow";
+import { LandingImage } from "modules/Landing";
+import { CtaRow } from "modules/Landing/CtaRow";
 
 export const Landing = ({ title, subtitle, children }) => {
   return (

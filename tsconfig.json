@@ -17,12 +17,14 @@
     "baseUrl": ".",
     "paths": {
       "@*": ["/*"],
-      "@components/*": ["modules/components/*"],
       "@data/*": ["data/*"],
       "@hooks/*": ["hooks/*"],
       "@theme/*": ["theme/*"],
+      "@components/*": ["common/components/*"],
       "@utils": ["common/utils"],
       "@utils/*": ["common/utils/*"],
+      "@styles": ["common/styles"],
+      "@styles/*": ["common/styles/*"],
       "@types": ["common/types"]
     }
   },

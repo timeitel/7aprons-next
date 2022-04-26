@@ -1,4 +1,4 @@
-import { NavItem } from "modules/components/Navbar/NavItem";
+import { NavItem } from "modules/Navbar/NavItem";
 import { FC } from "react";
 import styled from "styled-components";
 
