@@ -18,7 +18,7 @@ export const NavList: FC<Props> = ({}) => {
 
 export const StyledList = styled.ul`
   li:not(:last-child) {
-    margin-right: 6.375rem;
+    margin-right: 5.125rem;
   }
 `;
 StyledList.defaultProps = {

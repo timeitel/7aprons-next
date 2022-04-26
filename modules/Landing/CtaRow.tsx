@@ -71,17 +71,22 @@ const CtaItem: FC<ItemProps> = ({
 };
 
 export const StyledCtaRow = styled.div<{ isMobile: boolean }>`
-  right: 50%;
-  bottom: 0;
-  transform: translate(50%, 50%);
-  display: flex;
-  width: 90%;
-  position: absolute;
+  ${(p) =>
+    !p.isMobile &&
+    css`
+      right: 50%;
+      bottom: 0;
+      transform: translate(50%, 50%);
+      display: flex;
+      width: 90%;
+      position: absolute;
+    `};
 
   ${(p) =>
     p.isMobile &&
     css`
       flex-direction: column;
       position: relative;
+      margin-bottom: 5.5rem;
     `};
 `;

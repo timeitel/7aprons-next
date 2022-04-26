@@ -1,12 +1,24 @@
+import { useMediaQuery } from "common/hooks";
 import { LandingImage } from "modules/Landing";
 import { CtaRow } from "modules/Landing/CtaRow";
+import { FC, ReactNode } from "react";
 
-export const Landing = ({ title, subtitle, children }) => {
+interface Props {
+  title: string;
+  subtitle: string;
+}
+
+export const Landing: FC<Props> = ({ title, subtitle, children }) => {
+  const isDesktop = useMediaQuery({ min: "tablet" });
   return (
     <section
       id="home"
-      className="header relative pt-16 items-center flex h-screen max-h-860-px"
-      style={{ position: "relative" }}
+      className="header relative pt-16 items-center flex"
+      style={{
+        position: "relative",
+        maxHeight: isDesktop ? "860px" : "unset",
+        height: isDesktop ? "100vh" : "unset",
+      }}
     >
       <LandingImage alt="Indonesian food" src="images/landing-food.jpg" />
       <div className="container z-10 mx-auto items-center flex flex-wrap">
@@ -16,7 +28,9 @@ export const Landing = ({ title, subtitle, children }) => {
             <p className="mt-4 text-lg leading-relaxed text-white">
               {subtitle}
             </p>
-            {children}
+            <div style={{ marginBottom: isDesktop ? "0" : "4rem" }}>
+              {children}
+            </div>
           </div>
           <CtaRow />
         </div>

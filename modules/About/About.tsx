@@ -1,9 +1,12 @@
+import { useMediaQuery } from "common/hooks";
+
 export const About = () => {
+  const isDesktop = useMediaQuery({ min: "tablet" });
   return (
     <section
       id="about"
-      className="md:pt-40 pb-16 md:pb-32 relative bg-blueGray-100"
-      style={{ paddingTop: "18rem" }}
+      className="pb-16 md:pb-32 relative bg-blueGray-100"
+      style={{ paddingTop: isDesktop ? "18rem" : "14rem" }}
     >
       <div className="container mx-auto">
         <div className="flex flex-wrap items-center">

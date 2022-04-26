@@ -1,7 +1,9 @@
+import { useMediaQuery } from "common/hooks";
 import React, { FC } from "react";
 import styled from "styled-components";
 
 export const Footer = () => {
+  const isDesktop = useMediaQuery({ min: "tablet" });
   return (
     <footer className="relative bg-black text-white pt-8 pb-6">
       <div className="container mx-auto px-4">
@@ -46,33 +48,35 @@ export const Footer = () => {
               </div>
             </div>
           </div>
-          <div>
-            <h4 className="text-xl font-semibold">SOCIALS</h4>
+          {isDesktop && (
+            <div>
+              <h4 className="text-xl font-semibold">SOCIALS</h4>
 
-            <div className="mt-6 lg:mb-0 mb-6">
-              <a
-                target="_blank"
-                rel="noreferrer"
-                href="https://www.facebook.com/sevenaprons/"
-              >
-                <button className="bg-white text-lightBlue-600 shadow-lg font-normal h-10 w-10 items-center justify-center align-center rounded-full outline-none focus:outline-none mr-2">
-                  <i className="fab fa-facebook-square"></i>
-                </button>
-              </a>
-              <a
-                target="_blank"
-                rel="noreferrer"
-                href="https://instagram.com/sevenaprons?igshid=o28eudxnpi9p"
-              >
-                <button
-                  className="bg-white text-blueGray-800 shadow-lg font-normal h-10 w-10 items-center justify-center align-center rounded-full outline-none focus:outline-none mr-2"
-                  type="button"
+              <div className="mt-6 lg:mb-0 mb-6">
+                <a
+                  target="_blank"
+                  rel="noreferrer"
+                  href="https://www.facebook.com/sevenaprons/"
                 >
-                  <i className="fab fa-instagram"></i>
-                </button>
-              </a>
+                  <button className="bg-white text-lightBlue-600 shadow-lg font-normal h-10 w-10 items-center justify-center align-center rounded-full outline-none focus:outline-none mr-2">
+                    <i className="fab fa-facebook-square"></i>
+                  </button>
+                </a>
+                <a
+                  target="_blank"
+                  rel="noreferrer"
+                  href="https://instagram.com/sevenaprons?igshid=o28eudxnpi9p"
+                >
+                  <button
+                    className="bg-white text-blueGray-800 shadow-lg font-normal h-10 w-10 items-center justify-center align-center rounded-full outline-none focus:outline-none mr-2"
+                    type="button"
+                  >
+                    <i className="fab fa-instagram"></i>
+                  </button>
+                </a>
+              </div>
             </div>
-          </div>
+          )}
         </div>
 
         <div className="w-auto mx-auto text-center flex justify-start">
