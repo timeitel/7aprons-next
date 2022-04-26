@@ -1,7 +1,7 @@
 import { useMediaQuery } from "common/hooks";
-import { LandingImage } from "modules/Landing";
-import { CtaRow } from "modules/Landing/CtaRow";
-import { FC, ReactNode } from "react";
+import { LandingImage } from "modules/home/Landing";
+import { CtaRow } from "modules/home/Landing/CtaRow";
+import { FC } from "react";
 
 interface Props {
   title: string;

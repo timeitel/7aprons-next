@@ -1,4 +1,4 @@
-import { NavList } from "modules/Navbar/NavList";
+import { NavList } from "modules/home/Navbar/NavList";
 import Link from "next/link";
 import { useState } from "react";
 
