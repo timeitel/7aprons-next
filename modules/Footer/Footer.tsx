@@ -74,25 +74,24 @@ export const Footer = () => {
             </div>
           </div>
         </div>
-        <a href="https://github.com/timeitel" target="_blank" rel="noreferrer">
-          <div className="w-auto mx-auto text-center flex justify-start">
-            <a
-              href="https://timeitel.com"
-              target="__blank"
-              style={{
-                display: "flex",
-                alignItems: "center",
-                margin: "2rem 0 0 auto",
-                width: "fit-content",
-                color: "white",
-                textDecoration: "underline",
-                fontSize: "0.8rem",
-              }}
-            >
-              MADE BY TIM
-            </a>
-          </div>
-        </a>
+
+        <div className="w-auto mx-auto text-center flex justify-start">
+          <a
+            href="https://timeitel.com"
+            target="__blank"
+            style={{
+              display: "flex",
+              alignItems: "center",
+              margin: "2rem 0 0 auto",
+              width: "fit-content",
+              color: "white",
+              textDecoration: "underline",
+              fontSize: "0.8rem",
+            }}
+          >
+            MADE BY TIM
+          </a>
+        </div>
       </div>
     </footer>
   );

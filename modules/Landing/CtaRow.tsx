@@ -1,5 +1,6 @@
+import { useMediaQuery } from "common/hooks";
 import { FC } from "react";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 interface Props {}
 
@@ -10,8 +11,12 @@ interface ItemProps {
 }
 
 export const CtaRow: FC<Props> = ({}) => {
+  const isMobile = useMediaQuery({ max: "tablet" });
   return (
-    <StyledCtaRow className="w-full md:w-8/12 lg:w-6/12 xl:w-6/12 px-4">
+    <StyledCtaRow
+      className="w-full md:w-8/12 lg:w-6/12 xl:w-6/12 px-4"
+      isMobile={isMobile}
+    >
       <CtaItem
         title={"Heat & Eat Meals"}
         description={
@@ -38,25 +43,45 @@ const CtaItem: FC<ItemProps> = ({
   title,
   backgroundColor = "black",
 }) => {
+  const isDesktop = useMediaQuery({ min: "tablet" });
   return (
-    <div style={{ backgroundColor, color: "white", padding: "2rem 2rem 5rem" }}>
-      <h6 className="text-xl mb-8" style={{ fontWeight: 900 }}>
+    <div
+      style={{
+        backgroundColor,
+        color: "white",
+        padding: isDesktop ? "2rem 2rem 5rem" : "1rem",
+      }}
+    >
+      <h6
+        className={`text-xl ${isDesktop ? "mb-8" : "mb-1"}`}
+        style={{ fontWeight: 900 }}
+      >
         {title.toUpperCase()}
       </h6>
-      <p>{description}</p>
+      {isDesktop && <p>{description}</p>}
       <img
         src="images/right-arrow.svg"
-        style={{ position: "absolute", bottom: "1.5rem" }}
+        style={{
+          position: isDesktop ? "absolute" : "relative",
+          bottom: isDesktop ? "1.5rem" : "0",
+        }}
       />
     </div>
   );
 };
 
-export const StyledCtaRow = styled.div`
+export const StyledCtaRow = styled.div<{ isMobile: boolean }>`
   right: 50%;
   bottom: 0;
   transform: translate(50%, 50%);
   display: flex;
   width: 90%;
   position: absolute;
+
+  ${(p) =>
+    p.isMobile &&
+    css`
+      flex-direction: column;
+      position: relative;
+    `};
 `;
