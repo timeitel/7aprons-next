@@ -1,7 +1,7 @@
 /* eslint-disable react/jsx-no-target-blank */
 import React from "react";
 import Head from "next/head";
-import { About, Footer, Insta, Landing, Navbar } from "modules/home";
+import { About, Contact, Footer, Insta, Landing, Navbar } from "modules/home";
 
 export default function Index() {
   return (
@@ -17,6 +17,7 @@ export default function Index() {
       />
       <About />
       <Insta />
+      <Contact />
       <Footer />
     </>
   );

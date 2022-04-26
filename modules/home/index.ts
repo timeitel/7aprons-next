@@ -5,3 +5,4 @@ export * from "./Menu";
 export * from "./Navbar";
 export * from "./OnlineOrder";
 export * from "./Insta";
+export * from "./Contact";
