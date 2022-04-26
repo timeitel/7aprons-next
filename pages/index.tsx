@@ -1,7 +1,7 @@
 /* eslint-disable react/jsx-no-target-blank */
 import React from "react";
 import Head from "next/head";
-import { About, Footer, Landing, Navbar } from "modules/home";
+import { About, Footer, Insta, Landing, Navbar } from "modules/home";
 
 export default function Index() {
   return (
@@ -16,7 +16,7 @@ export default function Index() {
         subtitle="Using common, Asian ingredients to ensure we convey the authenticity of flavours into our meals"
       />
       <About />
-
+      <Insta />
       <Footer />
     </>
   );

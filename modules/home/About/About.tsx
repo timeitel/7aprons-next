@@ -5,7 +5,7 @@ export const About = () => {
   return (
     <section
       id="about"
-      className="pb-16 md:pb-32 relative bg-blueGray-100"
+      className="relative bg-blueGray-100"
       style={{ paddingTop: isDesktop ? "18rem" : "14rem" }}
     >
       <div className="container mx-auto">
