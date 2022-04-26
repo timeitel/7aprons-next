@@ -1,4 +1,4 @@
-import { LineItem } from "types/Checkout";
+import { LineItem } from "common/types/Checkout";
 import { getSecret } from "./SecretHandler";
 
 export const getOrderStringFromLineItems = async (

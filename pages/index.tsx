@@ -1,10 +1,7 @@
 /* eslint-disable react/jsx-no-target-blank */
 import React from "react";
 import Head from "next/head";
-import { Footer } from "@components/Footer";
-import { Navbar } from "@components/Navbar";
-import { Landing } from "@components/Landing";
-import { About } from "@components/About";
+import { About, Footer, Landing, Navbar } from "modules";
 
 export default function Index() {
   return (

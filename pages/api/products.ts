@@ -1,4 +1,4 @@
-import { getSecret } from "@utils/SecretHandler";
+import { getSecret } from "common/utils/SecretHandler";
 import { getWeekOfMonth } from "date-fns";
 
 /**

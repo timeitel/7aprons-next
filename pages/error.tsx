@@ -1,9 +1,9 @@
 /* eslint-disable react/jsx-no-target-blank */
 import React from "react";
-import { Navbar } from "@components/Navbar";
-import { Footer } from "@components/Footer";
-import { domain } from "@utils/utils";
-import { Landing } from "@components/Landing";
+import { Navbar } from "modules/components/Navbar";
+import { Footer } from "modules/components/Footer";
+import { domain } from "common/utils/utils";
+import { Landing } from "modules/components/Landing";
 
 export default function Error() {
   return (

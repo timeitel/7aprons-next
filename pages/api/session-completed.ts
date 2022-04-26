@@ -2,7 +2,7 @@ import { buffer } from "micro";
 import Stripe from "stripe";
 import { NextApiRequest, NextApiResponse } from "next";
 import { updateAccounting } from "../../services/AccountingServce";
-import { getSecret } from "@utils/SecretHandler";
+import { getSecret } from "common/utils/SecretHandler";
 import { StorageService } from "services/StorageService";
 
 export const config = {

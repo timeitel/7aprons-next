@@ -1,7 +1,7 @@
-import { getSecret } from "../utils/SecretHandler";
+import { getSecret } from "../common/utils/SecretHandler";
 import { GoogleSpreadsheet } from "google-spreadsheet";
-import { Order } from "types/Checkout";
-import { getOrderStringFromLineItems } from "@utils/Ordering";
+import { Order } from "common/types/Checkout";
+import { getOrderStringFromLineItems } from "common/utils/Ordering";
 import { format } from "date-fns";
 
 export const updateAccounting = async (order: Order) => {

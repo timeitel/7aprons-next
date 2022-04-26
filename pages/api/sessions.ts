@@ -1,4 +1,4 @@
-import { getSecret } from "@utils/SecretHandler";
+import { getSecret } from "common/utils/SecretHandler";
 import { StorageService } from "services/StorageService";
 import { getISOWeek } from "date-fns";
 import type { NextApiRequest, NextApiResponse } from "next";

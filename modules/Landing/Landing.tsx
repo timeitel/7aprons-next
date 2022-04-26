@@ -1,5 +1,5 @@
-import { LandingImage } from "@components/Landing";
-import { CtaRow } from "@components/Landing/CtaRow";
+import { LandingImage } from "modules/components/Landing";
+import { CtaRow } from "modules/components/Landing/CtaRow";
 
 export const Landing = ({ title, subtitle, children }) => {
   return (
@@ -18,8 +18,8 @@ export const Landing = ({ title, subtitle, children }) => {
             </p>
             {children}
           </div>
+          <CtaRow />
         </div>
-        <CtaRow />
       </div>
     </section>
   );
