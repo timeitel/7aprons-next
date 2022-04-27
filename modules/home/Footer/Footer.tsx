@@ -86,7 +86,7 @@ export const Footer = () => {
             style={{
               display: "flex",
               alignItems: "center",
-              margin: "2rem 0 0 auto",
+              margin: isDesktop ? "2rem 0 0 auto" : "0 auto",
               width: "fit-content",
               color: "white",
               textDecoration: "underline",
