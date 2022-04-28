@@ -1,3 +1,4 @@
+import { PrimaryButton } from "@components/Button/PrimaryButton";
 import { useForm } from "react-hook-form";
 import styled from "styled-components";
 
@@ -120,7 +121,9 @@ export const Contact = () => {
           })}
         />
 
-        <button type="submit">Submit</button>
+        <PrimaryButton onClick={() => handleSubmit(onsubmit)} fullWidth>
+          Submit
+        </PrimaryButton>
       </form>
     </section>
   );
