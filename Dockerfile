@@ -5,8 +5,6 @@ RUN npm install
 COPY . .
 
 FROM base AS build
-ARG NEXT_PUBLIC_STRIPE_KEY
-ENV NEXT_PUBLIC_STRIPE_KEY=${NEXT_PUBLIC_STRIPE_KEY}
 ENV NODE_OPTIONS=--openssl-legacy-provider
 WORKDIR /build
 COPY --from=base /base ./
