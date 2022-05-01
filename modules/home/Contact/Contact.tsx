@@ -1,6 +1,16 @@
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.min.css";
 import { PrimaryButton } from "@components/Button/PrimaryButton";
 import { useForm } from "react-hook-form";
 import styled from "styled-components";
+import { postData } from "@utils/postData";
+
+export interface ContactForm {
+  name: string;
+  email: string;
+  subject: string;
+  message: string;
+}
 
 export const Contact = () => {
   const {
@@ -10,14 +20,25 @@ export const Contact = () => {
     formState: { errors },
   } = useForm();
 
-  const onSubmit = async (data) => {
-    const { name, email, subject, message } = data;
-
-    console.log("Name: ", name);
-    console.log("Email: ", email);
-    console.log("Subject: ", subject);
-    console.log("Message: ", message);
+  const onSubmit = async (data: ContactForm) => {
+    try {
+      await postData("api/contact", data);
+      reset();
+      toast("Thanks for contacting us! We'll be in touch.", {
+        position: "bottom-center",
+        autoClose: 7500,
+        hideProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: false,
+        className: "submit-feedback success",
+        toastId: "notifyToast",
+      });
+    } catch (e) {
+      console.log(e);
+    }
   };
+
   return (
     <section id="insta" className="py-12 bg-blueGray-100">
       <form
@@ -28,7 +49,7 @@ export const Contact = () => {
           maxWidth: "600px",
           margin: "0 auto",
           backgroundColor: "grey",
-          padding: "1rem",
+          padding: "2rem",
           borderRadius: "0.5rem",
         }}
       >
@@ -81,7 +102,7 @@ export const Contact = () => {
           })}
         />
 
-        <StyledLabel htmlFor="subject">Subject</StyledLabel>
+        <StyledLabel htmlFor="subject">I'm enquiring about</StyledLabel>
         {errors.subject && (
           <p style={{ color: "firebrick" }}>{errors.subject.message}</p>
         )}
@@ -121,9 +142,10 @@ export const Contact = () => {
           })}
         />
 
-        <PrimaryButton onClick={() => handleSubmit(onsubmit)} fullWidth>
+        <PrimaryButton onClick={() => handleSubmit(onSubmit)} fullWidth>
           Submit
         </PrimaryButton>
+        <ToastContainer />
       </form>
     </section>
   );
