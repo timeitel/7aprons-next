@@ -36,6 +36,16 @@ export const Contact = () => {
       });
     } catch (e) {
       console.log(e);
+      toast("An error ocurred while sending, please try again.", {
+        position: "bottom-center",
+        autoClose: 7500,
+        hideProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: false,
+        className: "submit-feedback",
+        toastId: "notifyToast",
+      });
     }
   };
 

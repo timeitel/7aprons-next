@@ -20,7 +20,7 @@ export const Footer = () => {
 
           <div className="w-full lg:w-6/12 px-4">
             <div className="flex flex-wrap items-top mb-6">
-              <div className="w-full lg:w-4/12 px-4 ml-auto">
+              <div className="w-full lg:w-4/12 px-4 ml-auto mb-4">
                 <span className="block uppercase text-sm font-semibold mb-4">
                   Cafe Hours
                 </span>
