@@ -27,9 +27,9 @@ export const CtaRow: FC<Props> = ({}) => {
         to={"/heat-and-eat"}
       />
       <CtaItem
-        title={"Functions"}
+        title={"Catering"}
         description={
-          "Whether you're catering for yor office function, or celebrating a birthday - we have packages to suit all functions sizes."
+          "Whether you're catering for your office function, or celebrating a birthday - we have packages to suit all occasions and sizes."
         }
         backgroundColor={"grey"}
         to={"/functions"}

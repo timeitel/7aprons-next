@@ -8,17 +8,17 @@ export const NavList: FC<Props> = ({}) => {
   return (
     <StyledList>
       <NavItem href={"#about"}>Home</NavItem>
-      <NavItem href={"#about"}>Meals</NavItem>
+      <NavItem href={"#about"}>Heat & eat meals</NavItem>
       <NavItem href={"#about"}>Catering</NavItem>
       <NavItem href={"#about"}>Wholesale</NavItem>
-      <NavItem href={"#about"}>Contact</NavItem>
+      <NavItem href={"/#contact"}>Contact</NavItem>
     </StyledList>
   );
 };
 
 export const StyledList = styled.ul`
   li:not(:last-child) {
-    margin-right: 5.125rem;
+    margin-right: 4.25rem;
   }
 `;
 StyledList.defaultProps = {

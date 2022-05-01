@@ -22,7 +22,7 @@ export const Contact = () => {
 
   const onSubmit = async (data: ContactForm) => {
     try {
-      await postData("api/contact", data);
+      // await postData("api/contact", data);
       reset();
       toast("Thanks for contacting us! We'll be in touch.", {
         position: "bottom-center",
@@ -50,7 +50,7 @@ export const Contact = () => {
   };
 
   return (
-    <section id="insta" className="py-12 bg-blueGray-100">
+    <section id="contact" className="py-12 bg-blueGray-100">
       <form
         id="contact-form"
         onSubmit={handleSubmit(onSubmit)}
@@ -80,6 +80,7 @@ export const Contact = () => {
           style={{ display: "block", marginBottom: "1rem", width: "100%" }}
           type="text"
           name="name"
+          placeholder="Enter your name"
           id="name"
           {...register("name", {
             required: {
@@ -104,6 +105,7 @@ export const Contact = () => {
           type="email"
           name="email"
           id="email"
+          placeholder="Enter your email"
           style={{ display: "block", marginBottom: "1rem", width: "100%" }}
           {...register("email", {
             required: true,
@@ -116,8 +118,7 @@ export const Contact = () => {
         {errors.subject && (
           <p style={{ color: "firebrick" }}>{errors.subject.message}</p>
         )}
-        <StyledInput
-          type="text"
+        <StyledSelect
           name="subject"
           id="subject"
           style={{ display: "block", marginBottom: "1rem", width: "100%" }}
@@ -131,7 +132,12 @@ export const Contact = () => {
               message: "Subject cannot exceed 75 characters",
             },
           })}
-        />
+        >
+          <option value="Catering">Catering</option>
+          <option value="Wholesale">Wholesale</option>
+          <option value="Heat & eat meals">Heat & eat meals</option>
+          <option value="Other">Other</option>
+        </StyledSelect>
 
         <StyledLabel htmlFor="message">Message</StyledLabel>
         {errors.message && (
@@ -141,6 +147,7 @@ export const Contact = () => {
           rows={3}
           name="message"
           id="message"
+          placeholder="Enter your message.."
           style={{
             display: "block",
             marginBottom: "1rem",
@@ -166,6 +173,13 @@ export const StyledLabel = styled.label`
 `;
 
 export const StyledInput = styled.input`
+  display: block;
+  margin-bottom: 1rem;
+  width: 100%;
+  border-radius: 0.25rem;
+`;
+
+const StyledSelect = styled.select`
   display: block;
   margin-bottom: 1rem;
   width: 100%;
