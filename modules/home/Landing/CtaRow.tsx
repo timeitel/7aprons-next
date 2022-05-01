@@ -32,7 +32,7 @@ export const CtaRow: FC<Props> = ({}) => {
           "Whether you're catering for your office function, or celebrating a birthday - we have packages to suit all occasions and sizes."
         }
         backgroundColor={"grey"}
-        to={"/functions"}
+        to={"/catering"}
       />
       <CtaItem
         title={"Wholesale"}
