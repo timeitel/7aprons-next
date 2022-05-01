@@ -3,7 +3,7 @@ import React from "react";
 import Head from "next/head";
 import { About, Contact, Footer, Insta, Landing, Navbar } from "modules/home";
 
-export default function Index() {
+export default function Catering() {
   return (
     <>
       <Head>
@@ -12,12 +12,10 @@ export default function Index() {
       </Head>
       <Navbar />
       <Landing
-        title="Authentic Asian Cuisine"
-        subtitle="Using common, Asian ingredients to ensure we convey the authenticity of flavours into our meals"
-        showCtaRow={true}
+        title="Catering"
+        subtitle="We cater for a variety of function sizes and occasions with preset packages. Otherwise, please feel free to get in touch for a custom order."
+        showCtaRow={false}
       />
-      <About />
-      <Insta />
       <Contact />
       <Footer />
     </>

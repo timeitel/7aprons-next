@@ -7,10 +7,10 @@ interface Props {}
 export const NavList: FC<Props> = ({}) => {
   return (
     <StyledList>
-      <NavItem href={"#about"}>Home</NavItem>
-      <NavItem href={"#about"}>Heat & eat meals</NavItem>
-      <NavItem href={"#about"}>Catering</NavItem>
-      <NavItem href={"#about"}>Wholesale</NavItem>
+      <NavItem href={"/"}>Home</NavItem>
+      <NavItem href={"/heat-and-eat"}>Heat & eat meals</NavItem>
+      <NavItem href={"catering"}>Catering</NavItem>
+      <NavItem href={"wholesale"}>Wholesale</NavItem>
       <NavItem href={"/#contact"}>Contact</NavItem>
     </StyledList>
   );

@@ -3,7 +3,7 @@ import React from "react";
 import Head from "next/head";
 import { About, Contact, Footer, Insta, Landing, Navbar } from "modules/home";
 
-export default function Index() {
+export default function HeatAndEat() {
   return (
     <>
       <Head>
@@ -12,12 +12,10 @@ export default function Index() {
       </Head>
       <Navbar />
       <Landing
-        title="Authentic Asian Cuisine"
-        subtitle="Using common, Asian ingredients to ensure we convey the authenticity of flavours into our meals"
-        showCtaRow={true}
+        title="Heat & eat meals"
+        subtitle="Visit during store hours for our delicious frozen meals. Made fresh, vacuum packed, and then frozen so you can have it any time, anywhere."
+        showCtaRow={false}
       />
-      <About />
-      <Insta />
       <Contact />
       <Footer />
     </>

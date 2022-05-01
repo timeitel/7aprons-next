@@ -6,9 +6,15 @@ import { FC } from "react";
 interface Props {
   title: string;
   subtitle: string;
+  showCtaRow: boolean;
 }
 
-export const Landing: FC<Props> = ({ title, subtitle, children }) => {
+export const Landing: FC<Props> = ({
+  title,
+  subtitle,
+  showCtaRow,
+  children,
+}) => {
   const isDesktop = useMediaQuery({ min: "tablet" });
   return (
     <section
@@ -32,7 +38,7 @@ export const Landing: FC<Props> = ({ title, subtitle, children }) => {
               {children}
             </div>
           </div>
-          <CtaRow />
+          {showCtaRow && <CtaRow />}
         </div>
       </div>
     </section>
