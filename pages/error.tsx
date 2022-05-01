@@ -1,7 +1,7 @@
 /* eslint-disable react/jsx-no-target-blank */
 import React from "react";
 import { domain } from "common/utils/utils";
-import { Footer, Landing, Navbar } from "modules/home/home";
+import { Footer, Landing, Navbar } from "modules/home";
 
 export default function Error() {
   return (
@@ -9,6 +9,7 @@ export default function Error() {
       <Landing
         title="Error when processing payment"
         subtitle="Please check your details and try again."
+        showCtaRow={false}
       >
         <div className="mt-12 flex flex-wrap">
           <a

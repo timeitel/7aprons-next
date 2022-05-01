@@ -1,7 +1,7 @@
 /* eslint-disable react/jsx-no-target-blank */
 import React from "react";
 import { domain } from "common/utils/utils";
-import { Footer, Landing, Navbar } from "modules/home/home";
+import { Footer, Landing, Navbar } from "modules/home";
 
 export default function Success() {
   return (
@@ -10,6 +10,7 @@ export default function Success() {
       <Landing
         title="Thanks for ordering 7 Aprons!"
         subtitle="We'll send you an email to confirm your order."
+        showCtaRow={false}
       >
         <div className="mt-12 flex flex-wrap">
           <a
