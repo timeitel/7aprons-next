@@ -24,7 +24,7 @@ const StyledDefaultButton = styled.button<ButtonProps>`
   border-radius: 4px;
   border: none;
   color: inherit;
-  cursor: pointer;
+  cursor: ${(p) => (p.disabled ? "not-allowed" : "pointer")};
   display: inline-flex;
   font-weight: 500;
   justify-content: center;
@@ -34,12 +34,4 @@ const StyledDefaultButton = styled.button<ButtonProps>`
   transition: background 0.25s ease-in 0.15s;
 
   padding: 0.5rem 2.5rem;
-
-  ${(p) =>
-    !p.disableHover &&
-    `
-  &:hover {
-    background-color: grey;
-  }
-  `}
 `;

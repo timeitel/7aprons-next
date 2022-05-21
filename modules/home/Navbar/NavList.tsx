@@ -2,16 +2,37 @@ import { NavItem } from "modules/home/Navbar/NavItem";
 import { FC } from "react";
 import styled from "styled-components";
 
-interface Props {}
+interface Props {
+  activePath: string;
+}
 
-export const NavList: FC<Props> = ({}) => {
+export const NavList: FC<Props> = ({ activePath }) => {
+  const navListItems = [
+    {
+      path: "/",
+      label: "Home",
+    },
+    {
+      path: "/heat-and-eat",
+      label: "Heat & eat meals",
+    },
+    {
+      path: "/catering",
+      label: "Catering",
+    },
+    {
+      path: "/wholesale",
+      label: "Wholesale",
+    },
+  ];
+
   return (
     <StyledList>
-      <NavItem href={"/"}>Home</NavItem>
-      <NavItem href={"/heat-and-eat"}>Heat & eat meals</NavItem>
-      <NavItem href={"catering"}>Catering</NavItem>
-      <NavItem href={"wholesale"}>Wholesale</NavItem>
-      <NavItem href={"/#contact"}>Contact</NavItem>
+      {navListItems.map((x) => (
+        <NavItem href={x.path} active={activePath === x.path} key={x.path}>
+          {x.label}
+        </NavItem>
+      ))}
     </StyledList>
   );
 };

@@ -7,10 +7,11 @@ import { ContactForm } from "modules";
  */
 export default async function contact(req, res) {
   try {
-    await processEmailAsync(req.body);
+    const response = await processEmailAsync(req.body);
     res.status(200).send();
   } catch (err) {
-    console.log(JSON.stringify(err));
+    console.log(err);
+    console.log(err.message);
     res.status(500).send("Server error");
   }
 }
@@ -18,15 +19,14 @@ export default async function contact(req, res) {
 const processEmailAsync = (form: ContactForm) => {
   const sendgrid = require("@sendgrid/mail");
   const SENDGRID_API_KEY = process.env.SENDGRID_API_KEY;
-  // sendgrid.setApiKey(SENDGRID_API_KEY);
+  sendgrid.setApiKey(SENDGRID_API_KEY);
 
   const msg = {
     to: "timeitel@outlook.com",
-    from: form.email,
-    subject: form.subject,
-    text: form.message,
+    from: process.env.OUTLOOK_USER,
+    subject: `Email from SevenAprons.com: ${form.subject}`,
+    text: `Name: ${form.name},\n Email: ${form.email} \n Message: ${form.message}`,
   };
 
-  // return sendgrid.send(msg);
-  return;
+  return sendgrid.send(msg);
 };

@@ -1,8 +1,10 @@
 import { NavList } from "modules/home/Navbar/NavList";
+import { useRouter } from "next/dist/client/router";
 import Link from "next/link";
 import { useState } from "react";
 
 export const Navbar = () => {
+  const { pathname } = useRouter();
   const [navbarOpen, setNavbarOpen] = useState(false);
 
   return (
@@ -33,7 +35,7 @@ export const Navbar = () => {
             }
             id="example-navbar-warning"
           >
-            <NavList />
+            <NavList activePath={pathname} />
           </div>
         </div>
       </nav>

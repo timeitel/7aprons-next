@@ -4,6 +4,8 @@ import { PrimaryButton } from "@components/Button/PrimaryButton";
 import { useForm } from "react-hook-form";
 import styled from "styled-components";
 import { postData } from "@utils/postData";
+import { useState } from "react";
+import { BeatLoader } from "react-spinners";
 
 export interface ContactForm {
   name: string;
@@ -13,6 +15,7 @@ export interface ContactForm {
 }
 
 export const Contact = () => {
+  const [loading, setLoading] = useState(false);
   const {
     register,
     handleSubmit,
@@ -22,7 +25,8 @@ export const Contact = () => {
 
   const onSubmit = async (data: ContactForm) => {
     try {
-      // await postData("api/contact", data);
+      setLoading(true);
+      await postData("api/contact", data);
       reset();
       toast("Thanks for contacting us! We'll be in touch.", {
         position: "bottom-center",
@@ -46,6 +50,8 @@ export const Contact = () => {
         className: "submit-feedback",
         toastId: "notifyToast",
       });
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -158,9 +164,12 @@ export const Contact = () => {
             required: true,
           })}
         />
-
-        <PrimaryButton onClick={() => handleSubmit(onSubmit)} fullWidth>
-          Submit
+        <PrimaryButton
+          onClick={() => handleSubmit(onSubmit)}
+          fullWidth
+          disabled={loading}
+        >
+          {loading ? <BeatLoader color="white" /> : "Submit"}
         </PrimaryButton>
         <ToastContainer />
       </form>

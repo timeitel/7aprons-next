@@ -4,11 +4,11 @@ import { CSSProperties, HTMLAttributes, ReactNode } from "react";
 export interface ButtonProps extends HTMLAttributes<HTMLButtonElement> {
   size?: keyof IButtonSizes;
   variant?: keyof IButtonVariants;
-  disableHover?: boolean;
   startIcon?: ReactNode;
   endIcon?: ReactNode;
   href?: string;
   fullWidth?: boolean;
+  disabled?: boolean;
 }
 
 interface IButtonSizes {
