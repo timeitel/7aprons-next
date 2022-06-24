@@ -16,6 +16,8 @@ export default function Wholesale() {
         title="Wholesale"
         subtitle="We work with stores to provide orders of flexible sizes and prices."
         showCtaRow={false}
+        textCenter
+        height={"50vh"}
       />
       <div style={{ padding: "3rem 0" }} className="bg-blueGray-100">
         <CateringSet

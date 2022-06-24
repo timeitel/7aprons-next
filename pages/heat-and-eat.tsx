@@ -17,6 +17,7 @@ export default function HeatAndEat() {
         subtitle="Visit during store hours for our delicious frozen meals. Made fresh, vacuum packed, and then frozen so you can have it any time, anywhere."
         showCtaRow={false}
         height={"50vh"}
+        textCenter
       />
       <div style={{ padding: "3rem 0" }} className="bg-blueGray-100">
         <CateringSet

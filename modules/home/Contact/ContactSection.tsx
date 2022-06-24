@@ -7,7 +7,7 @@ import { postData } from "@utils/postData";
 import { FC, useState } from "react";
 import { BeatLoader } from "react-spinners";
 
-export interface ContactForm {
+export interface IContactForm {
   name: string;
   email: string;
   subject: string;
@@ -27,7 +27,7 @@ export const ContactSection: FC<Props> = ({ title }) => {
     formState: { errors },
   } = useForm();
 
-  const onSubmit = async (data: ContactForm) => {
+  const onSubmit = async (data: IContactForm) => {
     try {
       setLoading(true);
       await postData("api/contact", data);

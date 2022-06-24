@@ -1,4 +1,4 @@
-import { ContactForm } from "modules";
+import { IContactForm } from "modules";
 
 /**
  *
@@ -16,7 +16,7 @@ export default async function contact(req, res) {
   }
 }
 
-const processEmailAsync = (form: ContactForm) => {
+const processEmailAsync = (form: IContactForm) => {
   const sendgrid = require("@sendgrid/mail");
   const SENDGRID_API_KEY = process.env.SENDGRID_API_KEY;
   sendgrid.setApiKey(SENDGRID_API_KEY);

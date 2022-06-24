@@ -24,10 +24,10 @@ export const NavList: FC<Props> = ({ activePath }) => {
       path: "/wholesale",
       label: "Wholesale",
     },
-    {
-      path: "/contact",
-      label: "Contact Us",
-    },
+    // {
+    //   path: "/contact",
+    //   label: "Contact Us",
+    // },
   ];
 
   return (

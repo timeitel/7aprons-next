@@ -17,6 +17,8 @@ export default function Catering() {
         subtitle="We cater for a variety of function sizes and occasions with preset packages. Otherwise, please feel free to get in touch for a custom order."
         showCtaRow={false}
         imgSrc="images/catering-hero.jpg"
+        textCenter
+        height={"50vh"}
       />
 
       <div style={{ padding: "3rem 0" }} className="bg-blueGray-100">

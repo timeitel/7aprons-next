@@ -9,6 +9,7 @@ interface Props {
   showCtaRow: boolean;
   imgSrc?: string;
   height?: string;
+  textCenter?: boolean;
 }
 
 export const Landing: FC<Props> = ({
@@ -17,6 +18,7 @@ export const Landing: FC<Props> = ({
   showCtaRow,
   imgSrc = "images/landing-food.jpg",
   height,
+  textCenter,
   children,
 }) => {
   const isDesktop = useMediaQuery({ min: "tablet" });
@@ -32,7 +34,10 @@ export const Landing: FC<Props> = ({
     >
       <LandingImage alt="Indonesian food" src={imgSrc} />
       <div className="container z-10 mx-auto items-center flex flex-wrap">
-        <div className="w-full md:w-8/12 lg:w-6/12 xl:w-6/12 px-4">
+        <div
+          className="w-full md:w-8/12 lg:w-6/12 xl:w-6/12 px-4"
+          style={{ margin: textCenter ? "auto" : 0 }}
+        >
           <div className="pt-32 sm:pt-0">
             <h2 className="font-semibold text-6xl text-white">{title}</h2>
             <p className="mt-4 text-lg leading-relaxed text-white">
