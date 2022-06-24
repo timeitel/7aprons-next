@@ -24,11 +24,21 @@ export const CateringSet: FC<Props> = ({
         justifyContent: "center",
       }}
     >
-      <div style={{ margin: isDesktop ? "0 1rem" : "1rem 0", maxWidth: "50%" }}>
+      <div
+        style={{
+          margin: isDesktop ? "0 2rem" : "2rem 0",
+          maxWidth: isDesktop ? "50%" : "100%",
+        }}
+      >
         <img
           src={imagePath}
           className="align-middle"
-          style={{ borderRadius: "0.5rem" }}
+          style={{
+            borderRadius: "0.5rem",
+            height: "23rem",
+            width: "23rem",
+            objectFit: "cover",
+          }}
         />
       </div>
 

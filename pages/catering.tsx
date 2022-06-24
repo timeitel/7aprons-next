@@ -20,7 +20,7 @@ export default function Catering() {
 
       <div style={{ padding: "3rem 0" }}>
         <CateringSet
-          imagePath={"images/our-story.jpg"}
+          imagePath={"images/tumpeng.jpeg"}
           title={"Nasi Tumpeng"}
           subtitle={"Turmeric Rice Set"}
           description={[
