@@ -13,9 +13,10 @@ export default function HeatAndEat() {
       </Head>
       <Navbar />
       <Landing
-        title="Heat & eat meals"
+        title="Heat & Eat Meals"
         subtitle="Visit during store hours for our delicious frozen meals. Made fresh, vacuum packed, and then frozen so you can have it any time, anywhere."
         showCtaRow={false}
+        height={"50vh"}
       />
       <div style={{ padding: "3rem 0" }} className="bg-blueGray-100">
         <CateringSet
@@ -31,21 +32,8 @@ export default function HeatAndEat() {
           ]}
           price={""}
         />
-        <CateringSet
-          hideCta
-          imagePath={"images/our-story.jpg"}
-          title={"Nasi Tumpeng"}
-          subtitle={"Turmeric Rice Set"}
-          description={[
-            { text: "Turmeric Rice" },
-            { text: "Choice of 1 protein", children: ["Chicken", "Pork"] },
-            { text: "Fried noodle" },
-            { text: "Braised beans / tofu / tempeh" },
-          ]}
-          price={""}
-        />
       </div>
-      <Contact />
+      <Contact title="Ready to place an order?" />
       <Footer />
     </>
   );

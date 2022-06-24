@@ -26,7 +26,6 @@ export const CateringSet: FC<Props> = ({
     >
       <div
         style={{
-          margin: isDesktop ? "0 2rem" : "2rem 0",
           maxWidth: isDesktop ? "50%" : "100%",
         }}
       >
@@ -42,7 +41,9 @@ export const CateringSet: FC<Props> = ({
         />
       </div>
 
-      <SetDescription {...rest} hideCta={hideCta} />
+      <div style={{ marginLeft: isDesktop ? "2rem" : 0 }}>
+        <SetDescription {...rest} hideCta={hideCta} />
+      </div>
     </Flex>
   );
 };

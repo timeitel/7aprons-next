@@ -4,7 +4,7 @@ import { PrimaryButton } from "@components/Button/PrimaryButton";
 import { useForm } from "react-hook-form";
 import styled from "styled-components";
 import { postData } from "@utils/postData";
-import { useState } from "react";
+import { FC, useState } from "react";
 import { BeatLoader } from "react-spinners";
 
 export interface ContactForm {
@@ -14,7 +14,11 @@ export interface ContactForm {
   message: string;
 }
 
-export const Contact = () => {
+interface Props {
+  title?: string;
+}
+
+export const Contact: FC<Props> = ({ title }) => {
   const [loading, setLoading] = useState(false);
   const {
     register,
@@ -71,7 +75,7 @@ export const Contact = () => {
       >
         <div className="container mx-auto">
           <h2 className="font-semibold text-4xl text-center mb-2">
-            WE'D LOVE TO HEAR FROM YOU
+            {title?.toUpperCase() || "WE'D LOVE TO HEAR FROM YOU"}
           </h2>
           <p style={{ textAlign: "center", marginBottom: "2rem" }}>
             Fill out the form below and we'll be in touch!
@@ -86,7 +90,6 @@ export const Contact = () => {
           style={{ display: "block", marginBottom: "1rem", width: "100%" }}
           type="text"
           name="name"
-          placeholder="Enter your name"
           id="name"
           {...register("name", {
             required: {
@@ -111,7 +114,6 @@ export const Contact = () => {
           type="email"
           name="email"
           id="email"
-          placeholder="Enter your email"
           style={{ display: "block", marginBottom: "1rem", width: "100%" }}
           {...register("email", {
             required: true,
@@ -120,32 +122,75 @@ export const Contact = () => {
           })}
         />
 
-        <StyledLabel htmlFor="subject">I'm enquiring about</StyledLabel>
-        {errors.subject && (
-          <p style={{ color: "firebrick" }}>{errors.subject.message}</p>
+        <StyledLabel htmlFor="name">Date required</StyledLabel>
+        {errors.dateRequired && (
+          <p style={{ color: "firebrick" }}>{errors.dateRequired.message}</p>
         )}
-        <StyledSelect
-          name="subject"
-          id="subject"
+        <StyledInput
           style={{ display: "block", marginBottom: "1rem", width: "100%" }}
-          {...register("subject", {
+          type="text"
+          name="name"
+          id="name"
+          {...register("name", {
             required: {
               value: true,
-              message: "Please enter a subject",
+              message: "Please enter your name",
             },
             maxLength: {
-              value: 75,
-              message: "Subject cannot exceed 75 characters",
+              value: 30,
+              message: "Please use 30 characters or less",
             },
           })}
-        >
-          <option value="Catering">Catering</option>
-          <option value="Wholesale">Wholesale</option>
-          <option value="Heat & eat meals">Heat & eat meals</option>
-          <option value="Other">Other</option>
-        </StyledSelect>
+          className="form-control formInput"
+        />
 
-        <StyledLabel htmlFor="message">Message</StyledLabel>
+        <StyledLabel htmlFor="name">Number of guests</StyledLabel>
+        {errors.name && (
+          <p style={{ color: "firebrick" }}>{errors.name.message}</p>
+        )}
+        <StyledInput
+          style={{ display: "block", marginBottom: "1rem", width: "100%" }}
+          type="text"
+          name="name"
+          id="name"
+          {...register("name", {
+            required: {
+              value: true,
+              message: "Please enter your name",
+            },
+            maxLength: {
+              value: 30,
+              message: "Please use 30 characters or less",
+            },
+          })}
+          className="form-control formInput"
+        />
+
+        <StyledLabel htmlFor="name">
+          Inclusions (choice of protein, sauce, veg and sides)
+        </StyledLabel>
+        {errors.name && (
+          <p style={{ color: "firebrick" }}>{errors.name.message}</p>
+        )}
+        <StyledInput
+          style={{ display: "block", marginBottom: "1rem", width: "100%" }}
+          type="text"
+          name="name"
+          id="name"
+          {...register("name", {
+            required: {
+              value: true,
+              message: "Please enter your name",
+            },
+            maxLength: {
+              value: 30,
+              message: "Please use 30 characters or less",
+            },
+          })}
+          className="form-control formInput"
+        />
+
+        <StyledLabel htmlFor="message">Additional comments</StyledLabel>
         {errors.message && (
           <p style={{ color: "firebrick" }}>Please enter a message</p>
         )}
@@ -153,7 +198,6 @@ export const Contact = () => {
           rows={3}
           name="message"
           id="message"
-          placeholder="Enter your message.."
           style={{
             display: "block",
             marginBottom: "1rem",

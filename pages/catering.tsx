@@ -16,21 +16,10 @@ export default function Catering() {
         title="Catering"
         subtitle="We cater for a variety of function sizes and occasions with preset packages. Otherwise, please feel free to get in touch for a custom order."
         showCtaRow={false}
+        imgSrc="images/catering-hero.jpg"
       />
 
-      <div style={{ padding: "3rem 0" }}>
-        <CateringSet
-          imagePath={"images/tumpeng.jpeg"}
-          title={"Nasi Tumpeng"}
-          subtitle={"Turmeric Rice Set"}
-          description={[
-            { text: "Turmeric Rice" },
-            { text: "Choice of 1 protein", children: ["Chicken", "Pork"] },
-            { text: "Fried noodle" },
-            { text: "Braised beans / tofu / tempeh" },
-          ]}
-          price={"$17 PER HEAD (MIN. ORDER 20PAX"}
-        />
+      <div style={{ padding: "3rem 0" }} className="bg-blueGray-100">
         <CateringSet
           imagePath={"images/our-story.jpg"}
           title={"Nasi Tumpeng"}
