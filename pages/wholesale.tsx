@@ -14,7 +14,7 @@ export default function Wholesale() {
       <Navbar />
       <Landing
         title="Wholesale"
-        subtitle="We work with stores to provide orders to stock of flexible sizes and prices."
+        subtitle="We work with stores to provide orders of flexible sizes and prices."
         showCtaRow={false}
       />
       <div style={{ padding: "3rem 0" }}>

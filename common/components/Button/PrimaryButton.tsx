@@ -14,12 +14,12 @@ const StyledPrimaryButton = styled(Button)`
   width: ${(p) => (p.fullWidth ? "100%" : "auto")};
 
   &:hover {
-    background: blue;
+    background-color: #c82333;
+    border-color: #bd2130;
   }
 
   &:before {
     content: "";
-    background: blue;
     position: absolute;
     width: 90%;
     height: 1px;
