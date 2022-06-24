@@ -18,7 +18,7 @@ interface Props {
   title?: string;
 }
 
-export const Contact: FC<Props> = ({ title }) => {
+export const ContactSection: FC<Props> = ({ title }) => {
   const [loading, setLoading] = useState(false);
   const {
     register,
@@ -61,6 +61,15 @@ export const Contact: FC<Props> = ({ title }) => {
 
   return (
     <section id="contact" className="py-12 bg-blueGray-100">
+      <div className="container mx-auto">
+        <h2 className="font-bold text-4xl text-center mb-2">
+          {title?.toUpperCase() || "WE'D LOVE TO HEAR FROM YOU"}
+        </h2>
+        <p style={{ textAlign: "center", marginBottom: "2rem" }}>
+          Fill out the form below and we'll be in touch!
+        </p>
+      </div>
+
       <form
         id="contact-form"
         onSubmit={handleSubmit(onSubmit)}
@@ -68,20 +77,10 @@ export const Contact: FC<Props> = ({ title }) => {
         style={{
           maxWidth: "600px",
           margin: "0 auto",
-          backgroundColor: "grey",
           padding: "2rem",
           borderRadius: "0.5rem",
         }}
       >
-        <div className="container mx-auto">
-          <h2 className="font-semibold text-4xl text-center mb-2">
-            {title?.toUpperCase() || "WE'D LOVE TO HEAR FROM YOU"}
-          </h2>
-          <p style={{ textAlign: "center", marginBottom: "2rem" }}>
-            Fill out the form below and we'll be in touch!
-          </p>
-        </div>
-
         <StyledLabel htmlFor="name">Name</StyledLabel>
         {errors.name && (
           <p style={{ color: "firebrick" }}>{errors.name.message}</p>

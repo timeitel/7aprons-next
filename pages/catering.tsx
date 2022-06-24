@@ -1,6 +1,6 @@
 /* eslint-disable react/jsx-no-target-blank */
 import { CateringSet } from "modules/catering";
-import { Contact, Footer, Landing, Navbar } from "modules/home";
+import { ContactSection, Footer, Landing, Navbar } from "modules/home";
 import Head from "next/head";
 import React from "react";
 
@@ -33,7 +33,7 @@ export default function Catering() {
           price={"$17 PER HEAD (MIN. ORDER 20PAX"}
         />
       </div>
-      <Contact />
+      <ContactSection />
       <Footer />
     </>
   );

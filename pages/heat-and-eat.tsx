@@ -1,6 +1,6 @@
 /* eslint-disable react/jsx-no-target-blank */
 import { CateringSet } from "modules/catering";
-import { Contact, Footer, Landing, Navbar } from "modules/home";
+import { ContactSection, Footer, Landing, Navbar } from "modules/home";
 import Head from "next/head";
 import React from "react";
 
@@ -33,7 +33,7 @@ export default function HeatAndEat() {
           price={""}
         />
       </div>
-      <Contact title="Ready to place an order?" />
+      <ContactSection title="Ready to place an order?" />
       <Footer />
     </>
   );
