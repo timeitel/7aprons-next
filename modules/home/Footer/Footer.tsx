@@ -13,8 +13,11 @@ export const Footer = () => {
         >
           <FooterItem title={"Contact Us"}>
             <ul>
-              <li>926 Albany Highway, East Victoria Park WA 6101</li>
-              <li>sevenaprons@gmail.com</li>
+              <li className="mb-2">
+                926 Albany Highway, East Victoria Park WA 6101
+              </li>
+              <li className="mb-2">sevenaprons@gmail.com</li>
+              <li className="mb-2">0449 787 801</li>
             </ul>
           </FooterItem>
 
@@ -26,8 +29,11 @@ export const Footer = () => {
                 </span>
                 <ul className="list-unstyled">
                   <li className="font-semibold block pb-2 text-xs">
-                    Wednesday, Friday & Saturday
+                    Saturday
                     <br /> 10am - 3pm
+                  </li>
+                  <li className="block pb-2 text-xs">
+                    For weekday pickup, please text and confirm.
                   </li>
                 </ul>
               </div>
