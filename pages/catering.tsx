@@ -1,6 +1,7 @@
 /* eslint-disable react/jsx-no-target-blank */
 import { CateringSet } from "modules/catering";
-import { ContactSection, Footer, Landing, Navbar } from "modules/home";
+import { Landing } from "modules/catering/Landing";
+import { ContactSection, Footer, Navbar } from "modules/home";
 import Head from "next/head";
 import React from "react";
 
@@ -14,7 +15,7 @@ export default function Catering() {
       <Navbar />
       <Landing
         title="Catering"
-        subtitle="We cater for a variety of function sizes and occasions with preset packages. Otherwise, please feel free to get in touch for a custom order."
+        subtitle="Our custom meal sets make for the perfect addition to your next event"
         showCtaRow={false}
         imgSrc="images/catering-hero.jpg"
         textCenter
