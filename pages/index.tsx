@@ -1,14 +1,8 @@
 /* eslint-disable react/jsx-no-target-blank */
 import React from "react";
 import Head from "next/head";
-import {
-  About,
-  ContactSection,
-  Footer,
-  Insta,
-  Landing,
-  Navbar,
-} from "modules/home";
+import { About, Footer, Insta, Landing, Navbar } from "modules/home";
+import { ContactSection } from "modules/home/_Contact";
 
 export default function Index() {
   return (
