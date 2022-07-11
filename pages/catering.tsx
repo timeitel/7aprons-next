@@ -1,5 +1,5 @@
 /* eslint-disable react/jsx-no-target-blank */
-import { CateringSet } from "modules/catering";
+import { CateringSet } from "modules/catering/_CateringSet";
 import { Landing } from "modules/catering/_Landing";
 import { ContactSection, Footer, Navbar } from "modules/home";
 import Head from "next/head";
@@ -23,14 +23,6 @@ export default function Catering() {
         <CateringSet
           imagePath={"images/our-story.jpg"}
           title={"Nasi Tumpeng"}
-          subtitle={"Turmeric Rice Set"}
-          description={[
-            { text: "Turmeric Rice" },
-            { text: "Choice of 1 protein", children: ["Chicken", "Pork"] },
-            { text: "Fried noodle" },
-            { text: "Braised beans / tofu / tempeh" },
-          ]}
-          price={"$17 PER HEAD (MIN. ORDER 20PAX"}
         />
       </div>
       <ContactSection />
