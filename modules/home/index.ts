@@ -4,4 +4,4 @@ export * from "./Landing";
 export * from "./Menu";
 export * from "./Navbar";
 export * from "./Insta";
-export * from "./Contact";
+export * from "../../common/components/Contact";

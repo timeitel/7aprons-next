@@ -1,6 +1,6 @@
 /* eslint-disable react/jsx-no-target-blank */
 import { ContactSection, Footer, Landing, Navbar } from "modules/home";
-import { ContactForm } from "modules/home/Contact/ContactForm";
+import { ContactForm } from "@components/Contact/ContactForm";
 import Head from "next/head";
 
 export default function Contact() {

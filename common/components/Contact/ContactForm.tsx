@@ -4,7 +4,7 @@ import {
   StyledInput,
   StyledLabel,
   IContactForm,
-} from "modules/home/Contact/ContactSection";
+} from "@components/Contact/ContactSection";
 import { FC, useState } from "react";
 import { useForm } from "react-hook-form";
 import { BeatLoader } from "react-spinners";
