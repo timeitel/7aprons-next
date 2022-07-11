@@ -16,10 +16,7 @@ export default function Catering() {
       <Landing
         title="Catering"
         subtitle="Our custom meal sets make for the perfect addition to your next event"
-        showCtaRow={false}
         imgSrc="images/catering-hero.jpg"
-        textCenter
-        height={"50vh"}
       />
 
       <div style={{ padding: "3rem 0" }} className="bg-blueGray-100">

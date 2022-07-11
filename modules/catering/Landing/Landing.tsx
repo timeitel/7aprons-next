@@ -1,27 +1,20 @@
 import { IKnownColors } from "@styles/theme";
 import { useMediaQuery } from "common/hooks";
 import { LandingImage } from "modules/home/Landing";
-import { CtaRow } from "modules/home/Landing/CtaRow";
 import { FC } from "react";
 
 interface Props {
   title: string;
   titlePrefix?: string;
   subtitle: string;
-  showCtaRow: boolean;
   imgSrc?: string;
-  height?: string;
-  textCenter?: boolean;
 }
 
 export const Landing: FC<Props> = ({
   title,
   titlePrefix,
   subtitle,
-  showCtaRow,
   imgSrc = "images/landing-food.jpg",
-  height,
-  textCenter,
   children,
 }) => {
   const isDesktop = useMediaQuery({ min: "tablet" });
@@ -39,7 +32,7 @@ export const Landing: FC<Props> = ({
       <div className="container z-10 mx-auto items-center flex flex-wrap mt-12">
         <div
           className="w-full md:w-8/12 lg:w-6/12 xl:w-6/12 px-4"
-          style={{ margin: textCenter ? "auto" : 0 }}
+          style={{ margin: "auto" }}
         >
           <div className="pt-32 sm:pt-0">
             {titlePrefix && (
@@ -60,7 +53,6 @@ export const Landing: FC<Props> = ({
               {children}
             </div>
           </div>
-          {showCtaRow && <CtaRow />}
         </div>
       </div>
     </section>
