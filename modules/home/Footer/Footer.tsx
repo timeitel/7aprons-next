@@ -21,28 +21,24 @@ export const Footer = () => {
           <div className="w-full lg:w-6/12 px-4">
             <div className="flex flex-wrap items-top mb-6">
               <div className="w-full lg:w-4/12 px-4 ml-auto mb-4">
-                <span className="block uppercase text-sm font-semibold mb-4">
-                  Cafe Hours
+                <span className="block uppercase text-sm font-semibold mb-2">
+                  In-store pickup
                 </span>
                 <ul className="list-unstyled">
                   <li className="font-semibold block pb-2 text-xs">
-                    Tuesday to Saturday
+                    Wednesday, Friday & Saturday
                     <br /> 10am - 3pm
-                  </li>
-
-                  <li className="font-semibold block pb-2 text-xs">
-                    Sunday & Monday
-                    <br /> Closed
                   </li>
                 </ul>
               </div>
               <div className="w-full lg:w-4/12 px-4">
-                <span className="block uppercase text-sm font-semibold mb-4">
-                  Delivering to
+                <span className="block uppercase text-sm font-semibold mb-2">
+                  Cafe hours
                 </span>
                 <ul className="list-unstyled">
                   <li className="font-semibold block pb-2 text-xs">
-                    Perth metropolitan area
+                    Saturday
+                    <br /> 11am - 3pm
                   </li>
                 </ul>
               </div>
