@@ -11,6 +11,11 @@ export default function Contact() {
         <link rel="icon" href="images/favicon.svg" />
       </Head>
       <Navbar position="static" />
+
+      <div>
+        <h2>HEY THERE!</h2>
+      </div>
+
       <div style={{ display: "flex", width: "100%" }}>
         <ContactForm />
       </div>
