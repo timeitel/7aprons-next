@@ -1,3 +1,4 @@
+import { IKnownColors } from "@styles/theme";
 import { useMediaQuery } from "common/hooks";
 import { LandingImage } from "modules/home/Landing";
 import { CtaRow } from "modules/home/Landing/CtaRow";
@@ -5,6 +6,7 @@ import { FC } from "react";
 
 interface Props {
   title: string;
+  titlePrefix?: string;
   subtitle: string;
   showCtaRow: boolean;
   imgSrc?: string;
@@ -14,6 +16,7 @@ interface Props {
 
 export const Landing: FC<Props> = ({
   title,
+  titlePrefix,
   subtitle,
   showCtaRow,
   imgSrc = "images/landing-food.jpg",
@@ -39,6 +42,14 @@ export const Landing: FC<Props> = ({
           style={{ margin: textCenter ? "auto" : 0 }}
         >
           <div className="pt-32 sm:pt-0">
+            {titlePrefix && (
+              <p
+                className="font-semibold text-2xl mb-2"
+                style={{ color: IKnownColors.grey200 }}
+              >
+                {titlePrefix}
+              </p>
+            )}
             <h2 className="font-semibold text-6xl text-white">{title}</h2>
             <p className="mt-4 text-lg leading-relaxed text-white">
               {subtitle}

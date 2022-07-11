@@ -19,8 +19,9 @@ export default function Index() {
       </Head>
       <Navbar />
       <Landing
-        title="Authentic Asian Cuisine"
-        subtitle="Using common, Asian ingredients to ensure we convey the authenticity of flavours into our meals"
+        // titlePrefix="WELCOME TO SEVEN APRONS"
+        title="Perth's Authentic Asian Cuisine"
+        subtitle="Using the flavours we've grown up with to create a fusion of dishes from Indonesia and Malaysia."
         showCtaRow={true}
       />
       <About />

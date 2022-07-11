@@ -16,3 +16,7 @@ export const themeDark: ITheme = {
   spacing: spacing,
   shadow: shadows,
 };
+
+export const IKnownColors = {
+  grey200: "#757575",
+};

@@ -41,10 +41,14 @@ export const About = () => {
             >
               SHARING THE FLAVOURS WE'VE GROWN UP WITH
             </h2>
+            <p className="text-md font-light mt-2 mb-8">
+              Coming from Malaysian and Indonesian backgrounds, we wanted to
+              bring to Perth a mix of fragrant street food along with the warmth
+              and heartiness of the home-cooked meals we grew up with.
+            </p>
             <p className="text-md font-light mt-2">
-              We want to bring a fusion of the fragrant street food, together
-              with the warmth of traditional home-cooked meals to transport
-              people back to the tastes of Asia.
+              We hope to transport people back to the tastes of Asia with a
+              single bite.
             </p>
           </div>
         </div>

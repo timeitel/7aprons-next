@@ -20,11 +20,9 @@ export const CtaRow: FC<Props> = ({}) => {
       isMobile={isMobile}
     >
       <CtaItem
-        title={"Heat & Eat Meals"}
-        description={
-          "Made fresh, vacuum packed, and then frozen so you can have it any time, anywhere."
-        }
-        to={"/heat-and-eat"}
+        title={"Wholesale"}
+        description={"Want to stock our meals? Get in touch to find out how."}
+        to={"/wholesale"}
       />
       <CtaItem
         title={"Catering"}
@@ -35,9 +33,11 @@ export const CtaRow: FC<Props> = ({}) => {
         to={"/catering"}
       />
       <CtaItem
-        title={"Wholesale"}
-        description={"Want to stock our meals? Get in touch to find out how."}
-        to={"/wholesale"}
+        title={"Heat & Eat Meals"}
+        description={
+          "Made fresh, vacuum packed, and then frozen so you can have it any time, anywhere."
+        }
+        to={"/heat-and-eat"}
       />
     </StyledCtaRow>
   );
