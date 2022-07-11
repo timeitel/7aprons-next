@@ -16,9 +16,10 @@ export interface IContactForm {
 
 interface Props {
   title?: string;
+  subtitle?: string;
 }
 
-export const ContactSection: FC<Props> = ({ title }) => {
+export const ContactSection: FC<Props> = ({ title, subtitle }) => {
   const [loading, setLoading] = useState(false);
   const {
     register,
@@ -66,7 +67,7 @@ export const ContactSection: FC<Props> = ({ title }) => {
           {title?.toUpperCase() || "WE'D LOVE TO HEAR FROM YOU"}
         </h2>
         <p style={{ textAlign: "center", marginBottom: "2rem" }}>
-          Fill out the form below and we'll be in touch!
+          {subtitle || "Fill out the form below and we'll be in touch!"}
         </p>
       </div>
 
