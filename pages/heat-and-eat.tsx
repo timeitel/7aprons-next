@@ -34,7 +34,6 @@ export default function HeatAndEat() {
           price={""}
         />
       </div>
-      <ContactSection title="Ready to place an order?" />
       <Footer />
     </>
   );
