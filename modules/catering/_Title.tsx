@@ -6,10 +6,8 @@ export const Title: FC<Props> = ({ children }) => {
   return (
     <h6
       style={{
-        marginBottom: "1rem",
+        marginBottom: 0,
         fontWeight: 500,
-        fontSize: "1.125rem",
-        color: "grey",
         textTransform: "uppercase",
       }}
     >

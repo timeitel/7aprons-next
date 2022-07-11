@@ -28,8 +28,8 @@ export const CateringSet: FC<Props> = ({ imagePath, ...rest }) => {
           className="align-middle"
           style={{
             borderRadius: "0.5rem",
-            height: "23rem",
-            width: "23rem",
+            height: "35rem",
+            width: "35rem",
             objectFit: "cover",
           }}
         />
