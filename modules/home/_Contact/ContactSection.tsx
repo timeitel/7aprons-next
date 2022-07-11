@@ -121,16 +121,16 @@ export const ContactSection: FC<Props> = ({ title }) => {
           })}
         />
 
-        <StyledLabel htmlFor="enquiring">I'm enquiring about</StyledLabel>
-        {errors.enquiring && (
-          <p style={{ color: "firebrick" }}>{errors.enquiring.message}</p>
+        <StyledLabel htmlFor="subject">I'm enquiring about</StyledLabel>
+        {errors.subject && (
+          <p style={{ color: "firebrick" }}>{errors.subject.message}</p>
         )}
         <StyledInput
           style={{ display: "block", marginBottom: "1rem", width: "100%" }}
           type="text"
-          name="enquiring"
-          id="enquiring"
-          {...register("enquiring")}
+          name="subject"
+          id="subject"
+          {...register("subject")}
           className="form-control formInput"
         />
 
