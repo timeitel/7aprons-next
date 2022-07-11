@@ -1,6 +1,6 @@
 /* eslint-disable react/jsx-no-target-blank */
 import { CateringSet } from "modules/catering";
-import { Landing } from "modules/catering/Landing";
+import { Landing } from "modules/catering/_Landing";
 import { ContactSection, Footer, Navbar } from "modules/home";
 import Head from "next/head";
 import React from "react";
