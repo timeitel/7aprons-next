@@ -20,10 +20,7 @@ export default function Catering() {
       />
 
       <div style={{ padding: "3rem 0" }} className="bg-blueGray-100">
-        <CateringSet
-          imagePath={"images/our-story.jpg"}
-          title={"Nasi Tumpeng"}
-        />
+        <CateringSet imagePath={"images/our-story.jpg"} />
       </div>
       <ContactSection />
       <Footer />

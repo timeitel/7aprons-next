@@ -1,5 +1,7 @@
 import { FlexColumn } from "@components/Flex";
+import { Title } from "./_Title";
 import { FC } from "react";
+import { UList } from "./_UList";
 
 export const SetDescription: FC = () => {
   return (
@@ -12,27 +14,11 @@ export const SetDescription: FC = () => {
           textTransform: "uppercase",
         }}
       >
-        testig
+        Nasi Tumpeng
       </h2>
-      <h6
-        style={{
-          marginBottom: "1rem",
-          fontWeight: 500,
-          fontSize: "1.25rem",
-          color: "grey",
-          textTransform: "uppercase",
-        }}
-      >
-        subtitle
-      </h6>
-      <ul
-        style={{
-          listStyleType: "disc",
-          listStylePosition: "inside",
-          paddingLeft: "0.25rem",
-          marginBottom: "1rem",
-        }}
-      >
+
+      <Title>Turmeric rice set</Title>
+      <UList>
         {/* {description.map((x) => (
           <li key={x.text}>
             {x.text}
@@ -52,7 +38,7 @@ export const SetDescription: FC = () => {
             )}
           </li>
         ))} */}
-      </ul>
+      </UList>
       {/* <p style={{ marginBottom: "auto" }}>{price}</p> */}
     </FlexColumn>
   );
