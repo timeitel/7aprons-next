@@ -8,7 +8,7 @@ interface Props {
 
 export const Item: FC<Props> = ({ src, description, title }) => {
   return (
-    <div style={{ marginBottom: "1.5rem" }}>
+    <div>
       <img
         src={src || "images/landing-food.jpg"}
         className="align-middle"

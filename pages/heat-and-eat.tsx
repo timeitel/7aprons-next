@@ -18,7 +18,14 @@ export default function HeatAndEat() {
         height={"50vh"}
         textCenter
       />
-      <div style={{ padding: "2rem" }}>
+      <div
+        style={{
+          padding: "2rem",
+          display: "grid",
+          gridTemplateColumns: "repeat( auto-fit, minmax(250px, 1fr) )",
+          gap: "1.5rem",
+        }}
+      >
         <Item src={""} title={""} description={""} />
         <Item src={""} title={""} description={""} />
         <Item src={""} title={""} description={""} />
