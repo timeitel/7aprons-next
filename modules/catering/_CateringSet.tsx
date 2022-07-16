@@ -7,7 +7,7 @@ interface Props {
   imagePath: string;
 }
 
-export const CateringSet: FC<Props> = ({ imagePath, ...rest }) => {
+export const CateringSet: FC<Props> = ({ imagePath }) => {
   const isDesktop = useMediaQuery({ min: "tablet" });
 
   return (
@@ -18,11 +18,7 @@ export const CateringSet: FC<Props> = ({ imagePath, ...rest }) => {
         justifyContent: "center",
       }}
     >
-      <div
-        style={{
-          maxWidth: isDesktop ? "50%" : "100%",
-        }}
-      >
+      <div>
         <img
           src={imagePath}
           className="align-middle"

@@ -50,7 +50,7 @@ export const Landing: FC<Props> = ({
                 {titlePrefix}
               </p>
             )}
-            <h2 className="font-semibold text-6xl text-white">{title}</h2>
+            <h2 className="font-semibold text-4xl text-white">{title}</h2>
             <p className="mt-4 text-lg leading-relaxed text-white">
               {subtitle}
             </p>
