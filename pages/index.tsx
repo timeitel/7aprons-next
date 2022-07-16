@@ -1,8 +1,7 @@
 /* eslint-disable react/jsx-no-target-blank */
-import React from "react";
-import Head from "next/head";
 import { About, Footer, Insta, Landing, Navbar } from "modules/home";
 import { ContactSection } from "modules/home/_Contact";
+import Head from "next/head";
 
 export default function Index() {
   return (
@@ -13,7 +12,6 @@ export default function Index() {
       </Head>
       <Navbar />
       <Landing
-        // titlePrefix="WELCOME TO SEVEN APRONS"
         title="Perth's Authentic Asian Cuisine"
         subtitle="Using the flavours we've grown up with to create a fusion of dishes from Indonesia and Malaysia."
         showCtaRow={true}

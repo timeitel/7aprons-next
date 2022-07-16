@@ -28,7 +28,7 @@ export default function Catering() {
 
       <ContactSection
         title="Ready to place an order?"
-        subtitle="we're more than happy to create a custom package to suit your event, just let us know below!"
+        subtitle="We're more than happy to create a custom package to suit your event, just let us know below!"
       />
 
       <Footer />

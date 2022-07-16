@@ -1,6 +1,5 @@
 /* eslint-disable react/jsx-no-target-blank */
-import { ContactSection, Footer, Landing, Navbar } from "modules/home";
-import { ContactForm } from "@components/Contact/ContactForm";
+import { ContactSection, Footer, Navbar } from "modules/home";
 import Head from "next/head";
 
 export default function Contact() {
@@ -12,13 +11,11 @@ export default function Contact() {
       </Head>
       <Navbar position="static" />
 
-      <div>
-        <h2>HEY THERE!</h2>
-      </div>
+      <ContactSection
+        title="Want to get in touch?"
+        subtitle="We're more than happy to create a custom package to suit your event, just let us know below!"
+      />
 
-      <div style={{ display: "flex", width: "100%" }}>
-        <ContactForm />
-      </div>
       <Footer />
     </>
   );
