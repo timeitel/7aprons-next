@@ -62,7 +62,7 @@ export const ContactSection: FC<Props> = ({ title, subtitle }) => {
 
   return (
     <section id="contact" className="py-12 bg-blueGray-100">
-      <div className="container mx-auto">
+      <div className="container mx-auto px-6">
         <h2 className="font-bold text-4xl text-center mb-2">
           {title?.toUpperCase() || "WE'D LOVE TO HEAR FROM YOU"}
         </h2>
