@@ -19,7 +19,7 @@ export default function Wholesale() {
         textCenter
         height={"50vh"}
       />
-      <div style={{ padding: "3rem 0" }} className="bg-blueGray-100">
+      <div style={{ padding: "3rem 0 0" }} className="bg-blueGray-100">
         <CateringSet imagePath={"images/our-story.jpg"} />
       </div>
       <ContactSection />

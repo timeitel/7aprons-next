@@ -13,7 +13,7 @@ export const CateringSet: FC<Props> = ({ imagePath }) => {
   return (
     <Flex
       style={{
-        padding: "1.5rem",
+        padding: "1.5rem 1.5rem 0",
         flexDirection: isDesktop ? "row" : "column",
         justifyContent: "center",
       }}
@@ -28,8 +28,8 @@ export const CateringSet: FC<Props> = ({ imagePath }) => {
           className="align-middle"
           style={{
             borderRadius: "0.5rem",
-            height: "30rem",
-            width: "30rem",
+            height: isDesktop ? "35rem" : "10rem",
+            width: isDesktop ? "35rem" : "100%",
             objectFit: "cover",
           }}
         />
