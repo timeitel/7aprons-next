@@ -1,5 +1,6 @@
 /* eslint-disable react/jsx-no-target-blank */
-import { ContactSection, Footer, Landing, Navbar } from "modules/home";
+import { Footer, Landing, Navbar } from "modules/home";
+import { ContactSection } from "modules/home/_Contact";
 import { CateringSet } from "modules/wholesale/_CateringSet";
 import Head from "next/head";
 import React from "react";
